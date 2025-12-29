@@ -3,130 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First$1online - Kickstart Your Digital Journey</title>
+    <meta name="description" content="Unlock your first $1 online with a proven guide, video walkthrough, and vibrant community. Join First$1online today!">
+    <meta name="keywords" content="make money online, first dollar, entrepreneurship, digital guide, first$1online, build in public">
+    <meta name="author" content="First$1online">
     
-    <title>First Dollar Online - The Blueprint for Indie Builders</title>
-    <meta name="description" content="The step-by-step guide to earning your first dollar online. Curated resources, launch checklist, and builder community.">
-    <meta property="og:title" content="First Dollar Online">
-    <meta property="og:description" content="Stop overthinking. Start building. Get the blueprint to your first internet dollar.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://firstonedollaronline.com">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JEP15GFHWQ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-JEP15GFHWQ');
-    </script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
+        :root {
+            --primary: #2563eb; /* Bold Trust Blue */
+            --primary-dark: #1e40af;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #f3f4f6;
+            --white: #ffffff;
+            --accent: #10b981; /* Vibrant Success Green */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .gradient-text {
-            background: linear-gradient(to right, #111827, #4b5563);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg), var(--white));
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            margin-left: 2.5rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-button-nav {
+            background: #000; /* Sleek X-style black */
+            color: var(--white) !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button-nav:hover {
+            background: #333;
+        }
+
+        /* Hamburger Menu for Mobile */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 70px; right: 5%; background: var(--white); padding: 1rem; border-radius: 10px; box-shadow: var(--shadow); }
+            .nav-links.active { display: flex; flex-direction: column; }
+            .nav-links a { margin: 0.5rem 0; }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: url('https://via.placeholder.com/1500x800?text=Your+Journey+Starts+Here') no-repeat center/cover;
+            position: relative;
+            color: var(--white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-cta {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 15px rgba(37, 99, 235, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .main-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 20px rgba(37, 99, 235, 0.5);
+        }
+
+        .trust-badge {
+            margin-top: 2rem;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            color: var(--accent);
+        }
+
+        .trust-badge i {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* What You Get Section */
+        .preview-section {
+            padding: 5rem 5%;
+            background: var(--white);
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--bg);
+            border: 1px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: #e0e7ff;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+            transition: background 0.3s;
+        }
+
+        .feature-card:hover .icon-box {
+            background: #dbeafe;
+        }
+
+        /* Community Section */
+        .community-bar {
+            background: linear-gradient(90deg, #111, #222);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1500x300?text=Community+Vibes') no-repeat center/cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .community-bar > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .community-bar h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .community-bar p {
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .community-link {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .community-link:hover {
+            color: #34d399;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            background: var(--bg);
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 1.5rem;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--white);
+            border-top: 1px solid #e5e7eb;
+            padding: 3.5rem 5%;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .footer-links {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased selection:bg-black selection:text-white">
+<body>
 
-    <nav class="fixed w-full z-50 glass-effect border-b border-gray-100">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex justify-between items-center">
-            <div class="text-lg font-black tracking-tighter">FirstOneDollar<span class="text-blue-600">Online</span></div>
-            <div class="flex gap-6 text-sm font-medium">
-                <a href="https://discord.gg/9YREqmph" target="_blank" rel="noopener noreferrer" class="hidden md:block text-gray-500 hover:text-blue-600 transition">Join Discord</a>
-                <a href="https://twitter.com/GabrielSwiftSell" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-blue-600 transition">by Gabriel</a>
-            </div>
+    <nav>
+        <a href="#" class="logo">First$1online</a>
+        <div class="nav-links">
+            <a href="#what-you-get">What You Get</a>
+            <a href="#community">Community</a>
+            <a href="https://x.com/i/communities/2005700300741496877" target="_blank" class="cta-button-nav">
+                <i class="fab fa-x-twitter"></i> Join Now
+            </a>
         </div>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
     </nav>
 
-    <header class="pt-32 pb-20 px-6 text-center max-w-4xl mx-auto">
-        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1 rounded-full mb-8 border border-blue-100 hover:scale-105 transition cursor-default">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-            </span>
-            LIVE: JOIN THE 1% CLUB
-        </div>
-        
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-gray-900">
-            Your first dollar is the hardest.<br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">We made it simple.</span>
-        </h1>
-        
-        <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Stop overthinking. You don't need a $500 course. 
-            You need a proven checklist, the right tools, and a community.
-        </p>
-        
-        <div class="flex flex-col items-center gap-4">
-            <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-xl bg-neutral-950 px-8 font-medium text-neutral-50 shadow-xl transition-all duration-300 hover:bg-neutral-800 hover:ring-2 hover:ring-neutral-800 hover:ring-offset-2 hover:scale-105">
-                <span class="mr-2 text-lg">👉</span>
-                <span class="text-lg font-bold">Get the Blueprint for $1</span>
-                <div class="absolute right-0 translate-x-full opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 pl-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                </div>
-            </a>
-            <div class="flex items-center gap-4 text-xs text-gray-500 mt-2 font-medium">
-                <span class="flex items-center gap-1"><svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Instant Access</span>
-                <span class="flex items-center gap-1"><svg class="w-3 h-3 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Secure Stripe Payment</span>
-            </div>
-        </div>
-    </header>
-
-    <section class="bg-white py-24 px-6 border-t border-gray-100">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-16">What's inside the Kit?</h2>
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:border-blue-200 hover:shadow-lg transition duration-300">
-                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-2xl mb-6">🗺️</div>
-                    <h3 class="font-bold text-xl mb-3">The 0-to-1 Roadmap</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">A step-by-step checklist to go from "Idea" to "Sale" in 14 days or less. No fluff.</p>
-                </div>
-                
-                <div class="p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:border-blue-200 hover:shadow-lg transition duration-300">
-                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-2xl mb-6">🛠️</div>
-                    <h3 class="font-bold text-xl mb-3">The Zero-Cost Stack</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Don't pay for software. Access the curated list of free tools for design, hosting, and payments.</p>
-                </div>
-                
-                <div class="p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:border-blue-200 hover:shadow-lg transition duration-300">
-                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-2xl mb-6">🤝</div>
-                    <h3 class="font-bold text-xl mb-3">Community Access</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Join the Discord server and connect with other builders launching their first projects.</p>
-                </div>
+    <section class="hero">
+        <div class="container">
+            <h1>Stop Dreaming, Start Earning<br>Your <span>First $1 Online</span></h1>
+            <p>A proven, step-by-step guide to kickstart your online income. No hype—just real results with First$1online.</p>
+            <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="main-cta">Get Started for $1</a>
+            <div class="trust-badge">
+                <i class="fas fa-shield-alt"></i> Instant Delivery
+                <span>•</span>
+                <i class="fas fa-users"></i> Backed by Our Community
             </div>
         </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-200 py-12">
-        <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <p class="font-bold text-gray-900">FirstOneDollarOnline.com</p>
-                <p class="text-sm text-gray-500 mt-1">Built in public by <a href="https://twitter.com/GabrielSwiftSell" class="underline hover:text-black">Gabriel</a></p>
+    <section id="what-you-get" class="preview-section">
+        <div class="section-title">
+            <h2>What You Get for Just $1</h2>
+            <p>Unlock a treasure trove of resources to launch your online earning journey today.</p>
+        </div>
+        
+        <div class="grid-container">
+            <div class="feature-card">
+                <div class="icon-box"><i class="fas fa-file-pdf"></i></div>
+                <h3>"First Dollar Blueprint" PDF</h3>
+                <p>A 20-page guide packed with actionable steps to set up your first online income stream.</p>
             </div>
-            
-            <div class="flex gap-6">
-                <a href="https://discord.gg/9YREqmph" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-[#5865F2] transition flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037 3.999 3.999 0 0 0-.361.798 20.375 20.375 0 0 0-4.985 0 3.965 3.965 0 0 0-.362-.798.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.319 13.579.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.027 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-                    Discord
-                </a>
-                <a href="https://twitter.com/GabrielSwiftSell" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-black transition">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
+
+            <div class="feature-card">
+                <div class="icon-box"><i class="fas fa-video"></i></div>
+                <h3>15-Min Video Walkthrough</h3>
+                <p>Watch me build it live—click-by-click guidance to avoid pitfalls and start fast.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-box"><i class="fas fa-users"></i></div>
+                <h3>Exclusive Community Access</h3>
+                <p>Join our X and Discord groups for support, tips, and real-time motivation.</p>
             </div>
         </div>
+    </section>
+
+    <section id="community" class="community-bar">
+        <h2><i class="fab fa-x-twitter"></i> Build in Public</h2>
+        <p>Track our progress and connect with others starting from scratch. Real revenue, real conversations.</p>
+        <a href="https://x.com/i/communities/2005700300741496877" target="_blank" class="community-link">Join X Community</a>
+        <a href="https://discord.gg/9YREqmph" target="_blank" class="community-link" style="margin-left: 1rem;">Join Discord</a>
+    </section>
+
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>What Our Pioneers Say</h2>
+        </div>
+        <div class="grid-container">
+            <div class="testimonial-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"The PDF cut through the noise—I made my first $1 in 3 days. Amazing value!"</p>
+                <span class="user-name">- Alex M.</span>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"The community on X and Discord kept me going. Worth every penny!"</p>
+                <span class="user-name">- Christina D.</span>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                <p>"Straightforward and effective. It’s work, but the guide makes it doable."</p>
+                <span class="user-name">- Radu I.</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <h3>First$1online</h3>
+            <p>A passion project to empower creators, built in public.</p>
+        </div>
+        <div class="footer-links">
+            <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+            <a href="https://www.notion.so/The-First-Dollar-Blueprint-Your-Step-by-Step-Guide-to-Earning-Online-as-a-Beginner-Indie-Builder-2d82bc12a14080b0b91ec17f5de18487">Blueprint</a>
+        </div>
+        <p>&copy; 2025 First$1online. All rights reserved.</p>
     </footer>
 
+    <script>
+        const toggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        toggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

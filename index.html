@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First$1online – Make Your First $1 Online</title>
-    <meta name="description" content="One practical Notion guide + builder community to help you earn your first real dollar online. No hype. Just steps.">
+    <meta name="description"
+        content="One practical Notion guide + builder community to help you earn your first real dollar online. No hype. Just steps.">
     <meta name="keywords" content="first dollar online, make money online beginner, indie builder, side hustle">
-    
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -17,94 +19,279 @@
             --bg: #f8fafc;
             --white: #ffffff;
             --accent: #10b981;
-            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',system-ui,sans-serif; }
-        body { background:var(--bg); color:var(--text); line-height:1.6; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
         nav {
-            background:var(--white);
-            box-shadow:var(--shadow);
-            padding:1rem 5%;
-            position:sticky; top:0; z-index:100;
-            display:flex; justify-content:space-between; align-items:center;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .logo { font-weight:900; font-size:1.6rem; color:var(--primary); text-decoration:none; }
-        .nav-links a { margin-left:2rem; color:var(--text); text-decoration:none; font-weight:600; }
-        .nav-links a:hover { color:var(--primary); }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
         .cta-button-nav {
-            background:#000; color:#fff !important;
-            padding:0.5rem 1.2rem; border-radius:999px; font-size:0.95rem;
+            background: #000;
+            color: #fff !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 999px;
+            font-size: 0.95rem;
         }
 
         /* Mobile menu */
-        .menu-toggle { display:none; font-size:1.6rem; cursor:pointer; }
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
         @media (max-width:768px) {
-            .menu-toggle { display:block; }
-            .nav-links { display:none; position:absolute; top:60px; right:5%; background:var(--white);
-                         padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); flex-direction:column; gap:1rem; }
-            .nav-links.active { display:flex; }
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 5%;
+                background: var(--white);
+                padding: 1.5rem;
+                border-radius: 12px;
+                box-shadow: var(--shadow);
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
         }
 
         .hero {
-            text-align:center; padding:5rem 1.5rem 4rem;
-            background:linear-gradient(135deg, #eff6ff, #dbeafe);
+            text-align: center;
+            padding: 5rem 1.5rem 4rem;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
         }
-        .hero h1 { font-size:2.8rem; margin-bottom:1rem; line-height:1.15; }
-        .hero h1 span { color:var(--accent); }
-        .hero p { font-size:1.25rem; max-width:600px; margin:0 auto 2rem; color:var(--text-light); }
-        
-        .cta-group { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
-        .main-cta, .secondary-cta {
-            display:inline-block; padding:1rem 2.2rem; border-radius:999px;
-            font-weight:700; text-decoration:none; font-size:1.1rem;
-        }
-        .main-cta { background:var(--primary); color:white; box-shadow:0 8px 16px rgba(37,99,235,0.25); }
-        .main-cta:hover { background:var(--primary-dark); transform:translateY(-2px); }
-        .secondary-cta { background:transparent; color:var(--primary); border:2px solid var(--primary); }
-        .secondary-cta:hover { background:var(--primary); color:white; }
 
-        .section { padding:4rem 5%; }
-        .section-title { text-align:center; margin-bottom:2.5rem; }
-        .section-title h2 { font-size:2.2rem; color:var(--primary); }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-light);
+        }
+
+        .cta-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .main-cta,
+        .secondary-cta {
+            display: inline-block;
+            padding: 1rem 2.2rem;
+            border-radius: 999px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .main-cta {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.25);
+        }
+
+        .main-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .secondary-cta {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .secondary-cta:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
 
         .features-grid {
-            display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.8rem;
-            max-width:1100px; margin:0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            max-width: 1100px;
+            margin: 0 auto;
         }
+
         .feature {
-            background:white; padding:1.8rem; border-radius:12px; box-shadow:var(--shadow);
-            text-align:center;
+            background: white;
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
         }
-        .feature h3 { margin:1rem 0 0.8rem; font-size:1.25rem; color:var(--primary); }
+
+        .feature h3 {
+            margin: 1rem 0 0.8rem;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
 
         .preview-gallery {
-            display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:1.5rem;
-            margin:2rem auto; max-width:1100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem auto;
+            max-width: 1100px;
         }
+
         .preview-gallery img {
-            width:100%; border-radius:12px; box-shadow:var(--shadow); border:1px solid #e2e8f0;
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
         }
 
-        .community { background:#0f172a; color:white; text-align:center; padding:4rem 5%; }
-        .community h2 { margin-bottom:1.5rem; }
-        .community a { color:var(--accent); font-weight:700; margin:0 1rem; }
+        .community {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 4rem 5%;
+        }
 
-        .newsletter { background:#f1f5f9; padding:4rem 5%; text-align:center; }
-        .newsletter form { max-width:500px; margin:2rem auto; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
-        .newsletter input { flex:1; min-width:220px; padding:0.9rem; border:1px solid #cbd5e1; border-radius:8px; }
-        .newsletter button { padding:0.9rem 1.8rem; background:#000; color:white; border:none; border-radius:8px; font-weight:700; cursor:pointer; }
+        .community h2 {
+            margin-bottom: 1.5rem;
+        }
 
-        footer { background:white; padding:2.5rem; text-align:center; color:var(--text-light); border-top:1px solid #e2e8f0; }
-        footer a { color:var(--text); margin:0 1rem; text-decoration:none; }
+        .community a {
+            color: var(--accent);
+            font-weight: 700;
+            margin: 0 1rem;
+        }
+
+        .newsletter {
+            background: #f1f5f9;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .newsletter form {
+            max-width: 500px;
+            margin: 2rem auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .newsletter input {
+            flex: 1;
+            min-width: 220px;
+            padding: 0.9rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+        }
+
+        .newsletter button {
+            padding: 0.9rem 1.8rem;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        footer {
+            background: white;
+            padding: 2.5rem;
+            text-align: center;
+            color: var(--text-light);
+            border-top: 1px solid #e2e8f0;
+        }
+
+        footer a {
+            color: var(--text);
+            margin: 0 1rem;
+            text-decoration: none;
+        }
 
         @media (max-width:640px) {
-            .hero h1 { font-size:2.2rem; }
-            .cta-group { flex-direction:column; }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav>
@@ -121,15 +308,17 @@
 
     <section class="hero">
         <h1>Make Your <span>First Real $1</span> Online</h1>
-        <p>One straightforward Notion guide + access to a small builder community.<br>No courses, no upsells — just practical first steps for $1.</p>
-        
+        <p>One straightforward Notion guide + access to a small builder community.<br>No courses, no upsells — just
+            practical first steps for $1.</p>
+
         <div class="cta-group">
             <a href="#preview" class="secondary-cta">See Preview First</a>
             <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="main-cta">Pay $1 & Unlock Now</a>
         </div>
-        
+
         <div style="margin-top:2rem; font-size:0.95rem; color:var(--text-light);">
-            <i class="fas fa-shield-alt"></i> Instant Notion link after payment • <i class="fas fa-users"></i> Join real builders on X & Discord
+            <i class="fas fa-shield-alt"></i> Instant Notion link after payment • <i class="fas fa-users"></i> Join real
+            builders on X & Discord
         </div>
     </section>
 
@@ -141,12 +330,14 @@
             <div class="feature">
                 <i class="fas fa-file-alt" style="font-size:2.8rem; color:var(--primary); margin-bottom:1rem;"></i>
                 <h3>The First Dollar Blueprint (Notion)</h3>
-                <p>Step-by-step Notion page with realistic ways beginners can earn their first dollar online — no fluff, no get-rich-quick promises.</p>
+                <p>Step-by-step Notion page with realistic ways beginners can earn their first dollar online — no fluff,
+                    no get-rich-quick promises.</p>
             </div>
             <div class="feature">
                 <i class="fas fa-users" style="font-size:2.8rem; color:var(--primary); margin-bottom:1rem;"></i>
                 <h3>Builder Community Access</h3>
-                <p>Instant invite to our X community + Discord group where people share wins, ask questions and support each other.</p>
+                <p>Instant invite to our X community + Discord group where people share wins, ask questions and support
+                    each other.</p>
             </div>
         </div>
     </section>
@@ -158,9 +349,9 @@
         </div>
         <div class="preview-gallery">
             <!-- REPLACE THESE WITH YOUR REAL SCREENSHOTS -->
-            <img src="images/img1.png" alt="Firts One Dollar Blueptint">
-            <img src="images/img2.png" alt="Funnel-To-Flywheel">
-            <img src="images/img3.png" alt="Flywheel">
+            <img src="./images/img1.png" alt="First One Dollar Blueprint">
+            <img src="./images/img2.png" alt="Funnel-To-Flywheel">
+            <img src="./images/img3.png" alt="Flywheel">
         </div>
         <div style="text-align:center; margin-top:2.5rem;">
             <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="main-cta">Unlock Full Version for $1</a>
@@ -189,7 +380,8 @@
     </section>
 
     <footer>
-        <p>© 2026 First$1online – A #buildinpublic experiment by <a href="https://x.com/swiftsell_ai">@swiftsell_ai</a></p>
+        <p>© 2026 First$1online – A #buildinpublic experiment by <a href="https://x.com/swiftsell_ai">@swiftsell_ai</a>
+        </p>
         <div style="margin-top:1rem;">
             <a href="#">Terms</a> • <a href="#">Privacy</a>
         </div>
@@ -201,5 +393,5 @@
         });
     </script>
 </body>
-</html>
 
+</html>

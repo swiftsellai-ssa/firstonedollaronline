@@ -1,730 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First$1online - Kickstart Your Digital Journey</title>
-    <meta name="description"
-        content="Unlock your first $1 online with a proven guide, video walkthrough, and vibrant community. Join First$1online today!">
-    <meta name="keywords"
-        content="make money online, first dollar, entrepreneurship, digital guide, first$1online, build in public">
-    <meta name="author" content="First$1online">
-
+    <title>First$1online – Make Your First $1 Online</title>
+    <meta name="description" content="One practical Notion guide + builder community to help you earn your first real dollar online. No hype. Just steps.">
+    <meta name="keywords" content="first dollar online, make money online beginner, indie builder, side hustle">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
             --primary: #2563eb;
-            /* Bold Trust Blue */
             --primary-dark: #1e40af;
             --text: #1f2937;
             --text-light: #6b7280;
-            --bg: #f3f4f6;
+            --bg: #f8fafc;
             --white: #ffffff;
             --accent: #10b981;
-            /* Vibrant Success Green */
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',system-ui,sans-serif; }
+        body { background:var(--bg); color:var(--text); line-height:1.6; }
 
-        body {
-            background: linear-gradient(135deg, var(--bg), var(--white));
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
         nav {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            padding: 1.5rem 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background:var(--white);
+            box-shadow:var(--shadow);
+            padding:1rem 5%;
+            position:sticky; top:0; z-index:100;
+            display:flex; justify-content:space-between; align-items:center;
         }
-
-        .logo {
-            font-weight: 900;
-            font-size: 1.8rem;
-            color: var(--primary);
-            text-decoration: none;
-            transition: transform 0.3s;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            margin-left: 2.5rem;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
+        .logo { font-weight:900; font-size:1.6rem; color:var(--primary); text-decoration:none; }
+        .nav-links a { margin-left:2rem; color:var(--text); text-decoration:none; font-weight:600; }
+        .nav-links a:hover { color:var(--primary); }
         .cta-button-nav {
-            background: #000;
-            /* Sleek X-style black */
-            color: var(--white) !important;
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            background:#000; color:#fff !important;
+            padding:0.5rem 1.2rem; border-radius:999px; font-size:0.95rem;
         }
 
-        .cta-button-nav:hover {
-            background: #333;
+        /* Mobile menu */
+        .menu-toggle { display:none; font-size:1.6rem; cursor:pointer; }
+        @media (max-width:768px) {
+            .menu-toggle { display:block; }
+            .nav-links { display:none; position:absolute; top:60px; right:5%; background:var(--white);
+                         padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); flex-direction:column; gap:1rem; }
+            .nav-links.active { display:flex; }
         }
 
-        /* Hamburger Menu for Mobile */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                right: 5%;
-                background: var(--white);
-                padding: 1rem;
-                border-radius: 10px;
-                box-shadow: var(--shadow);
-            }
-
-            .nav-links.active {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .nav-links a {
-                margin: 0.5rem 0;
-            }
-        }
-
-        /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 6rem 2rem;
-            background: url('https://via.placeholder.com/1500x800?text=Your+Journey+Starts+Here') no-repeat center/cover;
-            position: relative;
-            color: var(--white);
+            text-align:center; padding:5rem 1.5rem 4rem;
+            background:linear-gradient(135deg, #eff6ff, #dbeafe);
+        }
+        .hero h1 { font-size:2.8rem; margin-bottom:1rem; line-height:1.15; }
+        .hero h1 span { color:var(--accent); }
+        .hero p { font-size:1.25rem; max-width:600px; margin:0 auto 2rem; color:var(--text-light); }
+        
+        .cta-group { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
+        .main-cta, .secondary-cta {
+            display:inline-block; padding:1rem 2.2rem; border-radius:999px;
+            font-weight:700; text-decoration:none; font-size:1.1rem;
+        }
+        .main-cta { background:var(--primary); color:white; box-shadow:0 8px 16px rgba(37,99,235,0.25); }
+        .main-cta:hover { background:var(--primary-dark); transform:translateY(-2px); }
+        .secondary-cta { background:transparent; color:var(--primary); border:2px solid var(--primary); }
+        .secondary-cta:hover { background:var(--primary); color:white; }
+
+        .section { padding:4rem 5%; }
+        .section-title { text-align:center; margin-bottom:2.5rem; }
+        .section-title h2 { font-size:2.2rem; color:var(--primary); }
+
+        .features-grid {
+            display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.8rem;
+            max-width:1100px; margin:0 auto;
+        }
+        .feature {
+            background:white; padding:1.8rem; border-radius:12px; box-shadow:var(--shadow);
+            text-align:center;
+        }
+        .feature h3 { margin:1rem 0 0.8rem; font-size:1.25rem; color:var(--primary); }
+
+        .preview-gallery {
+            display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:1.5rem;
+            margin:2rem auto; max-width:1100px;
+        }
+        .preview-gallery img {
+            width:100%; border-radius:12px; box-shadow:var(--shadow); border:1px solid #e2e8f0;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
+        .community { background:#0f172a; color:white; text-align:center; padding:4rem 5%; }
+        .community h2 { margin-bottom:1.5rem; }
+        .community a { color:var(--accent); font-weight:700; margin:0 1rem; }
 
-        .hero>* {
-            position: relative;
-            z-index: 2;
-        }
+        .newsletter { background:#f1f5f9; padding:4rem 5%; text-align:center; }
+        .newsletter form { max-width:500px; margin:2rem auto; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
+        .newsletter input { flex:1; min-width:220px; padding:0.9rem; border:1px solid #cbd5e1; border-radius:8px; }
+        .newsletter button { padding:0.9rem 1.8rem; background:#000; color:white; border:none; border-radius:8px; font-weight:700; cursor:pointer; }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
+        footer { background:white; padding:2.5rem; text-align:center; color:var(--text-light); border-top:1px solid #e2e8f0; }
+        footer a { color:var(--text); margin:0 1rem; text-decoration:none; }
 
-        .hero h1 span {
-            color: var(--accent);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 650px;
-            margin: 0 auto 2.5rem;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .main-cta {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.2rem;
-            box-shadow: 0 10px 15px rgba(37, 99, 235, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .main-cta:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 20px rgba(37, 99, 235, 0.5);
-        }
-
-        .trust-badge {
-            margin-top: 2rem;
-            font-size: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            color: var(--accent);
-        }
-
-        .trust-badge i {
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        /* What You Get Section */
-        .preview-section {
-            padding: 5rem 5%;
-            background: var(--white);
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3.5rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-        }
-
-        .section-title p {
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: var(--bg);
-            border: 1px solid #e5e7eb;
-            border-radius: 15px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            background: #e0e7ff;
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin: 0 auto 1.5rem;
-            transition: background 0.3s;
-        }
-
-        .feature-card:hover .icon-box {
-            background: #dbeafe;
-        }
-
-        /* Community Section */
-        .community-bar {
-            background: linear-gradient(90deg, #111, #222);
-            color: var(--white);
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .community-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://via.placeholder.com/1500x300?text=Community+Vibes') no-repeat center/cover;
-            opacity: 0.1;
-            z-index: 1;
-        }
-
-        .community-bar>* {
-            position: relative;
-            z-index: 2;
-        }
-
-        .community-bar h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .community-bar p {
-            max-width: 650px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-        }
-
-        .community-link {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .community-link:hover {
-            color: #34d399;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 5rem 5%;
-            background: var(--bg);
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stars {
-            color: #fbbf24;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .user-name {
-            font-weight: 600;
-            color: var(--text);
-            margin-top: 1.5rem;
-            display: block;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--white);
-            border-top: 1px solid #e5e7eb;
-            padding: 3.5rem 5%;
-            text-align: center;
-            color: var(--text-light);
-        }
-
-        .footer-links {
-            margin: 2rem 0;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .footer-links a {
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Scoped styles for the features section to avoid conflicts */
-        .f1-features-section {
-            padding: 80px 24px;
-            background: #fff;
-            font-family: sans-serif;
-        }
-
-        .f1-features-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .f1-features-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .f1-features-header h2 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #0f172a;
-        }
-
-        .f1-features-header p {
-            font-size: 18px;
-            color: #475569;
-            line-height: 1.5;
-        }
-
-        .f1-features-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .f1-features-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .f1-feature-card {
-            display: flex;
-            align-items: start;
-            gap: 16px;
-            padding: 24px;
-            border: 1px solid #f1f5f9;
-            border-radius: 12px;
-            transition: border-color 0.3s;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .f1-feature-card:hover {
-            border-color: #dbeafe;
-        }
-
-        .f1-feature-number {
-            background: #dbeafe;
-            color: #2563eb;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .f1-feature-text h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #0f172a;
-            margin: 0 0 6px 0;
-        }
-
-        .f1-feature-text p {
-            font-size: 14px;
-            color: #475569;
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        /* Scoped styles for newsletter to match premium look */
-        .f1-newsletter-section {
-            background-color: #eff6ff;
-            padding: 64px 24px;
-            border-top: 1px solid #dbeafe;
-            font-family: sans-serif;
-        }
-
-        .f1-newsletter-container {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .f1-newsletter-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 16px;
-        }
-
-        .f1-newsletter-text {
-            font-size: 16px;
-            color: #475569;
-            margin-bottom: 32px;
-            line-height: 1.5;
-        }
-
-        .f1-newsletter-form {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .f1-newsletter-form {
-                flex-direction: row;
-            }
-        }
-
-        .f1-input-email {
-            width: 100%;
-            padding: 12px 20px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .f1-input-email:focus {
-            border-color: #000;
-        }
-
-        .f1-btn-submit {
-            background-color: #000;
-            color: #fff;
-            font-weight: 700;
-            padding: 12px 32px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.2s;
-            white-space: nowrap;
-            width: 100%;
-        }
-
-        @media (min-width: 768px) {
-            .f1-btn-submit {
-                width: auto;
-            }
-        }
-
-        .f1-btn-submit:hover {
-            background-color: #334155;
-        }
-
-        .f1-spam-notice {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-top: 16px;
+        @media (max-width:640px) {
+            .hero h1 { font-size:2.2rem; }
+            .cta-group { flex-direction:column; }
         }
     </style>
 </head>
-
 <body>
 
     <nav>
         <a href="#" class="logo">First$1online</a>
         <div class="nav-links">
             <a href="#what-you-get">What You Get</a>
-            <a href="#community">Community</a>
+            <a href="#preview">Preview</a>
             <a href="https://x.com/i/communities/2005700300741496877" target="_blank" class="cta-button-nav">
-                <i class="fab fa-x-twitter"></i> Join Now
+                <i class="fab fa-x-twitter"></i> Community
             </a>
         </div>
         <div class="menu-toggle"><i class="fas fa-bars"></i></div>
     </nav>
 
     <section class="hero">
-        <div class="container">
-            <h1>Stop Dreaming, Start Earning<br>Your <span>First $1 Online</span></h1>
-            <p>A proven, step-by-step guide to kickstart your online income. No hype—just real results with
-                First$1online.</p>
-            <a href="#preview" class="main-cta">Preview & Get for $1</a>
-            <div class="trust-badge">
-                <i class="fas fa-shield-alt"></i> Instant Delivery
-                <span>•</span>
-                <i class="fas fa-users"></i> Backed by Our Community
-            </div>
+        <h1>Make Your <span>First Real $1</span> Online</h1>
+        <p>One straightforward Notion guide + access to a small builder community.<br>No courses, no upsells — just practical first steps for $1.</p>
+        
+        <div class="cta-group">
+            <a href="#preview" class="secondary-cta">See Preview First</a>
+            <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="main-cta">Pay $1 & Unlock Now</a>
+        </div>
+        
+        <div style="margin-top:2rem; font-size:0.95rem; color:var(--text-light);">
+            <i class="fas fa-shield-alt"></i> Instant Notion link after payment • <i class="fas fa-users"></i> Join real builders on X & Discord
         </div>
     </section>
 
-    <section class="f1-features-section" id="what-you-get">
-        <div class="f1-features-container">
-            <div class="f1-features-header">
-                <h2>What you get for $1</h2>
-                <p>No fluff. Just the raw assets I used to launch in 4 hours.</p>
-            </div>
-            <div class="f1-features-grid">
-                <div class="f1-feature-card">
-                    <div class="f1-feature-number">1</div>
-                    <div class="f1-feature-text">
-                        <h3>The "Where to Post" List</h3>
-                        <p>50+ Curated free places to promote your startup today (Reddit, Directories, Communities).</p>
-                    </div>
-                </div>
-                <div class="f1-feature-card">
-                    <div class="f1-feature-number">2</div>
-                    <div class="f1-feature-text">
-                        <h3>Copy-Paste Sales Scripts</h3>
-                        <p>Proven "Cold DM" templates that get replies, not blocks. Soft sell vs. Hard sell strategies.
-                        </p>
-                    </div>
-                </div>
-                <div class="f1-feature-card">
-                    <div class="f1-feature-number">3</div>
-                    <div class="f1-feature-text">
-                        <h3>The 4-Hour Launch Checklist</h3>
-                        <p>The exact step-by-step process to go from Idea to Live Product in one evening for $0.</p>
-                    </div>
-                </div>
-                <div class="f1-feature-card">
-                    <div class="f1-feature-number">4</div>
-                    <div class="f1-feature-text">
-                        <h3>Community Access</h3>
-                        <p>Instant invite to our Discord of builders shipping their first products.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="preview" class="preview-section" style="background: var(--bg); padding: 4rem 5%;">
+    <section class="section" id="what-you-get">
         <div class="section-title">
-            <h2>Preview the Blueprint</h2>
-            <p>See real screenshots—unlock the full guide for just $1.</p>
+            <h2>What You Actually Get for $1</h2>
         </div>
-        <div class="grid-container">
-            <!-- Replace with your actual image URLs -->
-            <img src="https://via.placeholder.com/800x600?text=Blueprint+TOC+Preview" alt="Table of Contents"
-                style="border-radius: 12px; box-shadow: var(--shadow);">
-            <img src="https://via.placeholder.com/800x600?text=Sample+Step+Preview" alt="Sample Step"
-                style="border-radius: 12px; box-shadow: var(--shadow); margin-top: 1rem;">
+        <div class="features-grid">
+            <div class="feature">
+                <i class="fas fa-file-alt" style="font-size:2.8rem; color:var(--primary); margin-bottom:1rem;"></i>
+                <h3>The First Dollar Blueprint (Notion)</h3>
+                <p>Step-by-step Notion page with realistic ways beginners can earn their first dollar online — no fluff, no get-rich-quick promises.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-users" style="font-size:2.8rem; color:var(--primary); margin-bottom:1rem;"></i>
+                <h3>Builder Community Access</h3>
+                <p>Instant invite to our X community + Discord group where people share wins, ask questions and support each other.</p>
+            </div>
         </div>
-        <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="main-cta"
-            style="display: block; width: fit-content; margin: 2rem auto;">Unlock Full Blueprint for $1</a>
     </section>
 
-    <section id="community" class="community-bar">
-        <h2><i class="fab fa-x-twitter"></i> Build in Public</h2>
-        <p>Track our progress and connect with others starting from scratch. Real revenue, real conversations.</p>
-        <a href="https://x.com/i/communities/2005700300741496877" target="_blank" class="community-link">Join X
-            Community</a>
-        <a href="https://discord.gg/9YREqmph" target="_blank" class="community-link" style="margin-left: 1rem;">Join
-            Discord</a>
-    </section>
-
-    <section class="testimonials">
+    <section class="section" id="preview" style="background:#ffffff;">
         <div class="section-title">
-            <h2>What Our Pioneers Say</h2>
+            <h2>Real Preview of the Blueprint</h2>
+            <p>These are actual screenshots — sensitive parts blurred. Full readable version unlocks after $1.</p>
         </div>
-        <div class="grid-container">
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"The PDF cut through the noise—I made my first $1 in 3 days. Amazing value!"</p>
-                <span class="user-name">- Alex M.</span>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"The community on X and Discord kept me going. Worth every penny!"</p>
-                <span class="user-name">- Cristina D.</span>
-            </div>
-            <div class="testimonial-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                        class="fas fa-star"></i><i class="far fa-star"></i></div>
-                <p>"Straightforward and effective. It’s work, but the guide makes it doable."</p>
-                <span class="user-name">- Radu I.</span>
-            </div>
+        <div class="preview-gallery">
+            <!-- REPLACE THESE WITH YOUR REAL SCREENSHOTS -->
+            <img src="https://via.placeholder.com/800x1000/ffffff/000000?text=Blueprint+Table+of+Contents+or+First+Section+(blurred)" alt="Blueprint preview 1">
+            <img src="https://via.placeholder.com/800x1000/ffffff/000000?text=Sample+Steps+or+Resource+List+(blurred)" alt="Blueprint preview 2">
+            <img src="https://via.placeholder.com/800x1000/ffffff/000000?text=One+Concrete+Tip+or+Checklist+(blurred)" alt="Blueprint preview 3">
+        </div>
+        <div style="text-align:center; margin-top:2.5rem;">
+            <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="main-cta">Unlock Full Version for $1</a>
         </div>
     </section>
 
-    <section class="f1-newsletter-section">
-        <div class="f1-newsletter-container">
-            <h2 class="f1-newsletter-title">Not ready to spend $1?</h2>
-            <p class="f1-newsletter-text">Join the free newsletter. I share one tip every week on how to go from $0 to
-                $1.</p>
+    <section class="newsletter">
+        <h2>Not ready for $1 yet?</h2>
+        <p>Get one free weekly tip on earning your first dollar online — straight to your inbox.</p>
+        <form action="https://formsubmit.co/swiftsellai@gmail.com" method="POST">
+            <input type="hidden" name="_next" value="https://firstonedollaronline.com/">
+            <input type="hidden" name="_subject" value="First$1online Newsletter Signup">
+            <input type="email" name="email" placeholder="Your email" required>
+            <button type="submit">Join Free</button>
+        </form>
+        <p style="margin-top:1rem; font-size:0.9rem; color:var(--text-light);">No spam. One-click unsubscribe.</p>
+    </section>
 
-            <form action="https://formsubmit.co/swiftsellai@gmail.com" method="POST" class="f1-newsletter-form">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://firstonedollaronline.com/">
-                <input type="hidden" name="_subject" value="New Subscriber!">
-
-                <input type="email" name="email" placeholder="Enter your email" required class="f1-input-email">
-
-                <button type="submit" class="f1-btn-submit">
-                    Join Free
-                </button>
-            </form>
-
-            <p class="f1-spam-notice">No spam. Unsubscribe anytime.</p>
+    <section class="community">
+        <h2><i class="fab fa-x-twitter"></i> Join the Builders</h2>
+        <p>Real conversations. Real first wins. No gatekeeping.</p>
+        <div style="margin-top:1.5rem;">
+            <a href="https://x.com/i/communities/2005700300741496877" target="_blank">X Community</a>
+            <a href="https://discord.gg/9YREqmph" target="_blank">Discord Server</a>
         </div>
     </section>
 
     <footer>
-        <div>
-            <h3>First$1online</h3>
-            <p>A passion project to empower creators, built in public.</p>
+        <p>© 2026 First$1online – A #buildinpublic experiment by <a href="https://x.com/swiftsell_ai">@swiftsell_ai</a></p>
+        <div style="margin-top:1rem;">
+            <a href="#">Terms</a> • <a href="#">Privacy</a>
         </div>
-        <div class="footer-links">
-            <a href="#">Terms</a>
-            <a href="#">Privacy</a>
-            <a
-                href="https://www.notion.so/The-First-Dollar-Blueprint-Your-Step-by-Step-Guide-to-Earning-Online-as-a-Beginner-Indie-Builder-2d82bc12a14080b0b91ec17f5de18487">Blueprint</a>
-        </div>
-        <p>&copy; 2025 First$1online. All rights reserved.</p>
     </footer>
 
     <script>
-        const toggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        toggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
         });
     </script>
 </body>
-
 </html>

@@ -439,7 +439,7 @@
     </script>
     <!-- ULTIMATE Dollar Collector w/ POWER-UPS 💸✨ -->
     <div id="collector-game" style="
-  position: fixed; bottom:20px; right:20px; width:280px; height:380px;
+  position: fixed; bottom:20px; right:20px; width:280px; height:500px;
   background: rgba(255,255,255,0.08); backdrop-filter:blur(20px);
   border:1px solid rgba(255,255,255,0.2); border-radius:24px;
   box-shadow:0 12px 40px rgba(0,0,0,0.2); overflow:hidden; z-index:9999;
@@ -451,7 +451,7 @@
         </div>
 
         <!-- Canvas Game Area -->
-        <canvas id="gameCanvas" width="280" height="300"
+        <canvas id="gameCanvas" width="280" height="420"
             style="display:block; background:#111; cursor:pointer;"></canvas>
 
         <!-- Score/Controls -->
@@ -500,7 +500,7 @@
                 x: Math.random() * (canvas.width - 30),
                 y: -40,
                 size: 25 + Math.random() * 15,
-                speed: 1.5 + Math.random() * 2,
+                speed: 1.0 + Math.random() * 1.5,
                 type: 'dollar'
             });
         }
@@ -551,7 +551,7 @@
                     multiplierEl.textContent = `x${multiplier}`;
                     showMotivation("Dollar caught! �");
                     dollars.splice(i, 1);
-                    gameSpeed += 0.015;
+                    gameSpeed += 0.005;
                     playCollectSound();
                     continue;
                 }

@@ -437,151 +437,217 @@
             }
         });
     </script>
-    <!-- Dollar Jump Game – super simple motivational mini-game -->
-    <div id="game-container" style="
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 260px;
-  height: 340px;
-  background: rgba(255,255,255,0.07);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-  overflow: hidden;
-  z-index: 9999;
-  font-family: system-ui, sans-serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  pointer-events: auto;
+    <!-- ULTIMATE Dollar Collector w/ POWER-UPS 💸✨ -->
+    <div id="collector-game" style="
+  position: fixed; bottom:20px; right:20px; width:280px; height:380px;
+  background: rgba(255,255,255,0.08); backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.2); border-radius:24px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.2); overflow:hidden; z-index:9999;
+  font-family:system-ui,sans-serif; color:white; display:flex; flex-direction:column;
 ">
-
-        <!-- Header / Title -->
-        <div
-            style="padding:12px 16px; background:rgba(0,0,0,0.4); text-align:center; font-size:0.9rem; font-weight:600;">
-            First $1 Game • Keep going!
+        <!-- Header -->
+        <div style="padding:14px 18px; background:rgba(0,0,0,0.5); text-align:center; font-size:1rem; font-weight:700;">
+            Collect Your First $1! 💰 <span id="multiplier" style="color:#10b981;">x1</span>
         </div>
 
-        <!-- Game area -->
-        <div id="game-area" style="
-    position: relative;
-    flex: 1;
-    background: #000;
-    overflow: hidden;
-  ">
-            <!-- Wallet (target) -->
-            <div style="
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 3.8rem;
-      line-height: 0.8;
-      opacity: 0.9;
-    ">👛</div>
+        <!-- Canvas Game Area -->
+        <canvas id="gameCanvas" width="280" height="300"
+            style="display:block; background:#111; cursor:pointer;"></canvas>
 
-            <!-- Flying dollar -->
-            <div id="dollar" style="
-      position: absolute;
-      left: 50%;
-      bottom: 20px;
-      font-size: 3.2rem;
-      transform: translateX(-50%);
-      transition: bottom 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.4s;
-      will-change: bottom, transform;
-    ">💸</div>
-
-            <!-- Motivational message -->
-            <div id="motivation" style="
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 1.1rem;
-      text-align: center;
-      color: #10b981;
-      font-weight: 600;
-      text-shadow: 0 0 10px rgba(16,185,129,0.6);
-      opacity: 0;
-      transition: opacity 0.6s;
-      pointer-events: none;
-      max-width: 85%;
-    "></div>
-        </div>
-
-        <!-- Score & click area -->
-        <div style="padding:10px; text-align:center; font-size:0.95rem; background:rgba(0,0,0,0.3);">
-            Dollars saved: <span id="score">0</span><br>
-            <small>Click / Tap to jump!</small>
+        <!-- Score/Controls -->
+        <div style="padding:12px; text-align:center; font-size:0.95rem; background:rgba(0,0,0,0.4);">
+            $<span id="score">0</span> Saved | Tap/Swipe to Move
         </div>
     </div>
 
     <script>
-        // Very simple dollar jump game
-        const dollar = document.getElementById('dollar');
-        const motivation = document.getElementById('motivation');
+        // Dollar Collector w/ POWER-UPS - Ultimate Edition
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
         const scoreEl = document.getElementById('score');
+        const multiplierEl = document.getElementById('multiplier');
 
         let score = 0;
-        let isJumping = false;
+        let multiplier = 1;
+        let playerX = canvas.width / 2 - 25;
+        let dollars = [];
+        let powerups = [];
+        let gameSpeed = 1;
+        let powerupTimer = 0;
+        let isGameRunning = true;
 
-        const messages = [
-            "One more! 💪",
-            "You're closer than you think",
-            "Small wins add up",
-            "This $1 is yours",
-            "Keep jumping!",
-            "Almost in the wallet...",
-            "You got this!",
-            "Every jump counts",
-            "First dollar energy!",
-            "Don't stop now 🔥"
+        // Motivational messages + power-up effects
+        const motivations = [
+            "First $1 incoming! 🚀", "You're unstoppable 💪", "Momentum building...",
+            "Ship that idea now!", "One more dollar! 🔥", "This is your breakthrough",
+            "Keep collecting wins 🏆", "Power-up activated! ✨", "x2 multiplier! 🎉"
         ];
 
-        function jump() {
-            if (isJumping) return;
-            isJumping = true;
+        canvas.addEventListener('touchmove', handleMove);
+        canvas.addEventListener('mousemove', handleMove);
+        canvas.addEventListener('touchstart', handleMove);
+        canvas.addEventListener('click', handleMove);
 
-            // Random high jump
-            const height = Math.random() * 180 + 120; // 120–300px up
-            dollar.style.bottom = height + 'px';
-            dollar.style.transform = 'translateX(-50%) scale(1.15)';
-
-            // Show random motivation
-            const msg = messages[Math.floor(Math.random() * messages.length)];
-            motivation.textContent = msg;
-            motivation.style.opacity = '1';
-
-            score++;
-            scoreEl.textContent = score;
-
-            // Check if "catches" the wallet (high enough jump)
-            if (height > 220) {
-                motivation.textContent = "💚 $1 SAVED! Great job!";
-                motivation.style.color = '#10b981';
-            }
-
-            setTimeout(() => {
-                // Fall back down
-                dollar.style.bottom = '20px';
-                dollar.style.transform = 'translateX(-50%) scale(1)';
-                motivation.style.opacity = '0';
-
-                setTimeout(() => {
-                    isJumping = false;
-                }, 600);
-            }, 800);
+        function handleMove(e) {
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+            playerX = Math.max(0, Math.min(canvas.width - 50, x - 25));
         }
 
-        // Click or tap to jump
-        document.getElementById('game-area').addEventListener('click', jump);
-        document.getElementById('game-area').addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            jump();
-        });
+        function createDollar() {
+            dollars.push({
+                x: Math.random() * (canvas.width - 30),
+                y: -40,
+                size: 25 + Math.random() * 15,
+                speed: 1.5 + Math.random() * 2,
+                type: 'dollar'
+            });
+        }
+
+        function createPowerup() {
+            powerups.push({
+                x: Math.random() * (canvas.width - 35),
+                y: -50,
+                size: 32,
+                speed: 1.2,
+                type: Math.random() < 0.5 ? 'multi2' : 'speed'
+            });
+        }
+
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw wallet basket (player) - glows with multiplier
+            ctx.save();
+            if (multiplier > 1) {
+                ctx.shadowColor = '#10b981';
+                ctx.shadowBlur = 20;
+            }
+            ctx.fillStyle = multiplier > 1 ? '#10b981' : '#10b981';
+            ctx.fillRect(playerX, canvas.height - 50, 50, 40);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 12px system-ui';
+            ctx.fillText('👛', playerX + 18, canvas.height - 22);
+            ctx.restore();
+
+            // Update & draw dollars
+            for (let i = dollars.length - 1; i >= 0; i--) {
+                const d = dollars[i];
+                d.y += d.speed * gameSpeed;
+
+                // Draw spinning dollar
+                ctx.save();
+                ctx.translate(d.x + d.size / 2, d.y + d.size / 2);
+                ctx.rotate((Date.now() * 0.01 + d.x) % (Math.PI * 2));
+                ctx.font = `${d.size}px system-ui`;
+                ctx.fillText('💸', -d.size / 2 + 3, d.size / 2 - 3);
+                ctx.restore();
+
+                // Collision
+                if (d.y > canvas.height - 90 && d.x > playerX - 10 && d.x < playerX + 60) {
+                    score += 1 * multiplier;
+                    scoreEl.textContent = score;
+                    multiplierEl.textContent = `x${multiplier}`;
+                    showMotivation("Dollar caught! �");
+                    dollars.splice(i, 1);
+                    gameSpeed += 0.015;
+                    playCollectSound();
+                    continue;
+                }
+
+                if (d.y > canvas.height) dollars.splice(i, 1);
+            }
+
+            // Update & draw POWER-UPS (rare glowing items)
+            powerupTimer++;
+            if (powerupTimer > 300 + Math.random() * 200) { // Spawn every ~5-8 sec
+                createPowerup();
+                powerupTimer = 0;
+            }
+
+            for (let i = powerups.length - 1; i >= 0; i--) {
+                const p = powerups[i];
+                p.y += p.speed * gameSpeed;
+
+                // Draw glowing power-up
+                ctx.save();
+                ctx.shadowColor = p.type === 'multi2' ? '#fbbf24' : '#3b82f6';
+                ctx.shadowBlur = 25 + Math.sin(Date.now() * 0.01) * 5;
+                ctx.fillStyle = p.type === 'multi2' ? '#fbbf24' : '#3b82f6';
+                ctx.beginPath();
+                ctx.arc(p.x + p.size / 2, p.y + p.size / 2, p.size / 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 16px system-ui';
+                ctx.textAlign = 'center';
+                ctx.fillText(p.type === 'multi2' ? 'x2' : '⚡', p.x + p.size / 2, p.y + p.size / 2 + 5);
+                ctx.restore();
+
+                // Power-up collision (SUPER RARE!)
+                if (p.y > canvas.height - 90 && p.x > playerX - 15 && p.x < playerX + 65) {
+                    if (p.type === 'multi2') {
+                        multiplier = Math.min(multiplier * 2, 8);
+                        showMotivation("x2 MULTIPLIER! ✨");
+                    } else {
+                        gameSpeed *= 0.7; // Speed boost (slower enemies = easier)
+                        showMotivation("SPEED BOOST! ⚡");
+                    }
+                    powerups.splice(i, 1);
+                    playPowerupSound();
+                    setTimeout(() => {
+                        if (p.type === 'multi2') multiplier /= 2;
+                        else gameSpeed /= 0.7;
+                    }, 8000); // 8 second power-up duration
+                    continue;
+                }
+
+                if (p.y > canvas.height) powerups.splice(i, 1);
+            }
+
+            // Spawn regular dollars
+            if (Math.random() < 0.035 + gameSpeed * 0.008) createDollar();
+
+            requestAnimationFrame(update);
+        }
+
+        function showMotivation(msg) {
+            ctx.fillStyle = 'rgba(16,185,129,0.95)';
+            ctx.fillRect(20, 100, 240, 45);
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 15px system-ui';
+            ctx.textAlign = 'center';
+            ctx.fillText(msg, canvas.width / 2, 128);
+            ctx.textAlign = 'left';
+        }
+
+        function playCollectSound() {
+            playSound(600, 0.15, 0.08);
+        }
+
+        function playPowerupSound() {
+            playSound(1000, 0.25, 0.15);
+        }
+
+        function playSound(freq, volume, duration) {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.frequency.value = freq;
+                oscillator.type = 'sine';
+                gainNode.gain.setValueAtTime(volume, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+                oscillator.start(audioCtx.currentTime);
+                oscillator.stop(audioCtx.currentTime + duration);
+            } catch (e) { }
+        }
+
+        // Start the game
+        update();
+        createDollar();
     </script>
 </body>
 

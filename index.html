@@ -726,16 +726,20 @@
       playerWidth = 50 + (upgrades[0].owned ? 30 : 0);
       magnet = upgrades[1].owned ? 0.015 : 0;
       autoCatchChance = upgrades[2].owned ? 0.2 : 0;
-      spawnMult = upgrades[3].owned ? 1.5 : (upgrades[3].owned ? 1.5 : 1);
+      spawnMult = upgrades[3].owned ? 1.5 : 1;
       goldenChance = upgrades[4].owned ? 0.4 : 0.15;
-      if (upgrades[5].owned) idleRate += 1;
+      idleRate = upgrades[5].owned ? 1 : 0; // Fixed: Set value directly instead of adding
       multiLock = upgrades[6].owned;
       powerupMult = upgrades[3].owned ? 1.3 : 1; // Bonus from spawn
     }
 
     function saveGame() {
       localStorage.setItem('dollarGame', JSON.stringify({
-        score, bestScore, multiplier, baseMult, prestigeLevel, gameSpeed, idleRate,
+        score, bestScore, multiplier, baseMult, prestigeLevel, gameSpeed,
+        // idleRate is now derived, no need to save it, but we can keep it for now or remove it.
+        // If we remove it from save, loadGame will default to 0, which is fine as applyUpgradeEffects fixes it.
+        // Let's keep it consistent with existing structure but it will be overwritten.
+        idleRate,
         spawnMult, goldenChance, powerupMult, multiLock,
         upgrades: upgrades.map(u => u.owned)
       }));

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The $1 Game – First$1online</title>
+    <meta name="description" content="Play The $1 Game and learn the basics of internet money.">
+
+    <!-- CDNs for React, Tailwind, and Icons -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Keep existing global styles for Nav consistency -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;900&display=swap');
+
+        :root {
+            --primary: #2563eb;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.6rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            color: #1f2937;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Prevent scroll chaining/rubber banding on mobile for the game area */
+        #root {
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50">
+
+    <nav>
+        <a href="index.html" class="logo">First$1online</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+        </div>
+    </nav>
+
+    <!-- React App Root -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Helper: Mock Lucide Icons with SVGs
+        const DollarSign = ({ className, strokeWidth = 2 }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+        );
+        const Trophy = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                <path d="M4 22h16"></path>
+                <path d="M12 15a7 7 0 0 0 7-7c0-2-1-3-2-3 0 0 .66-1 3-1H4c2.34 0 3 1 3 1a7 7 0 0 0 7 7z"></path>
+                <path d="M12 15v7"></path>
+            </svg>
+        );
+        const Zap = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+        );
+        const Star = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+        );
+
+        const { useState, useEffect, useRef } = React;
+
+        const DollarCatchGame = () => {
+            const [score, setScore] = useState(0);
+            const [highScore, setHighScore] = useState(0);
+            const [lives, setLives] = useState(3);
+            const [gameActive, setGameActive] = useState(false);
+            const [gameOver, setGameOver] = useState(false);
+            const [basketX, setBasketX] = useState(50);
+            const [dollars, setDollars] = useState([]);
+            const [powerUps, setPowerUps] = useState([]);
+            const [combo, setCombo] = useState(0);
+            const [shield, setShield] = useState(false);
+            const [doublePoints, setDoublePoints] = useState(false);
+            const gameRef = useRef(null);
+            const animationRef = useRef(null);
+            const lastSpawnRef = useRef(0);
+            const lastPowerUpRef = useRef(0);
+            const comboTimerRef = useRef(null);
+
+            const startGame = () => {
+                setScore(0);
+                setLives(3);
+                setGameActive(true);
+                setGameOver(false);
+                setDollars([]);
+                setPowerUps([]);
+                setCombo(0);
+                setShield(false);
+                setDoublePoints(false);
+                lastSpawnRef.current = 0;
+                lastPowerUpRef.current = 0;
+            };
+
+            const spawnDollar = (timestamp) => {
+                const types = ['normal', 'gold', 'bomb'];
+                const weights = [0.7, 0.25, 0.05];
+                const random = Math.random();
+                let type = 'normal';
+                let cumulative = 0;
+
+                for (let i = 0; i < types.length; i++) {
+                    cumulative += weights[i];
+                    if (random <= cumulative) {
+                        type = types[i];
+                        break;
+                    }
+                }
+
+                return {
+                    id: timestamp + Math.random(),
+                    x: Math.random() * 90,
+                    y: -10,
+                    type,
+                    speed: 0.8 + Math.random() * 1.2 + (score / 500),
+                    rotation: Math.random() * 360,
+                    rotationSpeed: (Math.random() - 0.5) * 5
+                };
+            };
+
+            const spawnPowerUp = (timestamp) => {
+                const types = ['shield', 'double', 'slow'];
+                const type = types[Math.floor(Math.random() * types.length)];
+
+                return {
+                    id: timestamp + Math.random(),
+                    x: Math.random() * 90,
+                    y: -10,
+                    type,
+                    speed: 1.5
+                };
+            };
+
+            useEffect(() => {
+                const handleMouseMove = (e) => {
+                    if (!gameActive || !gameRef.current) return;
+                    const rect = gameRef.current.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    setBasketX(Math.max(5, Math.min(95, x)));
+                };
+
+                const handleTouchMove = (e) => {
+                    if (!gameActive || !gameRef.current) return;
+                    e.preventDefault();
+                    const rect = gameRef.current.getBoundingClientRect();
+                    const touch = e.touches[0];
+                    const x = ((touch.clientX - rect.left) / rect.width) * 100;
+                    setBasketX(Math.max(5, Math.min(95, x)));
+                };
+
+                window.addEventListener('mousemove', handleMouseMove);
+                window.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+                return () => {
+                    window.removeEventListener('mousemove', handleMouseMove);
+                    window.removeEventListener('touchmove', handleTouchMove);
+                };
+            }, [gameActive]);
+
+            useEffect(() => {
+                if (!gameActive) return;
+
+                const gameLoop = (timestamp) => {
+                    // Spawn dollars
+                    if (timestamp - lastSpawnRef.current > 800 - Math.min(score * 2, 400)) {
+                        setDollars(prev => [...prev, spawnDollar(timestamp)]);
+                        lastSpawnRef.current = timestamp;
+                    }
+
+                    // Spawn power-ups occasionally
+                    if (timestamp - lastPowerUpRef.current > 15000 && Math.random() > 0.7) {
+                        setPowerUps(prev => [...prev, spawnPowerUp(timestamp)]);
+                        lastPowerUpRef.current = timestamp;
+                    }
+
+                    // Update dollars
+                    setDollars(prev => {
+                        const updated = prev.map(d => ({
+                            ...d,
+                            y: d.y + d.speed,
+                            rotation: d.rotation + d.rotationSpeed
+                        })).filter(d => {
+                            if (d.y > 100) {
+                                if (d.type !== 'bomb') {
+                                    if (!shield) {
+                                        setLives(l => {
+                                            const newLives = l - 1;
+                                            if (newLives <= 0) {
+                                                setGameActive(false);
+                                                setGameOver(true);
+                                                setHighScore(s => Math.max(s, score));
+                                            }
+                                            return newLives;
+                                        });
+                                    }
+                                    setCombo(0);
+                                    if (comboTimerRef.current) clearTimeout(comboTimerRef.current);
+                                }
+                                return false;
+                            }
+
+                            // Check collision with basket
+                            if (d.y >= 85 && d.y <= 95 && Math.abs(d.x - basketX) < 8) {
+                                if (d.type === 'bomb') {
+                                    if (!shield) {
+                                        setLives(l => {
+                                            const newLives = l - 1;
+                                            if (newLives <= 0) {
+                                                setGameActive(false);
+                                                setGameOver(true);
+                                                setHighScore(s => Math.max(s, score));
+                                            }
+                                            return newLives;
+                                        });
+                                    } else {
+                                        setShield(false);
+                                    }
+                                } else {
+                                    const points = d.type === 'gold' ? 5 : 1;
+                                    const multiplier = doublePoints ? 2 : 1;
+                                    const comboBonus = Math.floor(combo / 5);
+                                    setScore(s => s + (points * multiplier) + comboBonus);
+                                    setCombo(c => c + 1);
+
+                                    if (comboTimerRef.current) clearTimeout(comboTimerRef.current);
+                                    comboTimerRef.current = setTimeout(() => setCombo(0), 2000);
+                                }
+                                return false;
+                            }
+
+                            return true;
+                        });
+
+                        return updated;
+                    });
+
+                    // Update power-ups
+                    setPowerUps(prev => {
+                        const updated = prev.map(p => ({
+                            ...p,
+                            y: p.y + p.speed
+                        })).filter(p => {
+                            if (p.y > 100) return false;
+
+                            // Check collision
+                            if (p.y >= 85 && p.y <= 95 && Math.abs(p.x - basketX) < 8) {
+                                if (p.type === 'shield') {
+                                    setShield(true);
+                                    setTimeout(() => setShield(false), 10000);
+                                } else if (p.type === 'double') {
+                                    setDoublePoints(true);
+                                    setTimeout(() => setDoublePoints(false), 8000);
+                                } else if (p.type === 'slow') {
+                                    setDollars(d => d.map(dollar => ({
+                                        ...dollar,
+                                        speed: dollar.speed * 0.5
+                                    })));
+                                    setTimeout(() => {
+                                        setDollars(d => d.map(dollar => ({
+                                            ...dollar,
+                                            speed: dollar.speed * 2
+                                        })));
+                                    }, 5000);
+                                }
+                                return false;
+                            }
+
+                            return true;
+                        });
+
+                        return updated;
+                    });
+
+                    animationRef.current = requestAnimationFrame(gameLoop);
+                };
+
+                animationRef.current = requestAnimationFrame(gameLoop);
+
+                return () => {
+                    if (animationRef.current) {
+                        cancelAnimationFrame(animationRef.current);
+                    }
+                    if (comboTimerRef.current) {
+                        clearTimeout(comboTimerRef.current);
+                    }
+                };
+            }, [gameActive, basketX, score, shield, doublePoints, combo]);
+
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-green-900 via-emerald-800 to-teal-900 flex flex-col items-center justify-center p-4">
+                    <div className="w-full max-w-2xl">
+                        {/* Header */}
+                        <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-t-2xl p-6 shadow-2xl">
+                            <h1 className="text-4xl font-bold text-white text-center mb-2 flex items-center justify-center gap-3">
+                                <DollarSign className="w-10 h-10" />
+                                First One Dollar Online
+                            </h1>
+                            <p className="text-green-100 text-center text-lg">Catch the falling dollars!</p>
+                        </div>
+
+                        {/* Game Stats */}
+                        <div className="bg-white/10 backdrop-blur-sm p-4 grid grid-cols-3 gap-4">
+                            <div className="text-center">
+                                <div className="text-green-200 text-sm font-semibold">Score</div>
+                                <div className="text-3xl font-bold text-white">{score}</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-green-200 text-sm font-semibold">Lives</div>
+                                <div className="text-3xl font-bold text-white flex justify-center gap-1">
+                                    {Array(lives).fill('❤️').map((heart, i) => (
+                                        <span key={i}>{heart}</span>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-green-200 text-sm font-semibold flex items-center justify-center gap-1">
+                                    <Trophy className="w-4 h-4" />
+                                    Best
+                                </div>
+                                <div className="text-3xl font-bold text-white">{highScore}</div>
+                            </div>
+                        </div>
+
+                        {/* Active Power-ups & Combo */}
+                        {(shield || doublePoints || combo > 0) && (
+                            <div className="bg-yellow-400/20 backdrop-blur-sm p-3 flex justify-center gap-4 flex-wrap">
+                                {shield && (
+                                    <div className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                                        🛡️ Shield Active
+                                    </div>
+                                )}
+                                {doublePoints && (
+                                    <div className="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                                        <Zap className="w-4 h-4" /> 2x Points
+                                    </div>
+                                )}
+                                {combo > 0 && (
+                                    <div className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1">
+                                        <Star className="w-4 h-4" /> Combo x{combo}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Game Area */}
+                        <div
+                            ref={gameRef}
+                            className="relative bg-gradient-to-b from-sky-200 to-sky-400 h-96 overflow-hidden cursor-none border-4 border-green-600 rounded-b-lg"
+                            style={{ touchAction: 'none' }}
+                        >
+                            {/* Dollars */}
+                            {dollars.map(dollar => (
+                                <div
+                                    key={dollar.id}
+                                    className="absolute transition-none"
+                                    style={{
+                                        left: `${dollar.x}%`,
+                                        top: `${dollar.y}%`,
+                                        transform: `translate(-50%, -50%) rotate(${dollar.rotation}deg)`,
+                                    }}
+                                >
+                                    {dollar.type === 'bomb' ? (
+                                        <div className="text-4xl">💣</div>
+                                    ) : dollar.type === 'gold' ? (
+                                        <div className="text-5xl animate-pulse">💰</div>
+                                    ) : (
+                                        <DollarSign className="w-8 h-8 text-green-600 drop-shadow-lg" strokeWidth={3} />
+                                    )}
+                                </div>
+                            ))}
+
+                            {/* Power-ups */}
+                            {powerUps.map(powerUp => (
+                                <div
+                                    key={powerUp.id}
+                                    className="absolute transition-none"
+                                    style={{
+                                        left: `${powerUp.x}%`,
+                                        top: `${powerUp.y}%`,
+                                        transform: 'translate(-50%, -50%)',
+                                    }}
+                                >
+                                    {powerUp.type === 'shield' ? (
+                                        <div className="text-4xl">🛡️</div>
+                                    ) : powerUp.type === 'double' ? (
+                                        <div className="text-4xl">⚡</div>
+                                    ) : (
+                                        <div className="text-4xl">🐌</div>
+                                    )}
+                                </div>
+                            ))}
+
+                            {/* Basket */}
+                            {gameActive && (
+                                <div
+                                    className="absolute bottom-4 transition-none"
+                                    style={{
+                                        left: `${basketX}%`,
+                                        transform: 'translateX(-50%)',
+                                    }}
+                                >
+                                    <div className={`text-6xl ${shield ? 'animate-pulse' : ''}`}>
+                                        {shield ? '🛡️🧺' : '🧺'}
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Start/Game Over Overlay */}
+                            {!gameActive && (
+                                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-10">
+                                    <div className="text-center p-8 bg-white/90 rounded-2xl shadow-2xl max-w-sm m-4">
+                                        {gameOver ? (
+                                            <>
+                                                <h2 className="text-4xl font-bold text-red-600 mb-4">Game Over!</h2>
+                                                <p className="text-2xl text-gray-700 mb-2">Final Score: <span className="font-bold text-green-600">{score}</span></p>
+                                                {score === highScore && score > 0 && (
+                                                    <p className="text-lg text-yellow-600 font-bold mb-4">🎉 New High Score! 🎉</p>
+                                                )}
+                                            </>
+                                        ) : (
+                                            <>
+                                                <h2 className="text-4xl font-bold text-green-600 mb-4">Ready to Play?</h2>
+                                                <p className="text-gray-600 mb-4">Move your mouse or finger to catch dollars!</p>
+                                                <div className="text-sm text-gray-500 space-y-1 mb-4">
+                                                    <p>💵 Green Dollar = 1 point</p>
+                                                    <p>💰 Gold Dollar = 5 points</p>
+                                                    <p>💣 Bomb = Lose a life!</p>
+                                                    <p>🛡️ Shield • ⚡ Double Points • 🐌 Slow Time</p>
+                                                </div>
+                                            </>
+                                        )}
+                                        <button
+                                            onClick={startGame}
+                                            className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-xl text-xl font-bold hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all shadow-lg"
+                                        >
+                                            {gameOver ? 'Play Again' : 'Start Game'}
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Footer */}
+                        <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-b-2xl p-4 text-center text-white shadow-2xl mt-4">
+                            <p className="text-sm">
+                                Catch dollars, avoid bombs, grab power-ups! Build combos for bonus points! 🎮
+                            </p>
+                        </div>
+
+                        <div className="text-center mt-6">
+                            <a href="index.html" className="inline-block bg-white/20 text-white hover:bg-white/30 px-6 py-2 rounded-full font-semibold transition-colors">
+                                Back to Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<DollarCatchGame />);
+    </script>
+</body>
+
+</html>

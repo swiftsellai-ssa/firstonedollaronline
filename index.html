@@ -313,6 +313,7 @@
 
     <div class="cta-group">
       <a href="#preview" class="secondary-cta">See Preview First</a>
+      <a href="the-dollar-game.html" class="secondary-cta">Play The $1 Game</a>
       <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="main-cta">Pay $1 & Unlock Now</a>
     </div>
 
@@ -376,6 +377,73 @@
     <div style="margin-top:1.5rem;">
       <a href="https://x.com/i/communities/2005700300741496877" target="_blank">X Community</a>
       <a href="https://discord.gg/9YREqmph" target="_blank">Discord Server</a>
+    </div>
+  </section>
+
+  <section class="section" id="about-me" style="background:var(--bg);">
+    <div class="section-title">
+      <h2>About Me</h2>
+    </div>
+    <div style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text);">
+      <p style="margin-bottom: 1.5rem;">Hi, I'm <strong>Gabriel</strong> 👋<br>
+        Solo founder currently building in public right here from the UK.</p>
+
+      <p style="margin-bottom: 1.5rem;">I'm working on two main things:</p>
+
+      <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+        <li
+          style="margin-bottom: 1.5rem; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
+          <strong style="color: var(--primary); font-size: 1.2rem;">Brandalysis</strong> — an AI-powered tool that helps
+          you understand, grow, and strengthen your personal brand (coming soon → <a href="https://brandalysis.co"
+            style="color: var(--primary); text-decoration: underline;">brandalysis.co</a>).
+          <p style="margin-top: 0.5rem; font-size: 1rem; color: var(--text-light);">I believe personal branding is your
+            digital fingerprint — not just a logo, but the trust, vibe, and unique story people feel when they see your
+            name.</p>
+        </li>
+        <li
+          style="margin-bottom: 1.5rem; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
+          <strong style="color: var(--primary); font-size: 1.2rem;">FirstOneDollarOnline</strong> — a dead-simple $1
+          Notion kit designed to help complete beginners cross the scariest threshold: making your literal <strong>first
+            $1 online</strong>.
+          <p style="margin-top: 0.5rem; font-size: 1rem; color: var(--text-light);">No guru hype, no $997 courses — just
+            practical places to post, copy-paste scripts, clear steps, and the psychology of going from $0 → $1.<br>
+            Grab it here if you're ready: <a href="https://firstonedollaronline.com"
+              style="color: var(--primary); text-decoration: underline;">firstonedollaronline.com</a></p>
+        </li>
+      </ul>
+
+      <p style="margin-bottom: 1.5rem;">A bit more about where I'm at right now:<br>
+        I'm still juggling a full-time job + a part-time gig + founder mode + cooking when I can + prepping for a
+        relocation. Some days I'm exhausted, some days I'm buzzing — but I genuinely enjoy almost every piece of it.</p>
+
+      <div
+        style="background: #f0fdf4; border-left: 4px solid #10b981; padding: 1.5rem; margin-bottom: 2rem; border-radius: 0 12px 12px 0;">
+        <p style="font-weight: 600; color: #065f46; margin-bottom: 0.5rem;">My recent personal rule (and it's working):
+        </p>
+        <p style="color: #064e3b; margin-bottom: 0.5rem;">Every week I force myself to ship <strong>at least one tiny
+            thing</strong> (a post, template, message, mini-service…) that has a realistic shot at making
+          <strong>exactly $1</strong>.
+        </p>
+        <p style="color: #064e3b;">Lowering the bar to $1 massively increases execution speed and kills perfectionism.
+          Try it — it changes everything.</p>
+      </div>
+
+      <p style="margin-bottom: 1.5rem; font-style: italic; text-align: center; font-size: 1.25rem;">
+        Philosophy in one line:<br>
+        <strong>Complexity in Simplicity</strong> — I absorb all the technical mess so you get something intuitive and
+        actually useful.
+      </p>
+
+      <p style="margin-bottom: 1.5rem; text-align: center;">
+        If you're stuck at $0, love relatable indie journeys, or just want to say hi → drop a comment/DM or follow along
+        <a href="https://x.com/swiftsell_ai" target="_blank"
+          style="color: var(--primary); font-weight: 700;">@swiftsell_ai</a>.
+      </p>
+
+      <p style="text-align: center; font-weight: 700; color: var(--primary);">Let's make that first (or next) dollar
+        feel easy. 🚀<br>
+        <span style="font-weight: 400; color: var(--text);">Be happy 😄</span>
+      </p>
     </div>
   </section>
 
@@ -549,553 +617,12 @@
       }
     });
   </script>
-  <!-- Dollar Collector Game - UPGRADED w/ MORE UPGRADES, PRESTIGE, LEADERBOARD TEASE -->
-  <!-- Drop this entire block before </body> on your landing page -->
-  <div id="collector-game" style="
-  position: fixed; bottom:20px; right:20px; width:280px; height:460px;
-  background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:24px;
-  box-shadow:0 12px 40px rgba(0,0,0,0.2);
-  overflow:hidden; z-index:9999;
-  font-family:system-ui,sans-serif; color:white; display:flex; flex-direction:column;
-  transition: opacity 0.3s ease;
-">
-    <!-- Header with Close -->
-    <div
-      style="position:relative; padding:14px 18px; background:rgba(0,0,0,0.2); text-align:center; font-size:1rem; font-weight:700;">
-      Collect Your First $1! 💰 <span id="multiplier" style="color:#10b981;">x1</span> <span id="prestige"
-        style="font-size:0.85rem; color:#fbbf24; opacity:0.8;">P0</span>
-      <button id="closeBtn"
-        style="position:absolute; top:8px; right:12px; background:none; border:none; color:#aaa; font-size:1.4em; cursor:pointer; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:color 0.2s; z-index:10;"
-        title="Close">×</button>
-    </div>
 
-    <!-- Canvas -->
-    <canvas id="gameCanvas" width="280" height="300" style="display:block; background: transparent;"></canvas>
 
-    <!-- Score & PB -->
-    <div style="padding:12px 12px 4px; text-align:center; font-size:0.95rem; background:rgba(0,0,0,0.35);">
-      $<span id="score">0.00</span> | PB: $<span id="bestScore">0.00</span>
-    </div>
 
-    <!-- Upgrades -->
-    <div id="upgrades"
-      style="padding:0 12px 8px; max-height:90px; overflow-y:auto; background:rgba(0,0,0,0.25); display:none; gap:6px;">
-      <!-- Upgrades populated by JS -->
-    </div>
 
-    <!-- Leaderboard Tease -->
-    <div id="leaderboardTease"
-      style="padding:0 12px 12px; background:rgba(0,0,0,0.3); text-align:center; font-size:0.8rem; display:none; opacity:0.9;">
-      <div style="margin-bottom:4px;">🏆 Top Hustlers</div>
-      <div id="topScores" style="font-size:0.75rem; line-height:1.2;">1. You: $<span id="pbInLb">0.00</span><br>Share PB
-        for Global!</div>
-      <button id="sharePB"
-        style="margin-top:6px; padding:4px 12px; background:#1d9bf0; color:white; border:none; border-radius:6px; font-size:0.75rem; cursor:pointer;">Post
-        PB to X</button>
-    </div>
-  </div>
 
-  <!-- Win Modal -->
-  <div id="winModal"
-    style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); display:none; flex-direction:column; justify-content:center; align-items:center; z-index:10000; font-family:system-ui; color:white; text-align:center; padding:20px;">
-    <div style="font-size:3rem; margin-bottom:20px;">🎉 $1 Collected!</div>
-    <div style="font-size:1.3rem; margin-bottom:30px; max-width:400px;">You've hustled your first virtual $1! Unlock the
-      <strong>REAL blueprint</strong> for just $1 (instant access + Discord/X community).
-    </div>
-    <div style="display:flex; gap:15px; flex-wrap:wrap; justify-content:center; margin-bottom:20px;">
-      <a id="buyBtn" href="https://firstonedollaronline.com/buy" target="_blank"
-        style="padding:12px 24px; background:#10b981; color:white; text-decoration:none; border-radius:12px; font-weight:600;">Buy
-        Now - $1</a>
-      <button id="shareBtn"
-        style="padding:12px 24px; background:#1d9bf0; color:white; border:none; border-radius:12px; font-weight:600; cursor:pointer;">Share
-        on X</button>
-      <button id="continueBtn"
-        style="padding:12px 24px; background:#666; color:white; border:none; border-radius:12px; font-weight:600; cursor:pointer;">Continue
-        Playing</button>
-    </div>
-    <button id="modalClose"
-      style="padding:8px 16px; background:transparent; color:#ccc; border:1px solid #ccc; border-radius:8px; cursor:pointer;">Close</button>
-  </div>
 
-  <!-- Prestige Modal -->
-  <div id="prestigeModal"
-    style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.9); display:none; flex-direction:column; justify-content:center; align-items:center; z-index:10000; font-family:system-ui; color:white; text-align:center; padding:20px;">
-    <div style="font-size:2.5rem; margin-bottom:20px;">⚡ Prestige Reset?</div>
-    <div style="font-size:1.2rem; margin-bottom:30px; max-width:350px;">Sacrifice your $50 for permanent x1.2
-      multiplier! Stackable for endless scaling 💎</div>
-    <div style="display:flex; gap:15px; margin-bottom:20px;">
-      <button id="confirmPrestige"
-        style="padding:12px 24px; background:#fbbf24; color:black; border:none; border-radius:12px; font-weight:600; cursor:pointer;">Prestige
-        & Reset</button>
-      <button id="cancelPrestige"
-        style="padding:12px 24px; background:#666; color:white; border:none; border-radius:12px; font-weight:600; cursor:pointer;">Keep
-        Grinding</button>
-    </div>
-  </div>
-
-  <script>
-    // Game State
-    const gameEl = document.getElementById('collector-game');
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    const scoreEl = document.getElementById('score');
-    const bestScoreEl = document.getElementById('bestScore');
-    const multiplierEl = document.getElementById('multiplier');
-    const prestigeEl = document.getElementById('prestige');
-    const upgradesEl = document.getElementById('upgrades');
-    const leaderboardEl = document.getElementById('leaderboardTease');
-    const pbInLbEl = document.getElementById('pbInLb');
-
-    let score = 0; // cents
-    let bestScore = 0;
-    let multiplier = 1;
-    let baseMult = 1;
-    let prestigeLevel = 0;
-    let playerX = canvas.width / 2 - 25;
-    let playerWidth = 50;
-    let dollars = [];
-    let powerups = [];
-    let particles = [];
-    let idleRate = 0;
-    let spawnMult = 1;
-    let goldenChance = 0.15;
-    let powerupMult = 1;
-    let multiLock = false;
-    let baseSpeed = 0.8;
-    let gameSpeed = baseSpeed;
-    let powerupTimer = 0;
-    let missStreak = 0;
-    let magnet = 0;
-    let autoCatchChance = 0;
-    let shownWin = false;
-    let currentMotivation = '';
-    let motivations = [
-      "First $1 incoming! 🚀", "You're unstoppable 💪", "Momentum building...",
-      "Ship that idea now!", "One more dollar! 🔥", "Edinburgh hustle! 🏴",
-      "Keep collecting wins 🏆", "Power-up activated! ✨", "x2 multiplier! 🎉",
-      "Upgrade unlocked! ⚡", "Daily boost claimed! 💥", "Prestige ready! ⚡",
-      "PB smashed! 🏆", "Passive income flowing 💰"
-    ];
-
-    // MORE Upgrades (7 total)
-    const upgrades = [
-      { id: 'wider', name: 'Wider Wallet', cost: 25, owned: false, desc: '+ Wider Catch' },
-      { id: 'magnet', name: 'Dollar Magnet', cost: 50, owned: false, desc: 'Dollars Curve In' },
-      { id: 'auto', name: 'Auto-Catch', cost: 75, owned: false, desc: '20% Auto Grab' },
-      { id: 'spawn', name: 'Faster Drops', cost: 100, owned: false, desc: 'x1.5 Dollars/sec' },
-      { id: 'golden', name: 'Golden Rain', cost: 150, owned: false, desc: '40% Rares' },
-      { id: 'idle', name: 'Passive Income', cost: 200, owned: false, desc: '+1¢/sec' },
-      { id: 'multilock', name: 'Multi Lock', cost: 300, owned: false, desc: 'No Miss Reset' },
-      { id: 'prestige', name: 'Prestige Reset', cost: 5000, owned: false, desc: 'x1.2 Base Mult (RESET)' }
-    ];
-
-    // LocalStorage
-    function loadGame() {
-      const saved = localStorage.getItem('dollarGame');
-      if (saved) {
-        const data = JSON.parse(saved);
-        score = data.score || 0;
-        bestScore = data.bestScore || 0;
-        multiplier = data.multiplier || 1;
-        baseMult = data.baseMult || 1;
-        prestigeLevel = data.prestigeLevel || 0;
-        gameSpeed = data.gameSpeed || baseSpeed;
-        idleRate = data.idleRate || 0;
-        spawnMult = data.spawnMult || 1;
-        goldenChance = data.goldenChance || 0.15;
-        powerupMult = data.powerupMult || 1;
-        multiLock = data.multiLock || false;
-        upgrades.forEach((u, i) => { u.owned = data.upgrades[i] || false; });
-        applyUpgradeEffects();
-      }
-      // Daily bonus
-      const lastPlay = localStorage.getItem('lastPlay') || 0;
-      if (Date.now() - parseInt(lastPlay) > 86400000) {
-        score += 500;
-        showMotivation("Daily Hustle Boost! 💥");
-        localStorage.setItem('lastPlay', Date.now());
-      }
-      updateDisplay();
-    }
-
-    function applyUpgradeEffects() {
-      playerWidth = 50 + (upgrades[0].owned ? 30 : 0);
-      magnet = upgrades[1].owned ? 0.015 : 0;
-      autoCatchChance = upgrades[2].owned ? 0.2 : 0;
-      spawnMult = upgrades[3].owned ? 1.5 : 1;
-      goldenChance = upgrades[4].owned ? 0.4 : 0.15;
-      idleRate = upgrades[5].owned ? 1 : 0; // Fixed: Set value directly instead of adding
-      multiLock = upgrades[6].owned;
-      powerupMult = upgrades[3].owned ? 1.3 : 1; // Bonus from spawn
-    }
-
-    function saveGame() {
-      localStorage.setItem('dollarGame', JSON.stringify({
-        score, bestScore, multiplier, baseMult, prestigeLevel, gameSpeed,
-        // idleRate is now derived, no need to save it, but we can keep it for now or remove it.
-        // If we remove it from save, loadGame will default to 0, which is fine as applyUpgradeEffects fixes it.
-        // Let's keep it consistent with existing structure but it will be overwritten.
-        idleRate,
-        spawnMult, goldenChance, powerupMult, multiLock,
-        upgrades: upgrades.map(u => u.owned)
-      }));
-      localStorage.setItem('lastPlay', Date.now());
-    }
-
-    // Events
-    canvas.addEventListener('touchmove', handleMove, { passive: false });
-    canvas.addEventListener('mousemove', handleMove);
-    canvas.addEventListener('touchstart', handleMove, { passive: false });
-    canvas.addEventListener('click', handleMove);
-
-    document.getElementById('closeBtn').onclick = () => {
-      gameEl.style.display = 'none';
-      // Removed persistent close state
-    };
-
-    // Removed check for gameClosed on load so it always appears on refresh
-
-    document.getElementById('sharePB').onclick = sharePB;
-
-    function handleMove(e) {
-      e.preventDefault();
-      const rect = canvas.getBoundingClientRect();
-      const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
-      playerX = Math.max(0, Math.min(canvas.width - playerWidth, x - playerWidth / 2));
-    }
-
-    function sharePB() {
-      const pb = (bestScore / 100).toFixed(2);
-      const tweet = `My PB in First$1 Collector: $${pb}! Beat me? firstonedollaronline.com #FirstDollarPB #SideHustle`;
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}&url=https://firstonedollaronline.com`, '_blank');
-      showMotivation("PB Shared! 🚀");
-    }
-
-    // Create Dollar
-    function createDollar() {
-      dollars.push({
-        x: Math.random() * (canvas.width - 30),
-        y: -40,
-        size: 25 + Math.random() * 15,
-        speed: baseSpeed + Math.random() * 0.6,
-        type: Math.random() < goldenChance ? 'golden' : 'normal',
-        value: Math.random() < goldenChance ? 5 : 1
-      });
-    }
-
-    // Create Powerup
-    function createPowerup() {
-      powerups.push({
-        x: Math.random() * (canvas.width - 35),
-        y: -50,
-        size: 32,
-        speed: 1.0,
-        type: Math.random() < 0.5 ? 'multi2' : 'speed'
-      });
-    }
-
-    // Particles
-    function createParticles(x, y) {
-      for (let i = 0; i < 12; i++) {
-        particles.push({
-          x, y,
-          vx: (Math.random() - 0.5) * 5,
-          vy: (Math.random() - 0.5) * 5 - 2,
-          life: 45,
-          size: 8 + Math.random() * 8
-        });
-      }
-    }
-
-    // Update Loop
-    function update() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Idle Income (per frame ~1/60 sec)
-      score += (idleRate / 60) * baseMult * multiplier;
-
-      // Particles
-      for (let i = particles.length - 1; i >= 0; i--) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += 0.12;
-        p.life--;
-        ctx.save();
-        ctx.globalAlpha = p.life / 45;
-        // ctx.shadowColor = '#10b981'; // Performance fix
-        // ctx.shadowBlur = 12;         // Performance fix
-        ctx.font = `${p.size}px system-ui`;
-        ctx.fillText('💰', p.x, p.y);
-        ctx.restore();
-        if (p.life <= 0) particles.splice(i, 1);
-      }
-
-      // Player
-      ctx.save();
-      if (multiplier > 1 || magnet > 0 || autoCatchChance > 0 || prestigeLevel > 0) {
-        // ctx.shadowColor = '#10b981'; // Performance fix
-        // ctx.shadowBlur = 25;         // Performance fix
-      }
-      ctx.fillStyle = '#10b981';
-      ctx.fillRect(playerX, canvas.height - 50, playerWidth, 40);
-      ctx.fillStyle = 'white';
-      ctx.font = 'bold 16px system-ui';
-      ctx.textAlign = 'center';
-      ctx.fillText('👛', playerX + playerWidth / 2, canvas.height - 22);
-      ctx.restore();
-
-      // Dollars
-      for (let i = dollars.length - 1; i >= 0; i--) {
-        const d = dollars[i];
-        if (magnet > 0) {
-          const targetX = playerX + playerWidth / 2;
-          d.x += (targetX - d.x) * magnet;
-        }
-        d.y += d.speed * gameSpeed;
-
-        ctx.save();
-        // ctx.shadowColor = d.type === 'golden' ? '#fbbf24' : '#ffd700'; // Performance fix
-        // ctx.shadowBlur = d.type === 'golden' ? 18 : 10;                // Performance fix
-        ctx.font = `${d.size}px system-ui`;
-        ctx.fillText('💸', d.x, d.y + d.size * 0.7);
-        ctx.restore();
-
-        const hit = d.y > canvas.height - 90 && d.x > playerX - 10 && d.x < playerX + playerWidth + 10;
-        if (hit || (Math.random() < autoCatchChance)) {
-          score += d.value * multiplier * baseMult;
-          createParticles(d.x, d.y);
-          dollars.splice(i, 1);
-          gameSpeed += 0.008;
-          missStreak = 0;
-          playCollectSound();
-          updateDisplay();
-          saveGame();
-          checkWin();
-          checkPB();
-          continue;
-        }
-
-        if (d.y > canvas.height) {
-          dollars.splice(i, 1);
-          missStreak++;
-          if (missStreak >= 3 && !multiLock) {
-            multiplier = 1;
-            missStreak = 0;
-            showMotivation("Streak reset! Focus 😅");
-            playMissSound();
-          }
-        }
-      }
-
-      // Powerups
-      powerupTimer++;
-      if (powerupTimer > (250 / powerupMult) + Math.random() * 120) {
-        createPowerup();
-        powerupTimer = 0;
-      }
-      for (let i = powerups.length - 1; i >= 0; i--) {
-        const p = powerups[i];
-        p.y += p.speed * gameSpeed;
-
-        ctx.save();
-        ctx.shadowColor = p.type === 'multi2' ? '#fbbf24' : '#3b82f6';
-        ctx.shadowBlur = 25 + Math.sin(Date.now() * 0.01) * 5;
-        ctx.fillStyle = p.type === 'multi2' ? '#fbbf24' : '#3b82f6';
-        ctx.beginPath();
-        ctx.arc(p.x + p.size / 2, p.y + p.size / 2, p.size / 2, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = 'white';
-        ctx.font = 'bold 16px system-ui';
-        ctx.textAlign = 'center';
-        ctx.fillText(p.type === 'multi2' ? 'x2' : '⚡', p.x + p.size / 2, p.y + p.size / 2 + 5);
-        ctx.restore();
-
-        if (p.y > canvas.height - 90 && p.x > playerX - 15 && p.x < playerX + playerWidth + 15) {
-          if (p.type === 'multi2') {
-            multiplier = Math.min(multiplier * 2, 16);
-            showMotivation("x2 MULTIPLIER! ✨");
-          } else {
-            gameSpeed *= 0.7;
-            showMotivation("SPEED BOOST! ⚡");
-          }
-          powerups.splice(i, 1);
-          playPowerupSound();
-          setTimeout(() => {
-            if (p.type === 'multi2') multiplier = Math.max(1, multiplier / 2);
-            else gameSpeed /= 0.7;
-            saveGame();
-          }, 12000);
-          continue;
-        }
-
-        if (p.y > canvas.height) powerups.splice(i, 1);
-      }
-
-      // Spawn
-      if (Math.random() < (0.035 + gameSpeed * 0.008) * spawnMult && dollars.length < 18) createDollar();
-
-      // Motivation fade (bugfix: reset alpha after)
-      ctx.globalAlpha = currentMotivation ? 0.98 ** 60 : 1; // fade over ~1s
-      if (Math.random() < 0.01 && currentMotivation) {
-        ctx.fillStyle = 'rgba(16,185,129,0.95)';
-        ctx.fillRect(20, 100, 240, 45);
-        ctx.fillStyle = 'white';
-        ctx.font = 'bold 15px system-ui';
-        ctx.textAlign = 'center';
-        ctx.fillText(currentMotivation, canvas.width / 2, 128);
-        ctx.textAlign = 'left';
-      }
-      ctx.globalAlpha = 1;
-
-      requestAnimationFrame(update);
-    }
-
-    function updateDisplay() {
-      scoreEl.textContent = (score / 100).toFixed(2);
-      bestScoreEl.textContent = (bestScore / 100).toFixed(2);
-      pbInLbEl.textContent = (bestScore / 100).toFixed(2);
-      multiplierEl.textContent = `x${Math.round(multiplier * 10) / 10}`;
-      prestigeEl.textContent = `P${prestigeLevel}`;
-      prestigeEl.style.opacity = prestigeLevel > 0 ? 1 : 0.6;
-      // Upgrades
-      if (score >= 20 && upgradesEl.style.display !== 'block') {
-        upgradesEl.style.display = 'flex';
-        renderUpgrades();
-      }
-      // Leaderboard tease at $5 PB
-      if (bestScore >= 500 && leaderboardEl.style.display !== 'block') {
-        leaderboardEl.style.display = 'block';
-      }
-      // Prestige avail at $50
-      if (score >= 5000) {
-        renderUpgrades(); // refresh to show
-      }
-    }
-
-    function checkPB() {
-      if (score > bestScore) {
-        bestScore = score;
-        showMotivation("New PB! 🏆");
-        saveGame();
-      }
-    }
-
-    function checkWin() {
-      if (score >= 100 && !shownWin) {
-        shownWin = true;
-        document.getElementById('winModal').style.display = 'flex';
-      }
-    }
-
-    function showMotivation(msg) {
-      currentMotivation = msg;
-    }
-
-    // Render Upgrades
-    function renderUpgrades() {
-      upgradesEl.innerHTML = '';
-      upgrades.forEach(u => {
-        if (!u.owned || u.id === 'prestige') { // Prestige always available
-          const canAfford = score >= u.cost;
-          const btn = document.createElement('button');
-          btn.style.cssText = `
-          flex:1; padding:6px 8px; 
-          background: ${canAfford ? 'rgba(16,185,129,0.4)' : 'rgba(75,85,99,0.4)'};
-          border:1px solid ${canAfford ? '#10b981' : '#6b7280'};
-          border-radius:8px; color:white; font-size:0.78rem; cursor:${canAfford ? 'pointer' : 'default'};
-          transition: all 0.2s;
-        `;
-          const costStr = u.id === 'prestige' ? '$50 Reset' : `$${(u.cost / 100).toFixed(2)}`;
-          btn.innerHTML = `<div style="font-weight:600;">${u.name}</div><div style="font-size:0.7rem;opacity:0.85;">${u.desc} - ${costStr}</div>`;
-          btn.onclick = canAfford ? () => buyUpgrade(u) : null;
-          upgradesEl.appendChild(btn);
-        }
-      });
-    }
-
-    function buyUpgrade(u) {
-      if (score >= u.cost) {
-        if (u.id === 'prestige') {
-          document.getElementById('prestigeModal').style.display = 'flex';
-          return; // Confirm in modal
-        }
-        score -= u.cost;
-        u.owned = true;
-        switch (u.id) {
-          case 'spawn': spawnMult *= 1.5; powerupMult *= 1.3; break;
-          case 'golden': goldenChance = 0.4; break;
-          case 'idle': idleRate += 1; break;
-          case 'multilock': multiLock = true; break;
-          default: applyUpgradeEffects();
-        }
-        createParticles(canvas.width / 2, 150);
-        showMotivation(`${u.name} unlocked! ⚡`);
-        updateDisplay();
-        renderUpgrades();
-        saveGame();
-      }
-    }
-
-    // Modal Events
-    document.getElementById('shareBtn').onclick = () => {
-      const tweet = `Just collected my first $1 in the @first1dollar game! 🚀 Unlock the real blueprint: firstonedollaronline.com #FirstDollarOnline #SideHustle`;
-      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}&url=https://firstonedollaronline.com`);
-      document.getElementById('winModal').style.display = 'none';
-    };
-    document.getElementById('continueBtn').onclick = () => document.getElementById('winModal').style.display = 'none';
-    document.getElementById('modalClose').onclick = () => document.getElementById('winModal').style.display = 'none';
-
-    // Prestige Modal
-    document.getElementById('confirmPrestige').onclick = () => {
-      score = 0;
-      gameSpeed = baseSpeed;
-      multiplier = 1;
-      missStreak = 0;
-      prestigeLevel++;
-      baseMult *= 1.2;
-      upgrades[7].owned = false; // Reset prestige avail
-      document.getElementById('prestigeModal').style.display = 'none';
-      createParticles(canvas.width / 2, canvas.height / 2);
-      showMotivation("Prestiged! Base x1.2 💎");
-      updateDisplay();
-      renderUpgrades();
-      saveGame();
-    };
-    document.getElementById('cancelPrestige').onclick = () => {
-      document.getElementById('prestigeModal').style.display = 'none';
-    };
-
-    // Sounds
-    function playCollectSound() { playSound(660, 0.15, 0.12); }
-    function playPowerupSound() { playSound(880, 0.25, 0.18); }
-    function playMissSound() { playSound(220, 0.12, 0.25); }
-    function playSound(freq, volume, duration) {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.frequency.value = freq;
-        osc.type = 'sine';
-        gain.gain.setValueAtTime(volume, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
-        osc.start();
-        osc.stop(audioCtx.currentTime + duration);
-      } catch (e) { }
-    }
-
-    // Init
-    loadGame();
-    applyUpgradeEffects();
-    update();
-    createDollar();
-  </script>
 </body>
 
 </html>

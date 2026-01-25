@@ -754,12 +754,10 @@
 
     document.getElementById('closeBtn').onclick = () => {
       gameEl.style.display = 'none';
-      localStorage.setItem('gameClosed', 'true');
+      // Removed persistent close state
     };
 
-    if (localStorage.getItem('gameClosed') === 'true') {
-      gameEl.style.display = 'none';
-    }
+    // Removed check for gameClosed on load so it always appears on refresh
 
     document.getElementById('sharePB').onclick = sharePB;
 
@@ -829,8 +827,8 @@
         p.life--;
         ctx.save();
         ctx.globalAlpha = p.life / 45;
-        ctx.shadowColor = '#10b981';
-        ctx.shadowBlur = 12;
+        // ctx.shadowColor = '#10b981'; // Performance fix
+        // ctx.shadowBlur = 12;         // Performance fix
         ctx.font = `${p.size}px system-ui`;
         ctx.fillText('💰', p.x, p.y);
         ctx.restore();
@@ -840,8 +838,8 @@
       // Player
       ctx.save();
       if (multiplier > 1 || magnet > 0 || autoCatchChance > 0 || prestigeLevel > 0) {
-        ctx.shadowColor = '#10b981';
-        ctx.shadowBlur = 25;
+        // ctx.shadowColor = '#10b981'; // Performance fix
+        // ctx.shadowBlur = 25;         // Performance fix
       }
       ctx.fillStyle = '#10b981';
       ctx.fillRect(playerX, canvas.height - 50, playerWidth, 40);
@@ -861,8 +859,8 @@
         d.y += d.speed * gameSpeed;
 
         ctx.save();
-        ctx.shadowColor = d.type === 'golden' ? '#fbbf24' : '#ffd700';
-        ctx.shadowBlur = d.type === 'golden' ? 18 : 10;
+        // ctx.shadowColor = d.type === 'golden' ? '#fbbf24' : '#ffd700'; // Performance fix
+        // ctx.shadowBlur = d.type === 'golden' ? 18 : 10;                // Performance fix
         ctx.font = `${d.size}px system-ui`;
         ctx.fillText('💸', d.x, d.y + d.size * 0.7);
         ctx.restore();

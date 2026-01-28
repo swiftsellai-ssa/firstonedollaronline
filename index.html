@@ -289,6 +289,140 @@
         flex-direction: column;
       }
     }
+
+    /* Video Container */
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-bottom: 56.25%;
+      /* 16:9 Aspect Ratio */
+      height: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #000;
+    }
+
+    .video-container iframe,
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Idea Generator */
+    .generator-box {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .generator-form select {
+      padding: 0.8rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin: 0.5rem;
+      width: 100%;
+      max-width: 250px;
+    }
+
+    .generator-result {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #f0fdf4;
+      border-radius: 12px;
+      border: 1px solid #bbf7d0;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* FAQ Section */
+    .faq-container {
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    .faq-item {
+      background: white;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      padding: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .faq-item[open] summary::after {
+      content: '−';
+    }
+
+    .faq-item p {
+      padding: 0 1.2rem 1.2rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      border-top: 1px solid #f1f5f9;
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      opacity: 0.8;
+      margin-top: 3rem;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
   </style>
 </head>
 
@@ -323,6 +457,66 @@
     </div>
   </section>
 
+  <section class="section" id="idea-generator" style="background: white; padding-bottom: 2rem;">
+    <div class="section-title">
+      <h2 style="font-size: 1.8rem;">Where will your first $1 come from?</h2>
+      <p>Select your strength to see a tailored starting point.</p>
+    </div>
+
+    <div class="generator-box">
+      <div class="generator-form">
+        <label style="font-weight:600; margin-right: 0.5rem;">I'm good at:</label>
+        <select id="skill-select">
+          <option value="writing">Writing / Words</option>
+          <option value="design">Design / Visuals</option>
+          <option value="organization">Organizing / Data</option>
+          <option value="talking">Talking / Video</option>
+          <option value="coding">Coding / Tech</option>
+        </select>
+
+        <br class="mobile-break" style="display:none;">
+
+        <label style="font-weight:600; margin-left: 1rem; margin-right: 0.5rem;">I have:</label>
+        <select id="time-select">
+          <option value="15">15 mins a day</option>
+          <option value="60">1 hour a day</option>
+          <option value="weekend">Weekends only</option>
+        </select>
+
+        <div style="margin-top: 1.5rem;">
+          <button onclick="generateIdea()" class="main-cta" style="border:none; cursor:pointer;">Find My First
+            $1</button>
+        </div>
+      </div>
+
+      <div id="generator-result" class="generator-result" style="display:none;">
+        <h3 style="color: #166534; margin-bottom: 0.5rem;">💡 Try this:</h3>
+        <p id="idea-text" style="font-size: 1.1rem; color: #14532d; font-weight: 500;"></p>
+        <div style="margin-top:1rem;">
+          <a href="#preview" style="color:var(--primary); font-weight:700; text-decoration: none;">See how in the
+            blueprint &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      @media (max-width: 600px) {
+        .mobile-break {
+          display: block !important;
+        }
+
+        .generator-form label {
+          margin: 0.5rem 0 !important;
+          display: block;
+        }
+
+        .generator-form select {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </section>
+
   <section class="section" id="what-you-get">
     <div class="section-title">
       <h2>What You Actually Get for $1</h2>
@@ -340,6 +534,19 @@
         <p>Instant invite to our X community + Discord group where people share wins, ask questions and support
           each other.</p>
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="video-walkthrough" style="background:#f8fafc;">
+    <div class="section-title">
+      <h2>See It In Action</h2>
+      <p>Watch a quick walkthrough of the First Dollar Blueprint.</p>
+    </div>
+    <div class="video-container">
+      <video controls playsinline poster="./images/img1.png">
+        <source src="images/first$1notion.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
   </section>
 
@@ -444,6 +651,45 @@
         feel easy. 🚀<br>
         <span style="font-weight: 400; color: var(--text);">Be happy 😄</span>
       </p>
+    </div>
+  </section>
+
+  <section class="section" id="faq" style="background:#f8fafc;">
+    <div class="section-title">
+      <h2>Common Questions</h2>
+    </div>
+
+    <div class="faq-container">
+      <details class="faq-item">
+        <summary>What if I don’t make $1?</summary>
+        <p>The goal is to break the "zero" barrier. If you take action on the steps and still don't see results, the
+          community is here to help you troubleshoot. It's a skill you're building, not a lottery ticket.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I get Discord/X access?</summary>
+        <p>Immediately after payment, you'll receive a link to the Notion page. Inside the very first section, you'll
+          find the private invite links to both the Discord server and the X community.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is this really just $1 forever?</summary>
+        <p>Yes. It's a one-time payment of $1. No monthly subscriptions, no hidden upsells, no future charges. Just $1.
+        </p>
+      </details>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges">
+      <div class="badge">
+        <i class="fab fa-stripe" style="font-size: 1.2rem;"></i> <span>Powered by Stripe</span>
+      </div>
+      <div class="badge">
+        <i class="fas fa-bolt" style="color: #f59e0b;"></i> <span>Instant Access</span>
+      </div>
+      <div class="badge">
+        <i class="fas fa-shield-alt" style="color: var(--primary);"></i> <span>No Spam Guarantee</span>
+      </div>
     </div>
   </section>
 
@@ -623,6 +869,47 @@
 
 
 
+  <script>
+    const ideas = {
+      writing: {
+        "15": "Curate 5 niche tweets/threads and sell a 'swipe file' on Gumroad for $1.",
+        "60": "Write a 'How to [Specific Task]' guide (5-10 pages) and list it on Gumroad.",
+        "weekend": "Start a paid newsletter on Substack about a niche topic you love. Charge $1/mo initially."
+      },
+      design: {
+        "15": "Create a pack of 5 aesthetic Notion covers or social media headers.",
+        "60": "Design a simple 'link in bio' template for Carrd or Notion.",
+        "weekend": "Create a high-quality icon set or vector illustration pack for designers."
+      },
+      organization: {
+        "15": "Create a 'Weekly Planner' PDF template.",
+        "60": "Build a 'Job Hunt Tracker' or 'Finance Tracker' in Notion.",
+        "weekend": "Organize a messy data set (publicly available) into a clean AirTable base and sell access."
+      },
+      talking: {
+        "15": "Record paid personalized video audits (e.g., 'I review your dating profile for $1').",
+        "60": " Offer a 15-min 'pick my brain' session on a topic you know well.",
+        "weekend": "Record a mini-course (3 videos) teaching a specific skill."
+      },
+      coding: {
+        "15": "Write a useful shell script or config file (e.g., VS Code settings) and sell it.",
+        "60": "Create a simple HTML/CSS landing page template.",
+        "weekend": "Build a tiny browser extension that solves one annoyance."
+      }
+    };
+
+    function generateIdea() {
+      const skill = document.getElementById('skill-select').value;
+      const time = document.getElementById('time-select').value;
+      const resultDiv = document.getElementById('generator-result');
+      const ideaText = document.getElementById('idea-text');
+
+      const idea = ideas[skill] && ideas[skill][time] ? ideas[skill][time] : "Start by selling your existing expertise as a $1 PDF guide.";
+
+      ideaText.textContent = idea;
+      resultDiv.style.display = 'block';
+    }
+  </script>
 </body>
 
 </html>

@@ -290,6 +290,53 @@
       }
     }
 
+    /* Scratch-Off Section */
+    .scratch-container {
+      position: relative;
+      width: 300px;
+      height: 150px;
+      margin: 2rem auto;
+      user-select: none;
+      -webkit-user-select: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    #scratch-prize {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f0fdf4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      text-align: center;
+      z-index: 1;
+    }
+
+    #scratch-prize p {
+      font-weight: 700;
+      color: #166534;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    #scratch-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
     /* Video Container */
     .video-container {
       position: relative;
@@ -521,7 +568,7 @@
 
     <div class="cta-group">
       <a href="#preview" class="secondary-cta">See Preview First</a>
-      <a href="the-dollar-game.html" class="secondary-cta">Play The $1 Game</a>
+      <a href="the-dollar-game.html" class="secondary-cta">Find Your First Dollar Path</a>
       <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="main-cta">Pay $1 & Unlock Now</a>
     </div>
 
@@ -674,6 +721,27 @@
         *Calculated based on 30-day months. This pays for your coffee, subscriptions, or even rent.
       </p>
     </div>
+  </section>
+
+  <section class="section" id="daily-scratch" style="background:var(--bg); text-align:center;">
+    <div class="section-title">
+      <h2>Feeling Lucky?</h2>
+      <p>Scratch to reveal your <strong style="color:var(--primary);">Daily Dollar Tip</strong>.</p>
+    </div>
+
+    <div class="scratch-container">
+      <!-- Hidden Content (The Prize) -->
+      <div id="scratch-prize">
+        <p id="daily-tip-text">💡 Loading tip...</p>
+      </div>
+
+      <!-- The Canvas (The Cover) -->
+      <canvas id="scratch-canvas" width="300" height="150"></canvas>
+    </div>
+
+    <p id="streak-counter" style="margin-top:1rem; font-size:0.95rem; color:var(--text-light); font-weight:600;">
+      🔥 Daily Streak: <span id="streak-val" style="color:#f97316;">0</span> Days
+    </p>
   </section>
 
   <section class="newsletter" id="free-guide" style="padding: 4rem 5%; text-align: center;">
@@ -1042,9 +1110,166 @@
         salesDisplay.textContent = val;
         monthlyDisplay.textContent = '$' + (val * 30).toLocaleString();
         yearlyDisplay.textContent = '$' + (val * 365).toLocaleString();
+
+        // Trigger confetti if they slide to max
+        if (val === 50) triggerConfetti();
       });
     }
+
+    // --- Daily Scratch-Off Logic ---
+    const canvas = document.getElementById('scratch-canvas');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    const tipText = document.getElementById('daily-tip-text');
+    const streakVal = document.getElementById('streak-val');
+    let isDrawing = false;
+    let scratched = false;
+
+    // Tips Pool
+    const dollarTips = [
+      "💡 Sell your unused gift cards on CardCash.",
+      "💡 List a $1 PDF 'Top 10 Tools' guide on Gumroad.",
+      "💡 Offer to test a website for $1 on a forum.",
+      "💡 Create a $1 icon set for Notion users.",
+      "💡 Transcribe 1 minute of audio for someone.",
+      "💡 Sell a high-quality stock photo of your desk.",
+      "💡 Answer 3 surveys on a reputable site."
+    ];
+
+    if (canvas && ctx) {
+      // Init logic
+      loadState();
+
+      // Input Events
+      canvas.addEventListener('mousedown', startScratch);
+      canvas.addEventListener('touchstart', startScratch);
+      canvas.addEventListener('mousemove', scratch);
+      canvas.addEventListener('touchmove', scratch);
+      window.addEventListener('mouseup', endScratch);
+      window.addEventListener('touchend', endScratch);
+    }
+
+    function initCard(isRedeemed) {
+      if (isRedeemed) {
+        canvas.style.display = 'none'; // Already scratched today
+        tipText.textContent = getTodayTip();
+        return;
+      }
+
+      // Draw cover (Silver)
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = '#cbd5e1'; // Silver/Gray
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Add Text "SCRATCH ME"
+      ctx.fillStyle = '#64748b';
+      ctx.font = 'bold 24px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText("SCRATCH ME", canvas.width / 2, canvas.height / 2 + 8);
+
+      // Prep for erasing
+      ctx.globalCompositeOperation = 'destination-out';
+
+      // Set simpler tip for now
+      tipText.textContent = getTodayTip();
+    }
+
+    function startScratch(e) { isDrawing = true; scratch(e); }
+    function endScratch() {
+      if (isDrawing) checkCompletion();
+      isDrawing = false;
+    }
+
+    function scratch(e) {
+      if (!isDrawing || scratched) return;
+      e.preventDefault(); // Stop scrolling on mobile
+
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.pageX || e.touches[0].pageX) - rect.left - window.scrollX;
+      const y = (e.pageY || e.touches[0].pageY) - rect.top - window.scrollY;
+
+      ctx.beginPath();
+      ctx.arc(x, y, 20, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+
+    function checkCompletion() {
+      if (scratched) return;
+
+      // Count transparent pixels
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const pixels = imageData.data;
+      let transparent = 0;
+
+      for (let i = 3; i < pixels.length; i += 4) {
+        if (pixels[i] === 0) transparent++;
+      }
+
+      const percent = (transparent / (pixels.length / 4)) * 100;
+
+      if (percent > 40) { // Threshold to unlock
+        scratched = true;
+        canvas.style.transition = 'opacity 0.5s';
+        canvas.style.opacity = '0';
+        setTimeout(() => { canvas.style.display = 'none'; }, 500);
+
+        triggerConfetti();
+        updateStreak();
+      }
+    }
+
+    // --- State Management (LocalStorage) ---
+    function loadState() {
+      const lastDate = localStorage.getItem('last_scratch_date');
+      const today = new Date().toDateString();
+      let streak = parseInt(localStorage.getItem('streak_count') || '0');
+
+      streakVal.textContent = streak;
+
+      if (lastDate === today) {
+        scratched = true;
+        initCard(true); // Already done today
+      } else {
+        // Check if streak broke (missed a day)
+        // Simplified: If lastDate was NOT yesterday, reset streak to 0 (unless it's first time)
+        if (lastDate) {
+          const diff = (new Date(today) - new Date(lastDate)) / (1000 * 60 * 60 * 24);
+          if (diff > 1.5) streak = 0; // Missed a day
+        }
+        // Ready to scratch
+        initCard(false);
+      }
+    }
+
+    function updateStreak() {
+      const today = new Date().toDateString();
+      localStorage.setItem('last_scratch_date', today);
+
+      let streak = parseInt(localStorage.getItem('streak_count') || '0');
+      streak++;
+      localStorage.setItem('streak_count', streak);
+      streakVal.textContent = streak;
+    }
+
+    function getTodayTip() {
+      // Deterministic tip based on date so it doesn't change on refresh
+      const day = new Date().getDate();
+      return dollarTips[day % dollarTips.length];
+    }
+
+    // --- Confetti Utility ---
+    function triggerConfetti() {
+      // Simple burst
+      if (window.confetti) {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+    }
   </script>
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </body>
 
 </html>

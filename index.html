@@ -423,6 +423,80 @@
       color: var(--text-light);
       font-weight: 500;
     }
+
+    /* Calculator Slider */
+    .calculator-box {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .range-wrapper {
+      margin: 2rem 0;
+    }
+
+    input[type=range] {
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      background: #e2e8f0;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .result-card {
+      padding: 1.5rem;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .result-card.highlight {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+
+    .result-card .label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .result-card .value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .result-card.highlight .value {
+      color: #166534;
+    }
   </style>
 </head>
 
@@ -433,8 +507,8 @@
     <div class="nav-links">
       <a href="#what-you-get">What You Get</a>
       <a href="#preview">Preview</a>
-      <a href="https://x.com/i/communities/2005700300741496877" target="_blank" class="cta-button-nav">
-        <i class="fab fa-x-twitter"></i> Community
+      <a href="https://x.com/hashtag/FirstOneDollarOnline" target="_blank" class="cta-button-nav">
+        <i class="fab fa-x-twitter"></i> #FirstOneDollarOnline
       </a>
     </div>
     <div class="menu-toggle"><i class="fas fa-bars"></i></div>
@@ -541,6 +615,10 @@
     <div class="section-title">
       <h2>See It In Action</h2>
       <p>Watch a quick walkthrough of the First Dollar Blueprint.</p>
+      <p
+        style="font-size: 0.95rem; color: var(--text-light); max-width: 600px; margin: 0.5rem auto 0; font-style: italic; opacity: 0.8;">
+        (Preview: A look inside the Notion template structure before we dive into the strategy.)
+      </p>
     </div>
     <div class="video-container">
       <video controls playsinline poster="./images/img1.png">
@@ -566,23 +644,65 @@
     </div>
   </section>
 
-  <section class="newsletter">
-    <h2>Not ready for $1 yet?</h2>
-    <p>Get one free weekly tip on earning your first dollar online — straight to your inbox.</p>
+  <section class="section" id="calculator" style="background:#fff; text-align:center;">
+    <div class="section-title">
+      <h2>The $1 Snowball Effect</h2>
+      <p>See what happens when you sell a simple $1 digital asset repeatedly.</p>
+    </div>
+
+    <div class="calculator-box">
+      <label for="salesRange" style="font-size: 1.2rem; font-weight: 600; color: var(--primary);">
+        If you sell <span id="salesDisplay" style="font-size: 1.5rem; color: #000;">1</span> per day...
+      </label>
+
+      <div class="range-wrapper">
+        <input type="range" id="salesRange" min="1" max="50" value="1" step="1">
+      </div>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="label">Monthly Extra</div>
+          <div class="value" id="monthlyDisplay">$30</div>
+        </div>
+        <div class="result-card highlight">
+          <div class="label">Yearly Extra</div>
+          <div class="value" id="yearlyDisplay">$365</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+        *Calculated based on 30-day months. This pays for your coffee, subscriptions, or even rent.
+      </p>
+    </div>
+  </section>
+
+  <section class="newsletter" id="free-guide" style="padding: 4rem 5%; text-align: center;">
+    <div style="font-size: 3rem; margin-bottom: 1rem;">🎁</div>
+    <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Get the Free Mini-Guide</h2>
+    <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-light); line-height: 1.5;">
+      <strong>3 Quick Ideas to Earn $1 Today.</strong><br>
+      A simple PDF checklist to get you started. No fluff.
+    </p>
+
     <form action="https://formsubmit.co/swiftsellai@gmail.com" method="POST">
       <input type="hidden" name="_next" value="https://firstonedollaronline.com/">
-      <input type="hidden" name="_subject" value="First$1online Newsletter Signup">
-      <input type="email" name="email" placeholder="Your email" required>
-      <button type="submit">Join Free</button>
+      <input type="hidden" name="_subject" value="First$1online PDF Request">
+      <input type="email" name="email" placeholder="Where should we send it?" required>
+      <button type="submit">Send Me The PDF</button>
     </form>
-    <p style="margin-top:1rem; font-size:0.9rem; color:var(--text-light);">No spam. One-click unsubscribe.</p>
+    <p style="margin-top:1.5rem; font-size:0.9rem; color:var(--text-light);">
+      <em>"Upgrade to the full $1 kit later for 20+ methods & community."</em>
+    </p>
   </section>
 
   <section class="community">
     <h2><i class="fab fa-x-twitter"></i> Join the Builders</h2>
     <p>Real conversations. Real first wins. No gatekeeping.</p>
     <div style="margin-top:1.5rem;">
-      <a href="https://x.com/i/communities/2005700300741496877" target="_blank">X Community</a>
+      <div style="margin-top:1.5rem;">
+        <a href="https://x.com/hashtag/FirstOneDollarOnline" target="_blank">#FirstOneDollarOnline</a>
+        <a href="https://discord.gg/9YREqmph" target="_blank">Discord Server</a>
+      </div>
       <a href="https://discord.gg/9YREqmph" target="_blank">Discord Server</a>
     </div>
   </section>
@@ -908,6 +1028,21 @@
 
       ideaText.textContent = idea;
       resultDiv.style.display = 'block';
+    }
+
+    // Calculator Logic
+    const salesRange = document.getElementById('salesRange');
+    const salesDisplay = document.getElementById('salesDisplay');
+    const monthlyDisplay = document.getElementById('monthlyDisplay');
+    const yearlyDisplay = document.getElementById('yearlyDisplay');
+
+    if (salesRange) {
+      salesRange.addEventListener('input', function () {
+        const val = parseInt(this.value);
+        salesDisplay.textContent = val;
+        monthlyDisplay.textContent = '$' + (val * 30).toLocaleString();
+        yearlyDisplay.textContent = '$' + (val * 365).toLocaleString();
+      });
     }
   </script>
 </body>

@@ -290,6 +290,38 @@
       }
     }
 
+    /* Community Stats */
+    .stats-bar {
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3rem 5%;
+      margin-bottom: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
     /* Scratch-Off Section */
     .scratch-container {
       position: relative;
@@ -494,6 +526,7 @@
       background: #e2e8f0;
       outline: none;
       -webkit-appearance: none;
+      appearance: none;
     }
 
     input[type=range]::-webkit-slider-thumb {
@@ -636,6 +669,34 @@
         }
       }
     </style>
+  </section>
+
+  <section class="stats-bar">
+    <div class="stats-grid">
+      <!-- Item 1 -->
+      <div class="stat-item">
+        <div class="stat-value" style="color: var(--primary);">2</div>
+        <div class="stat-label">Builders Active</div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="stat-item">
+        <div class="stat-value" style="color: #10b981;">$2</div>
+        <div class="stat-label">Community Earnings</div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="stat-item">
+        <div class="stat-value" style="color: var(--text);">12 Days</div>
+        <div class="stat-label">Avg. Time to $1</div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="stat-item">
+        <div class="stat-value" style="color: #f59e0b;">Freelance</div>
+        <div class="stat-label">Top Strategy (42%)</div>
+      </div>
+    </div>
   </section>
 
   <section class="section" id="what-you-get">
@@ -1110,6 +1171,7 @@
         salesDisplay.textContent = val;
         monthlyDisplay.textContent = '$' + (val * 30).toLocaleString();
         yearlyDisplay.textContent = '$' + (val * 365).toLocaleString();
+
 
         // Trigger confetti if they slide to max
         if (val === 50) triggerConfetti();

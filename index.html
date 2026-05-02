@@ -12,14 +12,14 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1e40af;
-      --text: #1f2937;
-      --text-light: #6b7280;
-      --bg: #f8fafc;
-      --white: #ffffff;
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --text: #e0f7ff;
+      --text-light: #9ca3af;
+      --bg: #0a0e1f;
+      --white: #111827; /* Dark background for elements that were white */
       --accent: #10b981;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
 
     * {
@@ -106,7 +106,8 @@
     .hero {
       text-align: center;
       padding: 5rem 1.5rem 4rem;
-      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      background: transparent;
+      position: relative;
     }
 
     .hero h1 {
@@ -188,7 +189,7 @@
     }
 
     .feature {
-      background: white;
+      background: var(--white);
       padding: 1.8rem;
       border-radius: 12px;
       box-shadow: var(--shadow);
@@ -217,7 +218,7 @@
     }
 
     .community {
-      background: #0f172a;
+      background: var(--bg);
       color: white;
       text-align: center;
       padding: 4rem 5%;
@@ -234,7 +235,7 @@
     }
 
     .newsletter {
-      background: #f1f5f9;
+      background: var(--white);
       padding: 4rem 5%;
       text-align: center;
     }
@@ -267,7 +268,7 @@
     }
 
     footer {
-      background: white;
+      background: var(--white);
       padding: 2.5rem;
       text-align: center;
       color: var(--text-light);
@@ -289,18 +290,311 @@
         flex-direction: column;
       }
     }
+
+    /* Community Stats */
+    .stats-bar {
+      background: var(--white);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3rem 5%;
+      margin-bottom: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Scratch-Off Section */
+    .scratch-container {
+      position: relative;
+      width: 300px;
+      height: 150px;
+      margin: 2rem auto;
+      user-select: none;
+      -webkit-user-select: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    #scratch-prize {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(16, 185, 129, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      text-align: center;
+      z-index: 1;
+    }
+
+    #scratch-prize p {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    #scratch-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    /* Video Container */
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-bottom: 56.25%;
+      /* 16:9 Aspect Ratio */
+      height: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #000;
+    }
+
+    .video-container iframe,
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Idea Generator */
+    .generator-box {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .generator-form select {
+      padding: 0.8rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin: 0.5rem;
+      width: 100%;
+      max-width: 250px;
+    }
+
+    .generator-result {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 12px;
+      border: 1px solid #bbf7d0;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* FAQ Section */
+    .faq-container {
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    .faq-item {
+      background: var(--white);
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      padding: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .faq-item[open] summary::after {
+      content: '−';
+    }
+
+    .faq-item p {
+      padding: 0 1.2rem 1.2rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      border-top: 1px solid #f1f5f9;
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      opacity: 0.8;
+      margin-top: 3rem;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* Calculator Slider */
+    .calculator-box {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .range-wrapper {
+      margin: 2rem 0;
+    }
+
+    input[type=range] {
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      background: #e2e8f0;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .result-card {
+      padding: 1.5rem;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .result-card.highlight {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: #bbf7d0;
+    }
+
+    .result-card .label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .result-card .value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .result-card.highlight .value {
+      color: var(--text);
+    }
   </style>
 </head>
 
 <body>
+  <!-- === PARTICLE BACKGROUND === -->
+  <div id="particles-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden;">
+    <canvas id="particle-canvas" style="display: block; width: 100%; height: 100%;"></canvas>
+  </div>
 
   <nav>
     <a href="#" class="logo">First$1online</a>
     <div class="nav-links">
-      <a href="#what-you-get">What You Get</a>
-      <a href="#preview">Preview</a>
-      <a href="https://x.com/i/communities/2005700300741496877" target="_blank" class="cta-button-nav">
-        <i class="fab fa-x-twitter"></i> Community
+      <a href="index.html#what-you-get">What You Get</a>
+      <a href="index.html#preview">Preview</a>
+      <a href="1-idea.html" style="color: var(--accent);"><i class="fas fa-lightbulb"></i> $1 Ideas</a>
+      <a href="https://x.com/hashtag/FirstOneDollarOnline" target="_blank" class="cta-button-nav">
+        <i class="fab fa-x-twitter"></i> #FirstOneDollarOnline
       </a>
     </div>
     <div class="menu-toggle"><i class="fas fa-bars"></i></div>
@@ -313,13 +607,101 @@
 
     <div class="cta-group">
       <a href="#preview" class="secondary-cta">See Preview First</a>
-      <a href="the-dollar-game.html" class="secondary-cta">Play The $1 Game</a>
-      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="main-cta">Pay $1 & Unlock Now</a>
+      <a href="the-dollar-game.html" class="secondary-cta">Find Your First Dollar Path</a>
+      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" class="main-cta">Pay $1 & Unlock Now</a>
     </div>
 
     <div style="margin-top:2rem; font-size:0.95rem; color:var(--text-light);">
       <i class="fas fa-shield-alt"></i> Instant Notion link after payment • <i class="fas fa-users"></i> Join real
       builders on X & Discord
+    </div>
+  </section>
+
+  <section class="section" id="idea-generator" style="background: var(--white); padding-bottom: 2rem;">
+    <div class="section-title">
+      <h2 style="font-size: 1.8rem;">Where will your first $1 come from?</h2>
+      <p>Select your strength to see a tailored starting point.</p>
+    </div>
+
+    <div class="generator-box">
+      <div class="generator-form">
+        <label style="font-weight:600; margin-right: 0.5rem;">I'm good at:</label>
+        <select id="skill-select">
+          <option value="writing">Writing / Words</option>
+          <option value="design">Design / Visuals</option>
+          <option value="organization">Organizing / Data</option>
+          <option value="talking">Talking / Video</option>
+          <option value="coding">Coding / Tech</option>
+        </select>
+
+        <br class="mobile-break" style="display:none;">
+
+        <label style="font-weight:600; margin-left: 1rem; margin-right: 0.5rem;">I have:</label>
+        <select id="time-select">
+          <option value="15">15 mins a day</option>
+          <option value="60">1 hour a day</option>
+          <option value="weekend">Weekends only</option>
+        </select>
+
+        <div style="margin-top: 1.5rem;">
+          <button onclick="generateIdea()" class="main-cta" style="border:none; cursor:pointer;">Find My First
+            $1</button>
+        </div>
+      </div>
+
+      <div id="generator-result" class="generator-result" style="display:none;">
+        <h3 style="color: var(--text); margin-bottom: 0.5rem;">💡 Try this:</h3>
+        <p id="idea-text" style="font-size: 1.1rem; color: var(--text); font-weight: 500;"></p>
+        <div style="margin-top:1rem;">
+          <a href="#preview" style="color:var(--primary); font-weight:700; text-decoration: none;">See how in the
+            blueprint &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      @media (max-width: 600px) {
+        .mobile-break {
+          display: block !important;
+        }
+
+        .generator-form label {
+          margin: 0.5rem 0 !important;
+          display: block;
+        }
+
+        .generator-form select {
+          max-width: 100%;
+        }
+      }
+    </style>
+  </section>
+
+  <section class="stats-bar">
+    <div class="stats-grid">
+      <!-- Item 1 -->
+      <div class="stat-item">
+        <div class="stat-value" style="color: var(--primary);">2</div>
+        <div class="stat-label">Builders Active</div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="stat-item">
+        <div class="stat-value" style="color: #10b981;">$2</div>
+        <div class="stat-label">Community Earnings</div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="stat-item">
+        <div class="stat-value" style="color: var(--text);">12 Days</div>
+        <div class="stat-label">Avg. Time to $1</div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="stat-item">
+        <div class="stat-value" style="color: #f59e0b;">Freelance</div>
+        <div class="stat-label">Top Strategy (42%)</div>
+      </div>
     </div>
   </section>
 
@@ -343,7 +725,24 @@
     </div>
   </section>
 
-  <section class="section" id="preview" style="background:#ffffff;">
+  <section class="section" id="video-walkthrough" style="background: var(--white);">
+    <div class="section-title">
+      <h2>See It In Action</h2>
+      <p>Watch a quick walkthrough of the First Dollar Blueprint.</p>
+      <p
+        style="font-size: 0.95rem; color: var(--text-light); max-width: 600px; margin: 0.5rem auto 0; font-style: italic; opacity: 0.8;">
+        (Preview: A look inside the Notion template structure before we dive into the strategy.)
+      </p>
+    </div>
+    <div class="video-container">
+      <video controls playsinline poster="./images/img1.png">
+        <source src="images/first$1notion.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <section class="section" id="preview" style="background: var(--white);">
     <div class="section-title">
       <h2>Real Preview of the Blueprint</h2>
       <p>These are actual screenshots — sensitive parts blurred. Full readable version unlocks after $1.</p>
@@ -355,27 +754,90 @@
       <img src="./images/img3.png" alt="Flywheel">
     </div>
     <div style="text-align:center; margin-top:2.5rem;">
-      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" class="main-cta">Unlock Full Version for $1</a>
+      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" class="main-cta">Unlock Full Version for $1</a>
     </div>
   </section>
 
-  <section class="newsletter">
-    <h2>Not ready for $1 yet?</h2>
-    <p>Get one free weekly tip on earning your first dollar online — straight to your inbox.</p>
+  <section class="section" id="calculator" style="background: var(--white); text-align:center;">
+    <div class="section-title">
+      <h2>The $1 Snowball Effect</h2>
+      <p>See what happens when you sell a simple $1 digital asset repeatedly.</p>
+    </div>
+
+    <div class="calculator-box">
+      <label for="salesRange" style="font-size: 1.2rem; font-weight: 600; color: var(--primary);">
+        If you sell <span id="salesDisplay" style="font-size: 1.5rem; color: var(--text);">1</span> per day...
+      </label>
+
+      <div class="range-wrapper">
+        <input type="range" id="salesRange" min="1" max="50" value="1" step="1">
+      </div>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="label">Monthly Extra</div>
+          <div class="value" id="monthlyDisplay">$30</div>
+        </div>
+        <div class="result-card highlight">
+          <div class="label">Yearly Extra</div>
+          <div class="value" id="yearlyDisplay">$365</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 1.5rem; color: var(--text-light); font-size: 0.9rem;">
+        *Calculated based on 30-day months. This pays for your coffee, subscriptions, or even rent.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="daily-scratch" style="background:var(--bg); text-align:center;">
+    <div class="section-title">
+      <h2>Feeling Lucky?</h2>
+      <p>Scratch to reveal your <strong style="color:var(--primary);">Daily Dollar Tip</strong>.</p>
+    </div>
+
+    <div class="scratch-container">
+      <!-- Hidden Content (The Prize) -->
+      <div id="scratch-prize">
+        <p id="daily-tip-text">💡 Loading tip...</p>
+      </div>
+
+      <!-- The Canvas (The Cover) -->
+      <canvas id="scratch-canvas" width="300" height="150"></canvas>
+    </div>
+
+    <p id="streak-counter" style="margin-top:1rem; font-size:0.95rem; color:var(--text-light); font-weight:600;">
+      🔥 Daily Streak: <span id="streak-val" style="color:#f97316;">0</span> Days
+    </p>
+  </section>
+
+  <section class="newsletter" id="free-guide" style="padding: 4rem 5%; text-align: center;">
+    <div style="font-size: 3rem; margin-bottom: 1rem;">🎁</div>
+    <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Get the Free Mini-Guide</h2>
+    <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-light); line-height: 1.5;">
+      <strong>3 Quick Ideas to Earn $1 Today.</strong><br>
+      A simple PDF checklist to get you started. No fluff.
+    </p>
+
     <form action="https://formsubmit.co/swiftsellai@gmail.com" method="POST">
       <input type="hidden" name="_next" value="https://firstonedollaronline.com/">
-      <input type="hidden" name="_subject" value="First$1online Newsletter Signup">
-      <input type="email" name="email" placeholder="Your email" required>
-      <button type="submit">Join Free</button>
+      <input type="hidden" name="_subject" value="First$1online PDF Request">
+      <input type="email" name="email" placeholder="Where should we send it?" required>
+      <button type="submit">Send Me The PDF</button>
     </form>
-    <p style="margin-top:1rem; font-size:0.9rem; color:var(--text-light);">No spam. One-click unsubscribe.</p>
+    <p style="margin-top:1.5rem; font-size:0.9rem; color:var(--text-light);">
+      <em>"Upgrade to the full $1 kit later for 20+ methods & community."</em>
+    </p>
   </section>
 
   <section class="community">
     <h2><i class="fab fa-x-twitter"></i> Join the Builders</h2>
     <p>Real conversations. Real first wins. No gatekeeping.</p>
     <div style="margin-top:1.5rem;">
-      <a href="https://x.com/i/communities/2005700300741496877" target="_blank">X Community</a>
+      <div style="margin-top:1.5rem;">
+        <a href="https://x.com/hashtag/FirstOneDollarOnline" target="_blank">#FirstOneDollarOnline</a>
+        <a href="https://discord.gg/9YREqmph" target="_blank">Discord Server</a>
+      </div>
       <a href="https://discord.gg/9YREqmph" target="_blank">Discord Server</a>
     </div>
   </section>
@@ -392,7 +854,7 @@
 
       <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
         <li
-          style="margin-bottom: 1.5rem; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
+          style="margin-bottom: 1.5rem; background: var(--white); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
           <strong style="color: var(--primary); font-size: 1.2rem;">Brandalysis</strong> — an AI-powered tool that helps
           you understand, grow, and strengthen your personal brand (coming soon → <a href="https://brandalysis.co"
             style="color: var(--primary); text-decoration: underline;">brandalysis.co</a>).
@@ -401,7 +863,7 @@
             name.</p>
         </li>
         <li
-          style="margin-bottom: 1.5rem; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
+          style="margin-bottom: 1.5rem; background: var(--white); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
           <strong style="color: var(--primary); font-size: 1.2rem;">FirstOneDollarOnline</strong> — a dead-simple $1
           Notion kit designed to help complete beginners cross the scariest threshold: making your literal <strong>first
             $1 online</strong>.
@@ -417,14 +879,14 @@
         relocation. Some days I'm exhausted, some days I'm buzzing — but I genuinely enjoy almost every piece of it.</p>
 
       <div
-        style="background: #f0fdf4; border-left: 4px solid #10b981; padding: 1.5rem; margin-bottom: 2rem; border-radius: 0 12px 12px 0;">
-        <p style="font-weight: 600; color: #065f46; margin-bottom: 0.5rem;">My recent personal rule (and it's working):
+        style="background: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; padding: 1.5rem; margin-bottom: 2rem; border-radius: 0 12px 12px 0;">
+        <p style="font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">My recent personal rule (and it's working):
         </p>
-        <p style="color: #064e3b; margin-bottom: 0.5rem;">Every week I force myself to ship <strong>at least one tiny
+        <p style="color: var(--text); margin-bottom: 0.5rem;">Every week I force myself to ship <strong>at least one tiny
             thing</strong> (a post, template, message, mini-service…) that has a realistic shot at making
           <strong>exactly $1</strong>.
         </p>
-        <p style="color: #064e3b;">Lowering the bar to $1 massively increases execution speed and kills perfectionism.
+        <p style="color: var(--text);">Lowering the bar to $1 massively increases execution speed and kills perfectionism.
           Try it — it changes everything.</p>
       </div>
 
@@ -447,11 +909,53 @@
     </div>
   </section>
 
+  <section class="section" id="faq" style="background: var(--white);">
+    <div class="section-title">
+      <h2>Common Questions</h2>
+    </div>
+
+    <div class="faq-container">
+      <details class="faq-item">
+        <summary>What if I don’t make $1?</summary>
+        <p>The goal is to break the "zero" barrier. If you take action on the steps and still don't see results, the
+          community is here to help you troubleshoot. It's a skill you're building, not a lottery ticket.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I get Discord/X access?</summary>
+        <p>Immediately after payment, you'll receive a link to the Notion page. Inside the very first section, you'll
+          find the private invite links to both the Discord server and the X community.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is this really just $1 forever?</summary>
+        <p>Yes. It's a one-time payment of $1. No monthly subscriptions, no hidden upsells, no future charges. Just $1.
+        </p>
+      </details>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges">
+      <div class="badge">
+        <i class="fab fa-stripe" style="font-size: 1.2rem;"></i> <span>Powered by Stripe</span>
+      </div>
+      <div class="badge">
+        <i class="fas fa-bolt" style="color: #f59e0b;"></i> <span>Instant Access</span>
+      </div>
+      <div class="badge">
+        <i class="fas fa-shield-alt" style="color: var(--primary);"></i> <span>No Spam Guarantee</span>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <p>© 2026 First$1online – A #buildinpublic experiment by <a href="https://x.com/swiftsell_ai">@swiftsell_ai</a>
     </p>
     <div style="margin-top:1rem;">
       <a href="#">Terms</a> • <a href="#">Privacy</a>
+      <span style="opacity:0.1; margin:0 10px;">|</span>
+      <a href="secret-box.html" title="The Signal"
+        style="color:var(--text); text-decoration:none; opacity:0.1; font-family:'Courier New', monospace; font-weight:bold; cursor: help;">π</a>
     </div>
   </footer>
 
@@ -509,7 +1013,7 @@
 
     /* The Card */
     .modal-content {
-      background: white;
+      background: var(--white);
       padding: 2rem;
       border-radius: 24px;
       width: 90%;
@@ -548,7 +1052,7 @@
 
     /* The "SwiftSell" Hook Box */
     .cta-box {
-      background: #f0fdf4;
+      background: rgba(16, 185, 129, 0.1);
       /* Light Green bg */
       border: 1px solid #bbf7d0;
       border-radius: 12px;
@@ -558,7 +1062,7 @@
 
     .cta-text {
       font-size: 0.9rem;
-      color: #166534;
+      color: var(--text);
       font-weight: 500;
       margin-bottom: 0.75rem;
     }
@@ -589,9 +1093,9 @@
     }
 
     .btn-secondary {
-      background: white;
+      background: var(--white);
       border: 2px solid #e5e7eb;
-      color: #374151;
+      color: var(--text);
     }
 
     .btn-twitter {
@@ -623,6 +1127,320 @@
 
 
 
+  <script>
+    const ideas = {
+      writing: {
+        "15": "Curate 5 niche tweets/threads and sell a 'swipe file' on Gumroad for $1.",
+        "60": "Write a 'How to [Specific Task]' guide (5-10 pages) and list it on Gumroad.",
+        "weekend": "Start a paid newsletter on Substack about a niche topic you love. Charge $1/mo initially."
+      },
+      design: {
+        "15": "Create a pack of 5 aesthetic Notion covers or social media headers.",
+        "60": "Design a simple 'link in bio' template for Carrd or Notion.",
+        "weekend": "Create a high-quality icon set or vector illustration pack for designers."
+      },
+      organization: {
+        "15": "Create a 'Weekly Planner' PDF template.",
+        "60": "Build a 'Job Hunt Tracker' or 'Finance Tracker' in Notion.",
+        "weekend": "Organize a messy data set (publicly available) into a clean AirTable base and sell access."
+      },
+      talking: {
+        "15": "Record paid personalized video audits (e.g., 'I review your dating profile for $1').",
+        "60": " Offer a 15-min 'pick my brain' session on a topic you know well.",
+        "weekend": "Record a mini-course (3 videos) teaching a specific skill."
+      },
+      coding: {
+        "15": "Write a useful shell script or config file (e.g., VS Code settings) and sell it.",
+        "60": "Create a simple HTML/CSS landing page template.",
+        "weekend": "Build a tiny browser extension that solves one annoyance."
+      }
+    };
+
+    function generateIdea() {
+      const skill = document.getElementById('skill-select').value;
+      const time = document.getElementById('time-select').value;
+      const resultDiv = document.getElementById('generator-result');
+      const ideaText = document.getElementById('idea-text');
+
+      const idea = ideas[skill] && ideas[skill][time] ? ideas[skill][time] : "Start by selling your existing expertise as a $1 PDF guide.";
+
+      ideaText.textContent = idea;
+      resultDiv.style.display = 'block';
+    }
+
+    // Calculator Logic
+    const salesRange = document.getElementById('salesRange');
+    const salesDisplay = document.getElementById('salesDisplay');
+    const monthlyDisplay = document.getElementById('monthlyDisplay');
+    const yearlyDisplay = document.getElementById('yearlyDisplay');
+
+    if (salesRange) {
+      salesRange.addEventListener('input', function () {
+        const val = parseInt(this.value);
+        salesDisplay.textContent = val;
+        monthlyDisplay.textContent = '$' + (val * 30).toLocaleString();
+        yearlyDisplay.textContent = '$' + (val * 365).toLocaleString();
+
+
+        // Trigger confetti if they slide to max
+        if (val === 50) triggerConfetti();
+      });
+    }
+
+    // --- Daily Scratch-Off Logic ---
+    const canvas = document.getElementById('scratch-canvas');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    const tipText = document.getElementById('daily-tip-text');
+    const streakVal = document.getElementById('streak-val');
+    let isDrawing = false;
+    let scratched = false;
+
+    // Tips Pool
+    const dollarTips = [
+      "💡 Sell your unused gift cards on CardCash.",
+      "💡 List a $1 PDF 'Top 10 Tools' guide on Gumroad.",
+      "💡 Offer to test a website for $1 on a forum.",
+      "💡 Create a $1 icon set for Notion users.",
+      "💡 Transcribe 1 minute of audio for someone.",
+      "💡 Sell a high-quality stock photo of your desk.",
+      "💡 Answer 3 surveys on a reputable site."
+    ];
+
+    if (canvas && ctx) {
+      // Init logic
+      loadState();
+
+      // Input Events
+      canvas.addEventListener('mousedown', startScratch);
+      canvas.addEventListener('touchstart', startScratch);
+      canvas.addEventListener('mousemove', scratch);
+      canvas.addEventListener('touchmove', scratch);
+      window.addEventListener('mouseup', endScratch);
+      window.addEventListener('touchend', endScratch);
+    }
+
+    function initCard(isRedeemed) {
+      if (isRedeemed) {
+        canvas.style.display = 'none'; // Already scratched today
+        tipText.textContent = getTodayTip();
+        return;
+      }
+
+      // Draw cover (Silver)
+      ctx.globalCompositeOperation = 'source-over';
+      ctx.fillStyle = '#cbd5e1'; // Silver/Gray
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Add Text "SCRATCH ME"
+      ctx.fillStyle = '#64748b';
+      ctx.font = 'bold 24px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText("SCRATCH ME", canvas.width / 2, canvas.height / 2 + 8);
+
+      // Prep for erasing
+      ctx.globalCompositeOperation = 'destination-out';
+
+      // Set simpler tip for now
+      tipText.textContent = getTodayTip();
+    }
+
+    function startScratch(e) { isDrawing = true; scratch(e); }
+    function endScratch() {
+      if (isDrawing) checkCompletion();
+      isDrawing = false;
+    }
+
+    function scratch(e) {
+      if (!isDrawing || scratched) return;
+      e.preventDefault(); // Stop scrolling on mobile
+
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.pageX || e.touches[0].pageX) - rect.left - window.scrollX;
+      const y = (e.pageY || e.touches[0].pageY) - rect.top - window.scrollY;
+
+      ctx.beginPath();
+      ctx.arc(x, y, 20, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+
+    function checkCompletion() {
+      if (scratched) return;
+
+      // Count transparent pixels
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const pixels = imageData.data;
+      let transparent = 0;
+
+      for (let i = 3; i < pixels.length; i += 4) {
+        if (pixels[i] === 0) transparent++;
+      }
+
+      const percent = (transparent / (pixels.length / 4)) * 100;
+
+      if (percent > 40) { // Threshold to unlock
+        scratched = true;
+        canvas.style.transition = 'opacity 0.5s';
+        canvas.style.opacity = '0';
+        setTimeout(() => { canvas.style.display = 'none'; }, 500);
+
+        triggerConfetti();
+        updateStreak();
+      }
+    }
+
+    // --- State Management (LocalStorage) ---
+    function loadState() {
+      const lastDate = localStorage.getItem('last_scratch_date');
+      const today = new Date().toDateString();
+      let streak = parseInt(localStorage.getItem('streak_count') || '0');
+
+      streakVal.textContent = streak;
+
+      if (lastDate === today) {
+        scratched = true;
+        initCard(true); // Already done today
+      } else {
+        // Check if streak broke (missed a day)
+        // Simplified: If lastDate was NOT yesterday, reset streak to 0 (unless it's first time)
+        if (lastDate) {
+          const diff = (new Date(today) - new Date(lastDate)) / (1000 * 60 * 60 * 24);
+          if (diff > 1.5) streak = 0; // Missed a day
+        }
+        // Ready to scratch
+        initCard(false);
+      }
+    }
+
+    function updateStreak() {
+      const today = new Date().toDateString();
+      localStorage.setItem('last_scratch_date', today);
+
+      let streak = parseInt(localStorage.getItem('streak_count') || '0');
+      streak++;
+      localStorage.setItem('streak_count', streak);
+      streakVal.textContent = streak;
+    }
+
+    function getTodayTip() {
+      // Deterministic tip based on date so it doesn't change on refresh
+      const day = new Date().getDate();
+      return dollarTips[day % dollarTips.length];
+    }
+
+    // --- Confetti Utility ---
+    function triggerConfetti() {
+      // Simple burst
+      if (window.confetti) {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+    }
+  </script>
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <script>
+    // === PARTICLE SYSTEM - Soft, pale, floating vibes ===
+    const canvasP = document.getElementById('particle-canvas');
+    const ctxP = canvasP.getContext('2d');
+    const containerP = document.getElementById('particles-bg');
+
+    let particles = [];
+    let mouse = { x: null, y: null, radius: 120 };
+
+    function resizeCanvas() {
+      canvasP.width = window.innerWidth;
+      canvasP.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Mouse interaction
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+    window.addEventListener('mouseout', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    // Particle class
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvasP.width;
+        this.y = Math.random() * canvasP.height;
+        this.size = Math.random() * 3 + 1; // mici și delicate
+        this.speedX = Math.random() * 0.6 - 0.3;
+        this.speedY = Math.random() * 0.6 - 0.3;
+        this.baseHue = Math.random() * 60 + 180; // cyan -> mov -> albastru pastel (180-240)
+        this.alpha = Math.random() * 0.3 + 0.15; // foarte transparent
+        this.pulse = Math.random() * Math.PI * 2;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        // Gentle bounce
+        if (this.x < 0 || this.x > canvasP.width) this.speedX *= -0.8;
+        if (this.y < 0 || this.y > canvasP.height) this.speedY *= -0.8;
+
+        // Mouse interaction
+        if (mouse.x !== null && mouse.y !== null) {
+          let dx = this.x - mouse.x;
+          let dy = this.y - mouse.y;
+          let distance = Math.sqrt(dx*dx + dy*dy);
+          if (distance < mouse.radius) {
+            let force = (mouse.radius - distance) / mouse.radius;
+            this.x += dx * force * 0.08;
+            this.y += dy * force * 0.08;
+          }
+        }
+
+        // Pulse
+        this.pulse += 0.015;
+        this.alpha = 0.15 + Math.sin(this.pulse) * 0.12;
+      }
+
+      draw() {
+        const hue = this.baseHue + Math.sin(this.pulse * 0.5) * 30;
+        ctxP.beginPath();
+        ctxP.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctxP.fillStyle = `hsla(${hue}, 70%, 75%, ${this.alpha})`;
+        ctxP.shadowBlur = 12;
+        ctxP.shadowColor = `hsla(${hue}, 80%, 70%, 0.4)`;
+        ctxP.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = Math.min(220, Math.floor((canvasP.width * canvasP.height) / 15000));
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+    initParticles();
+    window.addEventListener('resize', initParticles);
+
+    // Animate
+    function animate() {
+      ctxP.fillStyle = 'rgba(0, 0, 0, 0.04)'; // fade lent pentru trail ethereal
+      ctxP.fillRect(0, 0, canvasP.width, canvasP.height);
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
 </body>
 
 </html>

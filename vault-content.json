@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "category": "money",
+    "type": "Money Experiment",
+    "title": "The $1 Friction Test",
+    "content": "<strong>The Insight:</strong> Free users provide feedback; paying customers provide validation.<br><br><strong>The Tip:</strong> If you are struggling to choose between two features for SwiftSell AI, build a 'ghost button' for each that leads to a 'Coming Soon' page with a $1 pre-order or 'Notify Me' option.<br><br><strong>The Metric:</strong> Ignore the clicks. Only count the people who actually enter their email or click the payment button.<br><br><strong>The Goal:</strong> $1 is a psychological barrier. Once a user crosses it, they are no longer a spectator; they are a stakeholder. Use this to kill 'zombie ideas' fast.",
+    "date": "2026-02-07"
+  },
+  {
+    "id": 2,
+    "category": "wisdom",
+    "type": "Mental Model",
+    "title": "The Paradox of the 'Perfect' Launch",
+    "content": "<strong>The Insight:</strong> If you aren't slightly embarrassed by the first version of your 'Secret Box,' you launched too late.<br><br><strong>The Wisdom:</strong> In the #BuildInPublic world, your 'cracks' are your features. People don't follow you because you are a finished product; they follow you because they want to see how you handle the pressure of the build.<br><br><strong>The Action:</strong> Stop polishing the CSS of the vault for a week. Put one raw, unedited voice note of you explaining a problem you’re facing. That raw vulnerability is higher 'value' than a polished PDF.",
+    "date": "2026-02-07"
+  },
+  {
+    "id": 3,
+    "category": "art",
+    "type": "Art & Love",
+    "title": "Antigravity vs. Entropy",
+    "content": "<strong>The Insight:</strong> Building a business is a fight against the natural chaos of the world.<br><br><strong>The Reflection:</strong> In physics, entropy is the inevitable decline into disorder. In business, entropy is 'feature creep,' 'distraction,' and 'burnout.'<br><br><strong>The Practice:</strong> Every Sunday, look at your project and find one thing to remove. One line of code, one marketing channel that isn't working, or one worry that is taking up headspace.<br><br><strong>The Art:</strong> Greatness is not what you add; it’s what remains after you’ve stripped away everything that doesn't matter.",
+    "date": "2026-02-07"
+  }
+]

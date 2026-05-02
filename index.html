@@ -17,7 +17,8 @@
       --text: #e0f7ff;
       --text-light: #9ca3af;
       --bg: #0a0e1f;
-      --white: #111827; /* Dark background for elements that were white */
+      --white: #111827;
+      /* Dark background for elements that were white */
       --accent: #10b981;
       --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
@@ -583,7 +584,8 @@
 
 <body>
   <!-- === PARTICLE BACKGROUND === -->
-  <div id="particles-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden;">
+  <div id="particles-bg"
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden;">
     <canvas id="particle-canvas" style="display: block; width: 100%; height: 100%;"></canvas>
   </div>
 
@@ -754,7 +756,8 @@
       <img src="./images/img3.png" alt="Flywheel">
     </div>
     <div style="text-align:center; margin-top:2.5rem;">
-      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" class="main-cta">Unlock Full Version for $1</a>
+      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" class="main-cta">Unlock Full Version for
+        $1</a>
     </div>
   </section>
 
@@ -838,7 +841,6 @@
         <a href="https://x.com/hashtag/FirstOneDollarOnline" target="_blank">#FirstOneDollarOnline</a>
         <a href="https://discord.gg/9YREqmph" target="_blank">Discord Server</a>
       </div>
-      <a href="https://discord.gg/9YREqmph" target="_blank">Discord Server</a>
     </div>
   </section>
 
@@ -848,16 +850,19 @@
     </div>
     <div style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text);">
       <p style="margin-bottom: 1.5rem;">Hi, I'm <strong>Gabriel</strong> 👋<br>
-        Solo founder currently building in public right here from the UK.</p>
+        Solo founder currently building in public right here from Australia.</p>
 
       <p style="margin-bottom: 1.5rem;">I'm working on two main things:</p>
 
       <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
         <li
           style="margin-bottom: 1.5rem; background: var(--white); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
-          <strong style="color: var(--primary); font-size: 1.2rem;">SwiftSettle Adelaide</strong> — a streamlined service to help you navigate property settlements in South Australia without the stress (visit → <a href="https://swiftsettleadelaide.com"
+          <strong style="color: var(--primary); font-size: 1.2rem;">SwiftSettle Adelaide</strong> — a streamlined
+          service to help you navigate property settlements in South Australia without the stress (visit → <a
+            href="https://swiftsettleadelaide.com"
             style="color: var(--primary); text-decoration: underline;">swiftsettleadelaide.com</a>).
-          <p style="margin-top: 0.5rem; font-size: 1rem; color: var(--text-light);">Property settlement should be simple. I'm building this to bring clarity, speed, and peace of mind to the process.</p>
+          <p style="margin-top: 0.5rem; font-size: 1rem; color: var(--text-light);">Property settlement should be
+            simple. I'm building this to bring clarity, speed, and peace of mind to the process.</p>
         </li>
         <li
           style="margin-bottom: 1.5rem; background: var(--white); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
@@ -877,13 +882,16 @@
 
       <div
         style="background: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; padding: 1.5rem; margin-bottom: 2rem; border-radius: 0 12px 12px 0;">
-        <p style="font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">My recent personal rule (and it's working):
+        <p style="font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">My recent personal rule (and it's
+          working):
         </p>
-        <p style="color: var(--text); margin-bottom: 0.5rem;">Every week I force myself to ship <strong>at least one tiny
+        <p style="color: var(--text); margin-bottom: 0.5rem;">Every week I force myself to ship <strong>at least one
+            tiny
             thing</strong> (a post, template, message, mini-service…) that has a realistic shot at making
           <strong>exactly $1</strong>.
         </p>
-        <p style="color: var(--text);">Lowering the bar to $1 massively increases execution speed and kills perfectionism.
+        <p style="color: var(--text);">Lowering the bar to $1 massively increases execution speed and kills
+          perfectionism.
           Try it — it changes everything.</p>
       </div>
 
@@ -1390,7 +1398,7 @@
         if (mouse.x !== null && mouse.y !== null) {
           let dx = this.x - mouse.x;
           let dy = this.y - mouse.y;
-          let distance = Math.sqrt(dx*dx + dy*dy);
+          let distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < mouse.radius) {
             let force = (mouse.radius - distance) / mouse.radius;
             this.x += dx * force * 0.08;

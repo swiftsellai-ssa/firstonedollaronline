@@ -580,6 +580,17 @@
       color: var(--text);
     }
   </style>
+
+  <script type="speculationrules">
+  {
+    "prerender": [{
+      "where": {
+        "href_matches": "/*"
+      },
+      "eagerness": "moderate"
+    }]
+  }
+  </script>
 </head>
 
 <body>
@@ -957,7 +968,7 @@
     <p>© 2026 First$1online – A #buildinpublic experiment by <a href="https://x.com/swiftsell_ai">@swiftsell_ai</a>
     </p>
     <div style="margin-top:1rem;">
-      <a href="#">Terms</a> • <a href="#">Privacy</a>
+      <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a>
       <span style="opacity:0.1; margin:0 10px;">|</span>
       <a href="secret-box.html" title="The Signal"
         style="color:var(--text); text-decoration:none; opacity:0.1; font-family:'Courier New', monospace; font-weight:bold; cursor: help;">π</a>

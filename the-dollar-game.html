@@ -92,6 +92,17 @@
             animation: pulse 2s infinite;
         }
     </style>
+
+  <script type="speculationrules">
+  {
+    "prerender": [{
+      "where": {
+        "href_matches": "/*"
+      },
+      "eagerness": "moderate"
+    }]
+  }
+  </script>
 </head>
 
 <body>

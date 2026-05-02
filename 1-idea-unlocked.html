@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>First$1online – $1 Ideas</title>
+  <title>$1 Ideas That Sell – First$1online</title>
   <meta name="description"
-    content="A curated list of micro-services and tiny actions that people are actually buying for $1.">
-  <meta name="keywords" content="first dollar online, make money online beginner, indie builder, side hustle, ideas">
+    content="One practical Notion guide + builder community to help you earn your first real dollar online. No hype. Just steps.">
+  <meta name="keywords" content="first dollar online, make money online beginner, indie builder, side hustle">
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -18,6 +17,7 @@
       --text-light: #9ca3af;
       --bg: #0a0e1f;
       --white: #111827;
+      /* Dark background for elements that were white */
       --accent: #10b981;
       --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
@@ -66,13 +66,14 @@
     }
 
     .cta-button-nav {
-      background: #e0f7ff;
-      color: #0a0e1f !important;
+      background: #000;
+      color: #fff !important;
       padding: 0.5rem 1.2rem;
       border-radius: 999px;
       font-size: 0.95rem;
     }
 
+    /* Mobile menu */
     .menu-toggle {
       display: none;
       font-size: 1.6rem;
@@ -104,7 +105,7 @@
 
     .hero {
       text-align: center;
-      padding: 5rem 1.5rem 2rem;
+      padding: 5rem 1.5rem 4rem;
       background: transparent;
       position: relative;
     }
@@ -126,23 +127,27 @@
       color: var(--text-light);
     }
 
-    .section {
-      padding: 2rem 5% 4rem;
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
     }
 
-    .main-cta {
+    .main-cta,
+    .secondary-cta {
       display: inline-block;
       padding: 1rem 2.2rem;
       border-radius: 999px;
       font-weight: 700;
       text-decoration: none;
       font-size: 1.1rem;
+    }
+
+    .main-cta {
       background: var(--primary);
-      color: #fff;
+      color: white;
       box-shadow: 0 8px 16px rgba(37, 99, 235, 0.25);
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
     }
 
     .main-cta:hover {
@@ -150,12 +155,124 @@
       transform: translateY(-2px);
     }
 
+    .secondary-cta {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .secondary-cta:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .section {
+      padding: 4rem 5%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature {
+      background: var(--white);
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .feature h3 {
+      margin: 1rem 0 0.8rem;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+
+    .preview-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem auto;
+      max-width: 1100px;
+    }
+
+    .preview-gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+    }
+
+    .community {
+      background: var(--bg);
+      color: white;
+      text-align: center;
+      padding: 4rem 5%;
+    }
+
+    .community h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .community a {
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 1rem;
+    }
+
+    .newsletter {
+      background: var(--white);
+      padding: 4rem 5%;
+      text-align: center;
+    }
+
+    .newsletter form {
+      max-width: 500px;
+      margin: 2rem auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .newsletter input {
+      flex: 1;
+      min-width: 220px;
+      padding: 0.9rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+    }
+
+    .newsletter button {
+      padding: 0.9rem 1.8rem;
+      background: #000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
     footer {
       background: var(--white);
       padding: 2.5rem;
       text-align: center;
       color: var(--text-light);
-      border-top: 1px solid #1e293b;
+      border-top: 1px solid #e2e8f0;
     }
 
     footer a {
@@ -164,68 +281,445 @@
       text-decoration: none;
     }
 
-    /* Ideas Specific CSS */
-    .idea-card {
+    @media (max-width:640px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .cta-group {
+        flex-direction: column;
+      }
+    }
+
+    /* Community Stats */
+    .stats-bar {
       background: var(--white);
-      padding: 1.5rem 2rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 3rem 5%;
+      margin-bottom: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Scratch-Off Section */
+    .scratch-container {
+      position: relative;
+      width: 300px;
+      height: 150px;
+      margin: 2rem auto;
+      user-select: none;
+      -webkit-user-select: none;
       border-radius: 12px;
-      margin-bottom: 1.5rem;
-      border: 1px solid #1e293b;
+      overflow: hidden;
       box-shadow: var(--shadow);
     }
 
-    .idea-card h3 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      font-size: 1.4rem;
-    }
-
-    .idea-card p {
-      color: var(--text-light);
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-
-    .idea-meta {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .tag {
-      background: rgba(16, 185, 129, 0.1);
-      color: var(--accent);
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-    }
-
-    .paywall-container {
-      position: relative;
-      margin-top: 1.5rem;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .blurred-content {
-      filter: blur(6px);
-      opacity: 0.4;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .paywall-overlay {
+    #scratch-prize {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      background: rgba(16, 185, 129, 0.1);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(to bottom, rgba(10, 14, 31, 0.2), var(--bg) 90%);
+      padding: 1rem;
+      text-align: center;
+      z-index: 1;
+    }
+
+    #scratch-prize p {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    #scratch-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      cursor: crosshair;
+      touch-action: none;
+    }
+
+    /* Video Container */
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-bottom: 56.25%;
+      /* 16:9 Aspect Ratio */
+      height: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #000;
+    }
+
+    .video-container iframe,
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Idea Generator */
+    .generator-box {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .generator-form select {
+      padding: 0.8rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin: 0.5rem;
+      width: 100%;
+      max-width: 250px;
+    }
+
+    .generator-result {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(16, 185, 129, 0.1);
+      border-radius: 12px;
+      border: 1px solid #bbf7d0;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* FAQ Section */
+    .faq-container {
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    .faq-item {
+      background: var(--white);
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+    }
+
+    .faq-item summary {
+      padding: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .faq-item[open] summary::after {
+      content: '−';
+    }
+
+    .faq-item p {
+      padding: 0 1.2rem 1.2rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      border-top: 1px solid #f1f5f9;
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      opacity: 0.8;
+      margin-top: 3rem;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    /* Calculator Slider */
+    .calculator-box {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .range-wrapper {
+      margin: 2rem 0;
+    }
+
+    input[type=range] {
+      width: 100%;
+      height: 10px;
+      border-radius: 5px;
+      background: #e2e8f0;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--primary);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .result-card {
+      padding: 1.5rem;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .result-card.highlight {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: #bbf7d0;
+    }
+
+    .result-card .label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .result-card .value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .result-card.highlight .value {
+      color: var(--text);
+    }
+  </style>
+
+  <style>
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 2rem;
+      background: transparent;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+    .hero .subtitle {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      color: var(--text-light);
+    }
+    .social-proof {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid #10b981;
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: 999px;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .social-proof strong {
+      color: #fff;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 1.1rem 2.5rem;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.15rem;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .cta-button.primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 8px 16px rgba(37, 99, 235, 0.25);
+    }
+    .cta-button.primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .trust {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    .ideas {
+      padding: 2rem 5% 4rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .ideas h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+    .idea-card {
+      background: var(--white);
+      padding: 1.8rem 2rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #1e293b;
+      box-shadow: var(--shadow);
+    }
+    .idea-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+    .idea-card p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .idea-card .time {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .idea-card small {
+      display: block;
+      color: var(--accent);
+      font-weight: 600;
+      font-style: italic;
+    }
+    .idea-card.blurred {
+      filter: blur(5px);
+      opacity: 0.5;
+      pointer-events: none;
+      user-select: none;
+    }
+    .teaser {
+      margin-bottom: 0 !important;
+    }
+    .mid-cta {
+      text-align: center;
+      background: linear-gradient(to right, var(--bg), #111827, var(--bg));
+      padding: 3rem 2rem;
+      border-radius: 12px;
+      border: 1px solid #1e293b;
+      margin-top: 3rem;
+    }
+    .mid-cta h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .mid-cta p {
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    .paywall-wrapper {
+      position: relative;
+    }
+    .paywall-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, rgba(10,14,31,0.2), var(--bg) 90%);
       text-align: center;
       padding: 2rem 1rem;
       z-index: 10;
@@ -234,14 +728,12 @@
 </head>
 
 <body>
-  <!-- === PARTICLE BACKGROUND === -->
-  <div id="particles-bg"
-    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden;">
+  <div id="particles-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; overflow: hidden;">
     <canvas id="particle-canvas" style="display: block; width: 100%; height: 100%;"></canvas>
   </div>
 
   <nav>
-    <a href="index.html" class="logo">First$1online</a>
+    <a href="#" class="logo">First$1online</a>
     <div class="nav-links">
       <a href="index.html#what-you-get">What You Get</a>
       <a href="index.html#preview">Preview</a>
@@ -253,65 +745,73 @@
     <div class="menu-toggle"><i class="fas fa-bars"></i></div>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero">
-    <h1>The <span>$1 Idea</span> Vault (Unlocked)</h1>
-    <p>A hand-picked, curated list of micro-services, digital assets, and tiny actions that people are actually buying
-      for $1.</p>
-    <div style="margin-top: 2.5rem;">
-      <a href="https://www.notion.so/The-First-1-Blueprint-2026-Edition-2d82bc12a14080b0b91ec17f5de18487"
-        target="_blank" class="main-cta" style="background: #10b981; color: #fff;">
-        <i class="fas fa-file-alt"></i> Access Notion Kit
-      </a>
-      <p style="margin-top: 1rem; color: var(--text-light); font-size: 0.95rem;">
-        <i>(The Blueprint will securely open in a new tab)</i>
-      </p>
+    <h1>$1 Ideas That People Actually Buy Right Now <span style="color:var(--accent);">(Unlocked)</span></h1>
+    <p class="subtitle">Real micro-services and tiny digital products beginners are selling for exactly $1. No fluff. No big skills required.</p>
+    
+    <div class="social-proof">
+      <p>✅ <strong>47+ builders</strong> exploring • <strong>6 verified $1 wins</strong> this month</p>
     </div>
 
+    <div>
+      <a href="https://www.notion.so/The-First-1-Blueprint-2026-Edition-2d82bc12a14080b0b91ec17f5de18487" target="_blank" class="cta-button primary" style="background: #10b981;">
+        <i class="fas fa-file-alt"></i> Access Notion Blueprint
+      </a>
+      <p class="trust">Opens securely in a new tab</p>
+    </div>
   </section>
 
-  <section class="section" style="background: transparent; padding-top: 0; max-width: 800px; margin: 0 auto;">
+  <!-- Ideas -->
+  <section class="ideas">
+    <h2>Your $1 Idea Vault</h2>
 
+    <!-- Free Idea 1 -->
     <div class="idea-card">
-      <div class="idea-meta">
-        <span class="tag">Writing</span>
-        <span class="tag" style="background: #1e293b; color: var(--text);">15 mins</span>
-      </div>
+      <span class="time">Writing • 15 mins</span>
       <h3>The Profile Bio Audit</h3>
-      <p>Offer to rewrite someone's Twitter, LinkedIn, or dating app bio for exactly $1. You'll be surprised how many
-        people hate writing about themselves. Position it as a "Roast & Fix" to increase conversion.</p>
+      <p>Offer to rewrite someone’s X, LinkedIn, or dating app bio for $1. Position it as a fun “Roast & Fix” — people hate writing about themselves and will pay instantly for clarity.</p>
+      <small>Proven in indie communities</small>
     </div>
 
+    <!-- Free Idea 2 -->
     <div class="idea-card">
-      <div class="idea-meta">
-        <span class="tag">Design</span>
-        <span class="tag" style="background: #1e293b; color: var(--text);">30 mins</span>
-      </div>
+      <span class="time">Design • 30 mins</span>
       <h3>Micro Icon Sets</h3>
-      <p>Design a very specific, niche set of 10 Notion icons (e.g., "Dark Mode Finance Icons") and drop them in Notion
-        communities. Keep the friction almost non-existent by pricing it at a single dollar.</p>
+      <p>Create a small, niche pack of 10 Notion icons (e.g. “Dark Finance Icons” or “Productivity Minimal”). Share in Notion Facebook groups or Reddit. Super low effort, high perceived value.</p>
+      <small>Easy repeat sales</small>
     </div>
 
-    <!-- UNLOCKED IDEAS -->
+    <!-- Unlocked Ideas -->
     <div class="idea-card">
-      <div class="idea-meta"><span class="tag">Tech</span><span class="tag">60 mins</span></div>
-      <h3>Hidden Idea #3</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec magna non arcu gravida accumsan a at erat.
-        Sed dignissim justo non libero fringilla congue.</p>
-    </div>
-    <div class="idea-card">
-      <div class="idea-meta"><span class="tag">Video</span><span class="tag">15 mins</span></div>
-      <h3>Hidden Idea #4</h3>
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum in
-        finibus orci. Class aptent taciti.</p>
-    </div>
-    <div class="idea-card">
-      <div class="idea-meta"><span class="tag">Data</span><span class="tag">Weekend</span></div>
-      <h3>Hidden Idea #5</h3>
-      <p>Morbi tincidunt iaculis justo, nec dictum arcu eleifend eget. In tristique est et tincidunt iaculis. Nunc
-        pulvinar mi in massa commodo aliquet.</p>
+      <span class="time">Tech • 45 mins</span>
+      <h3>Spreadsheet Cleanup Service</h3>
+      <p>Fix messy Google Sheets or Excel files for busy creators or small businesses. Sort columns, fix formatting, and remove duplicates. They sit on chaotic data for months and gladly pay $1 to avoid doing it themselves.</p>
+      <small>Perfect "annoying problem" to solve</small>
     </div>
 
+    <div class="idea-card">
+      <span class="time">Video • 20 mins</span>
+      <h3>60 Faceless YouTube Hooks</h3>
+      <p>A ready-to-use list of proven video hooks tailored for a specific niche (e.g., Faceless Finance). Package it as a PDF or Notion page. Creators are desperate for hooks.</p>
+      <small>High demand in creator economy</small>
+    </div>
 
+    <div class="idea-card">
+      <span class="time">Data • Weekend</span>
+      <h3>$1 Niche Validation Kit</h3>
+      <p>A simple spreadsheet + checklist to validate any idea fast. Curate a list of 50 places to post, 10 competitor analysis questions, and a timeline template.</p>
+      <small>Sells well to other builders</small>
+    </div>
+
+    <!-- Mid-Page CTA -->
+    <div class="mid-cta">
+      <h3>Ready to execute?</h3>
+      <p>Head over to the Notion Blueprint to see exactly how to set up your Stripe link, where to post, and how to get your first customer.</p>
+      <a href="https://www.notion.so/The-First-1-Blueprint-2026-Edition-2d82bc12a14080b0b91ec17f5de18487" target="_blank" class="cta-button primary" style="background: #10b981;">
+        Open The Blueprint →
+      </a>
+    </div>
   </section>
 
   <footer>
@@ -324,113 +824,7 @@
         style="color:var(--text); text-decoration:none; opacity:0.1; font-family:'Courier New', monospace; font-weight:bold; cursor: help;">π</a>
     </div>
   </footer>
-
-  <script>
-    document.querySelector('.menu-toggle').addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.toggle('active');
-    });
-  </script>
-
-  <!-- Particle Background Script -->
-  <script>
-    // === PARTICLE SYSTEM - Soft, pale, floating vibes ===
-    const canvasP = document.getElementById('particle-canvas');
-    const ctxP = canvasP.getContext('2d');
-    const containerP = document.getElementById('particles-bg');
-
-    let particles = [];
-    let mouse = { x: null, y: null, radius: 120 };
-
-    function resizeCanvas() {
-      canvasP.width = window.innerWidth;
-      canvasP.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Mouse interaction
-    window.addEventListener('mousemove', (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
-    window.addEventListener('mouseout', () => {
-      mouse.x = null;
-      mouse.y = null;
-    });
-
-    // Particle class
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvasP.width;
-        this.y = Math.random() * canvasP.height;
-        this.size = Math.random() * 3 + 1; // mici și delicate
-        this.speedX = Math.random() * 0.6 - 0.3;
-        this.speedY = Math.random() * 0.6 - 0.3;
-        this.baseHue = Math.random() * 60 + 180; // cyan -> mov -> albastru pastel (180-240)
-        this.alpha = Math.random() * 0.3 + 0.15; // foarte transparent
-        this.pulse = Math.random() * Math.PI * 2;
-      }
-
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        // Gentle bounce
-        if (this.x < 0 || this.x > canvasP.width) this.speedX *= -0.8;
-        if (this.y < 0 || this.y > canvasP.height) this.speedY *= -0.8;
-
-        // Mouse interaction
-        if (mouse.x !== null && mouse.y !== null) {
-          let dx = this.x - mouse.x;
-          let dy = this.y - mouse.y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < mouse.radius) {
-            let force = (mouse.radius - distance) / mouse.radius;
-            this.x += dx * force * 0.08;
-            this.y += dy * force * 0.08;
-          }
-        }
-
-        // Pulse
-        this.pulse += 0.015;
-        this.alpha = 0.15 + Math.sin(this.pulse) * 0.12;
-      }
-
-      draw() {
-        const hue = this.baseHue + Math.sin(this.pulse * 0.5) * 30;
-        ctxP.beginPath();
-        ctxP.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctxP.fillStyle = `hsla(${hue}, 70%, 75%, ${this.alpha})`;
-        ctxP.shadowBlur = 12;
-        ctxP.shadowColor = `hsla(${hue}, 80%, 70%, 0.4)`;
-        ctxP.fill();
-      }
-    }
-
-    function initParticles() {
-      particles = [];
-      const count = Math.min(220, Math.floor((canvasP.width * canvasP.height) / 15000));
-      for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-      }
-    }
-    initParticles();
-    window.addEventListener('resize', initParticles);
-
-    // Animate
-    function animate() {
-      ctxP.fillStyle = 'rgba(0, 0, 0, 0.04)'; // fade lent pentru trail ethereal
-      ctxP.fillRect(0, 0, canvasP.width, canvasP.height);
-
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
+  
 </body>
 
 </html>

@@ -579,7 +579,12 @@
     .result-card.highlight .value {
       color: var(--text);
     }
-  </style>
+  
+    /* Tap Target Enhancements */
+    a.logo { min-height: 48px; display: inline-flex; align-items: center; }
+    .cta-button, button, .newsletter button { min-height: 48px; }
+
+</style>
 
   <script type="speculationrules">
   {
@@ -591,6 +596,30 @@
     }]
   }
   </script>
+
+  <!-- SEO & Social Meta Tags -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="First$1online | Make Your First $1 Online">
+  <meta property="og:description" content="A dead-simple $1 Notion kit designed to help complete beginners cross the scariest threshold: making your literal first $1 online.">
+  <meta property="og:image" content="https://firstonedollaronline.com/og-image.jpg">
+  <meta property="og:url" content="https://firstonedollaronline.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="First$1online | Make Your First $1 Online">
+  <meta name="twitter:description" content="A dead-simple $1 Notion kit designed to help complete beginners cross the scariest threshold: making your literal first $1 online.">
+  <meta name="twitter:image" content="https://firstonedollaronline.com/og-image.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "First$1online",
+    "url": "https://firstonedollaronline.com/",
+    "description": "Make your first $1 online with proven micro-ideas."
+  }
+  </script>
+
 </head>
 
 <body>
@@ -600,8 +629,9 @@
     <canvas id="particle-canvas" style="display: block; width: 100%; height: 100%;"></canvas>
   </div>
 
+  <header>
   <nav>
-    <a href="#" class="logo">First$1online</a>
+    <a href="/" class="logo">First$1online</a>
     <div class="nav-links">
       <a href="index.html#what-you-get">What You Get</a>
       <a href="index.html#preview">Preview</a>
@@ -612,6 +642,8 @@
     </div>
     <div class="menu-toggle"><i class="fas fa-bars"></i></div>
   </nav>
+</header>
+<main>
 
   <section class="hero">
     <h1>Make Your <span>First Real $1</span> Online</h1>
@@ -639,7 +671,7 @@
     <div class="generator-box">
       <div class="generator-form">
         <label style="font-weight:600; margin-right: 0.5rem;">I'm good at:</label>
-        <select id="skill-select">
+        <select id="skill-select" aria-label="Select your skill">
           <option value="writing">Writing / Words</option>
           <option value="design">Design / Visuals</option>
           <option value="organization">Organizing / Data</option>
@@ -650,7 +682,7 @@
         <br class="mobile-break" style="display:none;">
 
         <label style="font-weight:600; margin-left: 1rem; margin-right: 0.5rem;">I have:</label>
-        <select id="time-select">
+        <select id="time-select" aria-label="Select your time commitment">
           <option value="15">15 mins a day</option>
           <option value="60">1 hour a day</option>
           <option value="weekend">Weekends only</option>
@@ -687,7 +719,12 @@
           max-width: 100%;
         }
       }
-    </style>
+    
+    /* Tap Target Enhancements */
+    a.logo { min-height: 48px; display: inline-flex; align-items: center; }
+    .cta-button, button, .newsletter button { min-height: 48px; }
+
+</style>
   </section>
 
   <section class="stats-bar">
@@ -836,7 +873,7 @@
     <form action="https://formsubmit.co/swiftsellai@gmail.com" method="POST">
       <input type="hidden" name="_next" value="https://firstonedollaronline.com/">
       <input type="hidden" name="_subject" value="First$1online PDF Request">
-      <input type="email" name="email" placeholder="Where should we send it?" required>
+      <input type="email" aria-label="Email address" name="email" placeholder="Where should we send it?" required>
       <button type="submit">Send Me The PDF</button>
     </form>
     <p style="margin-top:1.5rem; font-size:0.9rem; color:var(--text-light);">
@@ -964,7 +1001,8 @@
     </div>
   </section>
 
-  <footer>
+  </main>
+<footer>
     <p>© 2026 First$1online – A #buildinpublic experiment by <a href="https://x.com/swiftsell_ai">@swiftsell_ai</a>
     </p>
     <div style="margin-top:1rem;">
@@ -1119,7 +1157,12 @@
       /* Sky blue */
       color: white;
     }
-  </style>
+  
+    /* Tap Target Enhancements */
+    a.logo { min-height: 48px; display: inline-flex; align-items: center; }
+    .cta-button, button, .newsletter button { min-height: 48px; }
+
+</style>
   <!-- Scroll-triggered flying dollar -->
   <div id="big-dollar"
     style="position:fixed; font-size:7rem; left:50%; top:80%; transform:translate(-50%,50%); opacity:0; pointer-events:none; z-index:6; transition:opacity 0.8s, transform 1.2s;">

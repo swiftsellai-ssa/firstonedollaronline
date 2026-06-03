@@ -1,103 +1,358 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The First Dollar Chronicles | Storyteller</title>
-  <meta name="description" content="Every Empire Starts With One Dollar. Explore the origin stories of creators, makers, and indie builders.">
-  
+  <title>Storyteller - First$1Online</title>
+  <meta name="description" content="A collection of short origin stories of creators, makers, and builders.">
+
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Outfit', 'Segoe UI', 'system-ui', 'sans-serif'],
-            mono: ['Space Grotesk', 'Courier New', 'monospace'],
-          },
-          colors: {
-            bgSpace: '#030712',      // Cosmic dark background
-            neonGreen: '#00ffaa',    // Glowing green
-            neonOrange: '#ff7700',   // Embers orange
-            neonPurple: '#d946ef',   // Dream purple
-            whiteDark: '#111827',    // Navbar solid dark
-            textLight: '#9ca3af',
-          },
-          boxShadow: {
-            'neon-green': '0 0 20px rgba(0, 255, 170, 0.4), 0 0 40px rgba(0, 255, 170, 0.15)',
-            'neon-orange': '0 0 20px rgba(255, 119, 0, 0.4), 0 0 40px rgba(255, 119, 0, 0.15)',
-            'neon-purple': '0 0 20px rgba(217, 70, 239, 0.4), 0 0 40px rgba(217, 70, 239, 0.15)',
-          }
-        }
-      }
-    }
-  </script>
 
   <style type="text/css">
-    /* Custom animations and styling properties */
-    .perspective-1000 {
-      perspective: 1000px;
-    }
-    .transform-style-3d {
-      transform-style: preserve-3d;
-    }
-    .backface-hidden {
-      backface-visibility: hidden;
+    /* Global Styles */
+    :root {
+      --bg: #0a0e1f;
+      --text-warm: #f0ece4;
+      --text-muted: rgba(255, 255, 255, 0.45);
+      --divider-color: rgba(255, 255, 255, 0.25);
+      --dot-inactive: rgba(255, 255, 255, 0.35);
+      --font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
-    /* Cinematic Text Entrance */
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-        filter: blur(10px);
-      }
-      100% {
-        opacity: 1;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background-color: var(--bg);
+      color: var(--text-warm);
+      font-family: var(--font-family);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Minimal Sticky Navigation */
+    header.site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(10, 14, 31, 0.75);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    nav.main-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: #3b82f6;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .nav-links a.active-link {
+      color: #ffffff;
+      border-bottom: 2px solid #ffffff;
+      padding-bottom: 4px;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    /* Parallax Core */
+    .story-section {
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* parallax magic */
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Dark Overlay on every section */
+    .story-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.62);
+    }
+
+    /* Content always above overlay */
+    .story-content {
+      position: relative;
+      z-index: 1;
+      max-width: 620px;
+      padding: 6rem 2rem;
+      text-align: center;
+      color: var(--text-warm);
+    }
+
+    /* Elements inside content block */
+    .story-num {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .story-divider {
+      width: 32px;
+      height: 1px;
+      background-color: var(--divider-color);
+      margin: 1.5rem auto;
+    }
+
+    .story-title {
+      font-size: 2.25rem;
+      font-weight: 400;
+      color: var(--text-warm);
+      letter-spacing: -0.015em;
+      margin: 0;
+      line-height: 1.25;
+    }
+
+    .story-part {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .story-body {
+      font-size: 1.05rem;
+      line-height: 1.95;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .story-body p {
+      margin-bottom: 1.25rem;
+    }
+
+    .story-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Scroll Hint (Hero only) */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      z-index: 2;
+      transition: color 0.3s;
+    }
+
+    .scroll-hint:hover {
+      color: #ffffff;
+    }
+
+    .scroll-hint svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
-        filter: blur(0);
+      }
+      40% {
+        transform: translateY(-8px);
+      }
+      60% {
+        transform: translateY(-4px);
       }
     }
-    .animate-fade-in-up {
-      animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    
-    .animation-delay-200 {
-      animation-delay: 200ms;
-    }
-    .animation-delay-400 {
-      animation-delay: 400ms;
+
+    /* Fixed Dot Navigation */
+    .dot-nav {
+      position: fixed;
+      right: 2.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 99;
     }
 
-    /* Glow overlays */
-    .glow-ball {
-      filter: blur(130px);
-      mix-blend-mode: plus-lighter;
+    .dot-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
+    .dot-nav li {
+      position: relative;
+    }
+
+    .dot-btn {
       width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--dot-inactive);
+      border: 1px solid #ffffff;
+      cursor: pointer;
+      padding: 0;
+      display: block;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    ::-webkit-scrollbar-track {
-      background: #030712;
+
+    .dot-btn.active {
+      background-color: #ffffff;
+      transform: scale(1.4);
+      box-shadow: 0 0 8px #ffffff;
     }
-    ::-webkit-scrollbar-thumb {
-      background: #1f2937;
+
+    .dot-btn:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 4px;
+    }
+
+    /* Tooltips for dots on desktop hover */
+    .dot-tooltip {
+      position: absolute;
+      right: 1.75rem;
+      top: 50%;
+      transform: translateY(-50%) translateX(10px);
+      background: rgba(10, 14, 31, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.25rem 0.75rem;
       border-radius: 4px;
+      font-size: 0.7rem;
+      font-family: var(--font-family);
+      color: var(--text-warm);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s ease;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #374151;
+
+    .dot-nav li:hover .dot-tooltip {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    /* Simple Dark Footer */
+    footer.site-footer {
+      background-color: #05070f;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 3rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer.site-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer.site-footer a:hover {
+      color: #ffffff;
+    }
+
+    /* Mobile Fallbacks & Drawer */
+    @media (max-width: 768px) {
+      .story-section {
+        background-attachment: scroll; /* parallax breaks on mobile Safari */
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0a0e1f;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        gap: 1.25rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .dot-nav {
+        display: none; /* Hide dot nav on mobile for clean viewport */
+      }
+
+      .story-title {
+        font-size: 1.75rem;
+      }
+
+      .story-body {
+        font-size: 0.95rem;
+      }
     }
   </style>
 
@@ -113,466 +368,214 @@
   </script>
 </head>
 
-<body class="bg-bgSpace text-slate-100 font-sans min-h-screen overflow-x-hidden selection:bg-neonPurple selection:text-black">
+<body>
 
-  <!-- Interactive Background Canvas -->
-  <canvas id="starsCanvas" class="fixed inset-0 w-full h-full -z-20 pointer-events-none"></canvas>
-
-  <!-- Glowing Background Orbs -->
-  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-neonPurple/10 glow-ball -z-10 pointer-events-none"></div>
-  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-neonOrange/10 glow-ball -z-10 pointer-events-none"></div>
-
-  <!-- STICKY NAVIGATION -->
-  <header class="sticky top-0 z-50 w-full bg-whiteDark/80 border-b border-white/5 backdrop-blur-md transition-all duration-300">
-    <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-black tracking-tight text-white flex items-center gap-2 group">
-        <span class="text-neonOrange group-hover:rotate-12 transition-transform duration-300">$</span>
-        First<span class="text-neonGreen">1</span>online
-      </a>
+  <!-- STICKY SITE HEADER -->
+  <header class="site-header">
+    <nav class="main-nav">
+      <a href="index.html" class="logo">First<span>1</span>online</a>
       
-      <!-- Desktop Navigation Links -->
-      <div class="hidden md:flex items-center gap-8 font-mono text-sm font-semibold">
-        <a href="index.html" class="text-slate-300 hover:text-neonGreen transition-colors py-2">Home</a>
-        <a href="1-idea.html" class="text-slate-300 hover:text-neonGreen transition-colors py-2 flex items-center gap-1">
-          <i class="fas fa-lightbulb text-neonOrange text-xs"></i> Blueprint
-        </a>
-        <a href="storyteller.html" class="text-white border-b-2 border-neonPurple px-1 py-2">Storyteller</a>
-        
-        <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" class="px-5 py-2.5 bg-black hover:bg-black/80 text-white font-mono text-xs font-semibold rounded-full border border-white/10 hover:border-neonGreen/40 transition-all duration-300 shadow-sm">
-          Unlock Vault <i class="fas fa-arrow-right ml-1 text-[10px] text-neonGreen"></i>
-        </a>
-      </div>
-
-      <!-- Mobile Menu Toggle -->
-      <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none" aria-label="Toggle Menu">
-        <i class="fas fa-bars text-xl"></i>
+      <button id="menuBtn" class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
       </button>
-    </nav>
 
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobileDrawer" class="hidden md:hidden absolute top-full left-0 w-full bg-whiteDark border-b border-white/10 p-6 flex flex-col gap-4 font-mono text-sm shadow-xl">
-      <a href="index.html" class="text-slate-300 hover:text-neonGreen transition-colors py-2 border-b border-white/5">Home</a>
-      <a href="1-idea.html" class="text-slate-300 hover:text-neonGreen transition-colors py-2 border-b border-white/5 flex items-center gap-2">
-        <i class="fas fa-lightbulb text-neonOrange text-xs"></i> Blueprint
-      </a>
-      <a href="storyteller.html" class="text-neonPurple font-semibold py-2 border-b border-white/5">Storyteller</a>
-      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" class="w-full text-center py-3 bg-black hover:bg-black/80 text-white font-semibold rounded-xl border border-white/10 transition-colors">
-        Unlock Vault <i class="fas fa-arrow-right ml-1 text-neonGreen"></i>
-      </a>
-    </div>
+      <div id="navLinks" class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="1-idea.html"><i class="fas fa-lightbulb"></i> Blueprint</a>
+        <a href="storyteller.html" class="active-link">Storyteller</a>
+      </div>
+    </nav>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main>
-    <!-- HERO SECTION -->
-    <section class="relative min-h-[calc(100vh-73px)] flex flex-col justify-between items-center text-center px-6 py-12 md:py-20 overflow-hidden">
-      <!-- Starry Space Background Effect inside Hero -->
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-bgSpace -z-10"></div>
-      
-      <!-- Empty spacer to push content center -->
-      <div class="h-2"></div>
-
-      <!-- Hero Typography & CTAs -->
-      <div class="max-w-4xl z-10 space-y-8 my-auto">
-        <span class="opacity-0 translate-y-4 animate-fade-in-up inline-block px-4 py-1.5 rounded-full text-xs font-mono tracking-widest text-neonGreen border border-neonGreen/30 bg-neonGreen/5 uppercase">
-          ✦ The Dollar Chronicles ✦
-        </span>
-
-        <div class="space-y-4">
-          <h1 class="opacity-0 translate-y-4 animate-fade-in-up animation-delay-200 text-4xl sm:text-6xl md:text-8xl font-black tracking-tight leading-none text-white font-sans">
-            Every Empire Starts<br class="hidden sm:inline"> With <span class="bg-clip-text text-transparent bg-gradient-to-r from-neonOrange via-amber-400 to-neonGreen">One Dollar</span>
-          </h1>
-          <h2 class="opacity-0 translate-y-4 animate-fade-in-up animation-delay-200 text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wide font-mono text-neonPurple/90">
-            What's Your Origin Story?
-          </h2>
-        </div>
-
-        <p class="opacity-0 translate-y-4 animate-fade-in-up animation-delay-400 text-base sm:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
-          Real builders. Honest failures. The wild, chaotic, or dead-simple ways internet makers cleared the scariest hurdle: making their literal first $1 online.
-        </p>
-
-        <div class="opacity-0 translate-y-4 animate-fade-in-up animation-delay-400 flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-          <a href="#chronicles" class="w-full sm:w-auto px-8 py-4 bg-neonPurple text-black font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-neon-purple hover:scale-105 active:scale-95 transition-all duration-300 ease-out">
-            Explore Stories <i class="fas fa-chevron-down ml-2 animate-bounce"></i>
-          </a>
-          <button id="openFormBtn" class="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-extrabold text-sm uppercase tracking-wider rounded-xl backdrop-blur-md hover:scale-105 active:scale-95 transition-all duration-300">
-            Tell Your Tale <i class="fas fa-fire ml-2 text-neonOrange"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Animated Rotating Glowing 3D Coin -->
-      <div class="perspective-1000 w-32 h-32 sm:w-40 sm:h-40 z-20 my-8">
-        <div id="coin" class="w-full h-full rounded-full transform-style-3d shadow-[0_0_50px_rgba(255,119,0,0.4)] border-4 border-yellow-200 bg-gradient-to-tr from-amber-500 via-yellow-400 to-neonOrange flex items-center justify-center cursor-pointer select-none active:scale-95 transition-all duration-300">
-          <span class="text-6xl sm:text-7xl font-black text-black drop-shadow-md transform-style-3d select-none" style="transform: translateZ(10px);">$</span>
-        </div>
-      </div>
-
-      <!-- Scroll Prompt -->
-      <div class="z-10 flex flex-col items-center gap-2 cursor-pointer opacity-40 hover:opacity-100 transition-opacity duration-300" onclick="document.getElementById('chronicles').scrollIntoView({ behavior: 'smooth' })">
-        <span class="text-[10px] font-mono tracking-widest text-slate-500 uppercase">Scroll to descend</span>
-        <svg class="w-5 h-5 text-neonGreen animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
-      </div>
-    </section>
-
-    <!-- STORY CHRONICLES SECTION (Smooth Scroll Target) -->
-    <section id="chronicles" class="max-w-7xl mx-auto px-6 py-24 space-y-12 scroll-mt-20">
-      <div class="text-center max-w-3xl mx-auto space-y-4">
-        <h2 class="text-3xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-neonGreen to-emerald-400">
-          The Hall of First Dollars
-        </h2>
-        <p class="text-slate-400 font-light">
-          Pull up a chair. Below are the chronicles of builders who broke their zero barrier. Origin stories are loaded from the campfire circle.
-        </p>
-      </div>
-
-      <!-- Placeholder grid for future integration -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
-        <!-- Card 1 -->
-        <div class="bg-white/[0.02] border border-white/5 p-6 rounded-xl space-y-4 hover:border-neonGreen/30 transition-all duration-300">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-neonPurple/20 flex items-center justify-center font-bold text-neonPurple">ER</div>
-            <div>
-              <h4 class="font-bold text-white">Elena Ross</h4>
-              <span class="text-xs text-slate-500">🇨🇦 Canada • Info Product</span>
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-slate-200">"Selling PDF outlines at 3:00 AM"</h3>
-          <p class="text-slate-400 text-sm font-light">I wrote a study guide on a whim, tweeted it once, and woke up to a notification that someone paid me $1.</p>
-        </div>
-        <!-- Card 2 -->
-        <div class="bg-white/[0.02] border border-white/5 p-6 rounded-xl space-y-4 hover:border-neonOrange/30 transition-all duration-300">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-neonOrange/20 flex items-center justify-center font-bold text-neonOrange">MV</div>
-            <div>
-              <h4 class="font-bold text-white">Marcus Vance</h4>
-              <span class="text-xs text-slate-500">🇩🇪 Germany • SaaS</span>
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-slate-200">"The ghost button pivot"</h3>
-          <p class="text-slate-400 text-sm font-light">I launched a product with only a checkout button and no backend. Someone bought it, forcing me to build it in 48h.</p>
-        </div>
-        <!-- Card 3 -->
-        <div class="bg-white/[0.02] border border-white/5 p-6 rounded-xl space-y-4 hover:border-neonPurple/30 transition-all duration-300">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-neonPurple/20 flex items-center justify-center font-bold text-neonPurple">SK</div>
-            <div>
-              <h4 class="font-bold text-white">Sora Kim</h4>
-              <span class="text-xs text-slate-500">🇯🇵 Japan • Physical Art</span>
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-slate-200">"Hand-drawn profile memes"</h3>
-          <p class="text-slate-400 text-sm font-light">I offered to sketch custom profile memes on paper and scan them for Discord users for exactly $1 each.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- STORY SUBMISSION MODAL OVERLAY -->
-  <div id="formModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 transition-all duration-300">
-    <div class="bg-zinc-950 border border-white/10 p-6 md:p-8 rounded-2xl max-w-xl w-full shadow-2xl relative overflow-hidden my-auto max-h-[90vh] overflow-y-auto">
-      <div class="absolute -top-12 -right-12 w-32 h-32 bg-neonPurple/10 rounded-full blur-[50px] pointer-events-none"></div>
-      
-      <!-- Close Button -->
-      <button id="closeFormBtn" class="absolute top-4 right-4 text-slate-500 hover:text-white transition-colors p-2 text-lg">
-        ✕
-      </button>
-
-      <div class="space-y-4 mb-6">
-        <h3 class="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-neonGreen to-neonPurple">
-          Submit Your Story
-        </h3>
-        <p class="text-xs text-slate-400">
-          Tell us about the panic, the validation, and how you broke the zero barrier.
-        </p>
-      </div>
-
-      <form id="submitStoryForm" class="space-y-4">
-        <div>
-          <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">Your Name / Handle</label>
-          <input type="text" required placeholder="e.g. Gabe" class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen transition-all">
-        </div>
-        
-        <div>
-          <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">Twitter/X Link (Optional)</label>
-          <input type="url" placeholder="e.g. https://x.com/gabriel_raiseos" class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen transition-all">
-        </div>
-
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">Category</label>
-            <select class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen transition-all">
-              <option>SaaS Product</option>
-              <option>Info Product</option>
-              <option>Newsletter</option>
-              <option>Art / Physical</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">Insanity Level</label>
-            <select class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen transition-all">
-              <option>Grounded</option>
-              <option>Chaotic</option>
-              <option>Absolute Wizardry</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">One-Line Hook</label>
-          <input type="text" required placeholder="e.g. I coded a scraper with zero database and got paid $1." class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen transition-all">
-        </div>
-
-        <div>
-          <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">The Full Tale</label>
-          <textarea required rows="4" placeholder="How did you build it? Who bought it? How did it feel?" class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen transition-all resize-none"></textarea>
-        </div>
-
-        <button type="submit" class="w-full py-3 bg-neonGreen hover:bg-emerald-400 text-black font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all duration-300 shadow-neon-green">
-          Cast Story into the Fire 🔥
-        </button>
-      </form>
-
-      <!-- Success State -->
-      <div id="modalSuccess" class="hidden text-center py-10 space-y-4">
-        <span class="text-4xl">✨</span>
-        <h4 class="text-xl font-bold text-neonGreen">Story Stoked!</h4>
-        <p class="text-sm text-slate-400">Our curators are reading it by the campfire circle. You will see it live shortly.</p>
-        <button id="successCloseBtn" class="mt-4 px-6 py-2 bg-white/5 border border-white/10 rounded-lg text-xs font-mono hover:bg-white/10 text-white transition-colors">
-          Close
-        </button>
+  <!-- INTRO HERO (SECTION 0) -->
+  <section id="hero" class="story-section" style="background-color: var(--bg);">
+    <div class="story-content">
+      <span class="story-num">Chronicles</span>
+      <div class="story-divider"></div>
+      <h1 class="story-title" style="font-size: 3rem; margin-bottom: 1rem;">Stories</h1>
+      <p class="story-part" style="margin-bottom: 2rem;">Every empire starts with one dollar.</p>
+      <div class="story-body">
+        <p>A library of moments where everything changed. Turn the page, step in close, and read the origins of those who crossed the threshold.</p>
       </div>
     </div>
-  </div>
+    
+    <!-- Scroll indicator -->
+    <div class="scroll-hint" onclick="document.getElementById('story-1-p1').scrollIntoView({ behavior: 'smooth' })">
+      <span>Scroll to read</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+  </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-whiteDark border-t border-white/5 py-12 px-6 text-center text-sm text-slate-500">
-    <div class="max-w-7xl mx-auto space-y-4">
-      <p>© 2026 First$1online – A #buildinpublic experiment by <a href="https://x.com/gabriel_raiseos" class="hover:text-neonGreen transition-colors">@gabriel_raiseos</a></p>
-      <div class="flex justify-center items-center gap-4 text-xs">
-        <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
-        <span>•</span>
-        <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
-        <span class="opacity-10">|</span>
-        <a href="secret-box.html" title="The Signal" class="font-mono opacity-20 hover:opacity-100 text-white transition-opacity">π</a>
+  <!-- STORY I: THE KEEPER OF SHADOWS - PART I -->
+  <section id="story-1-p1" class="story-section" style="background-image: url('https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1400&q=80');">
+    <div class="story-content">
+      <span class="story-num">Story I</span>
+      <div class="story-divider"></div>
+      <h2 class="story-title">The Keeper of Shadows</h2>
+      <div class="story-divider"></div>
+      <span class="story-part">Part I · In the Shadows</span>
+      <div class="story-body">
+        <p>For months, he lived in the quiet twilight of the unfinished. In the glow of a single monitor, lines of code stretched into the dark like cold iron threads, weaving a machine that no one had asked for and no one could see. The internet was a vast, silent ocean, and his voice was nothing but a ripple lost in the gray swell of noise.</p>
+        <p>Every morning began with the ritual of checking empty dashboards—zero visitors, zero clicks, zero validation. The shadows of doubt grew long and heavy, whispering that the world was too crowded, that the barriers were too high, and that a single person in a quiet room could never build a bridge to the other side.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- STORY I: THE KEEPER OF SHADOWS - PART II -->
+  <section id="story-1-p2" class="story-section" style="background-image: url('https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1400&q=80');">
+    <div class="story-content">
+      <span class="story-num">Story I</span>
+      <div class="story-divider"></div>
+      <h2 class="story-title">The Keeper of Shadows</h2>
+      <div class="story-divider"></div>
+      <span class="story-part">Part II · The Law of Fire</span>
+      <div class="story-body">
+        <p>Then came the night of the decision. He realized that code was merely cold wood; it needed a spark to burn. He stripped away the elaborate features, the endless settings, and the complex payment tiers. He left only a single page, a simple description of his guide, and a button that read: Buy for $1. It was a raw, unshielded offering, exposed to the wild winds of the public square.</p>
+        <p>He posted the link and closed his eyes. The law of fire is simple: it does not care about your preparation, only your heat. At 3:14 AM, the silence broke. A faint chime from his phone. A stranger across the sea had sent a dollar. In that instant, the darkness was illuminated by a small, crackling ember.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY I: THE KEEPER OF SHADOWS - PART III -->
+  <section id="story-1-p3" class="story-section" style="background-image: url('https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1400&q=80');">
+    <div class="story-content">
+      <span class="story-num">Story I</span>
+      <div class="story-divider"></div>
+      <h2 class="story-title">The Keeper of Shadows</h2>
+      <div class="story-divider"></div>
+      <span class="story-part">Part III · Transmutation</span>
+      <div class="story-body">
+        <p>The dollar itself was trivial—a copper-clad disc, a digit on a ledger. But the transmutation was absolute. In that single transaction, a psychological line was crossed. He was no longer a spectator looking at the shop windows of the world; he was a merchant standing at the counter.</p>
+        <p>The barrier of zero had evaporated, exposing a truth that changes every builder forever: value is real, and the transaction is a form of trust. Once you know how to build a fire, you no longer fear the dark. The shadows do not disappear, but they retreat to the edges, leaving a warm circle of light where the next dollar can be made.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY II: COMING SOON -->
+  <section id="story-2" class="story-section" style="background-image: url('https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=1400&q=80');">
+    <div class="story-content">
+      <span class="story-num">Story II</span>
+      <div class="story-divider"></div>
+      <h2 class="story-title" style="margin-bottom: 1rem;">Coming Soon</h2>
+      <div class="story-divider"></div>
+      <div class="story-body">
+        <p style="font-style: normal; color: var(--text-muted); font-size: 1.1rem; letter-spacing: 0.05em; text-transform: uppercase;">
+          The next chronicle is burning.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIXED DOT NAVIGATION -->
+  <nav class="dot-nav" aria-label="Story navigation">
+    <ul>
+      <li>
+        <button class="dot-btn active" data-target="hero" aria-label="Intro" title="Intro"></button>
+        <span class="dot-tooltip">Intro</span>
+      </li>
+      <li>
+        <button class="dot-btn" data-target="story-1-p1" aria-label="Story I: In the Shadows" title="Story I: Part I"></button>
+        <span class="dot-tooltip">Story I · Part I</span>
+      </li>
+      <li>
+        <button class="dot-btn" data-target="story-1-p2" aria-label="Story I: The Law of Fire" title="Story I: Part II"></button>
+        <span class="dot-tooltip">Story I · Part II</span>
+      </li>
+      <li>
+        <button class="dot-btn" data-target="story-1-p3" aria-label="Story I: Transmutation" title="Story I: Part III"></button>
+        <span class="dot-tooltip">Story I · Part III</span>
+      </li>
+      <li>
+        <button class="dot-btn" data-target="story-2" aria-label="Story II: Coming Soon" title="Story II"></button>
+        <span class="dot-tooltip">Story II · Coming Soon</span>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- LITERARY DARK FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-content" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; align-items: center;">
+      <p>© 2026 · <a href="index.html">Back to home</a></p>
+      <p style="font-size: 0.7rem; opacity: 0.5; font-style: italic;">Made in public by @gabriel_raiseos</p>
     </div>
   </footer>
 
-  <!-- MODERN JS SCRIPTS FOR ANIMATIONS & INTERACTIONS -->
+  <!-- VANILLA JS FOR BEHAVIOR -->
   <script type="text/javascript">
-    // --- 1. Dynamic Particle Starfield Background ---
-    const canvas = document.getElementById('starsCanvas');
-    const ctx = canvas.getContext('2d');
+    // --- Mobile Menu Toggle ---
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
 
-    let particles = [];
-    const particleCount = 45;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    class StarParticle {
-      constructor() {
-        this.reset();
-        this.y = Math.random() * canvas.height; // Distribute initially across screen
-      }
-
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = canvas.height + 10;
-        this.size = Math.random() * 1.5 + 0.5;
-        this.speed = Math.random() * 0.4 + 0.1;
-        this.alpha = Math.random() * 0.5 + 0.2;
-        this.fadeDirection = Math.random() > 0.5 ? 0.005 : -0.005;
-      }
-
-      update() {
-        this.y -= this.speed;
-        
-        // Twinkling effect
-        this.alpha += this.fadeDirection;
-        if (this.alpha >= 0.8 || this.alpha <= 0.1) {
-          this.fadeDirection = -this.fadeDirection;
-        }
-
-        // If off screen, reset
-        if (this.y < -10) {
-          this.reset();
-        }
-      }
-
-      draw() {
-        ctx.save();
-        ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowBlur = this.size * 3;
-        ctx.shadowColor = '#00ffaa';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    // Initialize particles
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new StarParticle());
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    // --- 2. 3D Rotating Coin Load/Scroll Trigger ---
-    const coin = document.getElementById('coin');
-
-    // Entrance Load Animation
-    window.addEventListener('DOMContentLoaded', () => {
-      coin.style.transform = 'rotateY(0deg) rotateX(0deg) scale(0)';
-      coin.style.opacity = '0';
-      
-      setTimeout(() => {
-        coin.style.transition = 'transform 1.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.8s ease-out';
-        coin.style.opacity = '1';
-        coin.style.transform = 'rotateY(720deg) rotateX(360deg) scale(1)';
-        
-        // Remove transitions after entry so user scroll rotates are instant & smooth
-        setTimeout(() => {
-          coin.style.transition = 'transform 0.15s ease-out, scale 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
-        }, 1800);
-      }, 100);
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
     });
 
-    // Scroll Spin Trigger
-    window.addEventListener('scroll', () => {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (maxScroll <= 0) return;
-      
-      const scrollPercent = window.scrollY / maxScroll;
-      // 4 complete spins on Y, 1 complete spin on X
-      const rotationY = 720 + (scrollPercent * 1440);
-      const rotationX = 360 + (scrollPercent * 360);
-      coin.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg) scale(1)`;
-    });
-
-    // Hover tilt effect
-    coin.addEventListener('mousemove', (e) => {
-      const rect = coin.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width/2;
-      const y = e.clientY - rect.top - rect.height/2;
-      
-      // Tilt max 20deg based on pointer position relative to center
-      const tiltX = (y / (rect.height/2)) * -20;
-      const tiltY = (x / (rect.width/2)) * 20;
-      
-      // We overlay the scroll rotation with manual tilt values
-      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
-      const baseRotationY = 720 + (scrollPercent * 1440);
-      const baseRotationX = 360 + (scrollPercent * 360);
-      
-      coin.style.transform = `rotateY(${baseRotationY + tiltY}deg) rotateX(${baseRotationX + tiltX}deg) scale(1.05)`;
-    });
-
-    coin.addEventListener('mouseleave', () => {
-      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
-      const baseRotationY = 720 + (scrollPercent * 1440);
-      const baseRotationX = 360 + (scrollPercent * 360);
-      
-      coin.style.transform = `rotateY(${baseRotationY}deg) rotateX(${baseRotationX}deg) scale(1)`;
-    });
-
-
-    // --- 3. Form Modal Display Controls ---
-    const formModal = document.getElementById('formModal');
-    const openFormBtn = document.getElementById('openFormBtn');
-    const closeFormBtn = document.getElementById('closeFormBtn');
-    const submitForm = document.getElementById('submitStoryForm');
-    const modalSuccess = document.getElementById('modalSuccess');
-    const successCloseBtn = document.getElementById('successCloseBtn');
-
-    function toggleModal(open = true) {
-      if (open) {
-        formModal.classList.remove('hidden');
-        formModal.classList.add('flex');
-        document.body.classList.add('overflow-hidden'); // Lock background scroll
-      } else {
-        formModal.classList.add('hidden');
-        formModal.classList.remove('flex');
-        document.body.classList.remove('overflow-hidden'); // Re-enable scroll
-        
-        // Reset form state after close animation completes
-        setTimeout(() => {
-          submitForm.classList.remove('hidden');
-          modalSuccess.classList.add('hidden');
-          submitForm.reset();
-        }, 300);
-      }
-    }
-
-    openFormBtn.addEventListener('click', () => toggleModal(true));
-    closeFormBtn.addEventListener('click', () => toggleModal(false));
-    successCloseBtn.addEventListener('click', () => toggleModal(false));
-
-    // Handle escape key to close modal
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !formModal.classList.contains('hidden')) {
-        toggleModal(false);
-      }
-    });
-
-    // Close modal if clicked outside card
-    formModal.addEventListener('click', (e) => {
-      if (e.target === formModal) {
-        toggleModal(false);
-      }
-    });
-
-    // Form submission simulation
-    submitForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const submitBtn = submitForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      
-      // Loading State
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<i class="fas fa-spinner animate-spin mr-2"></i> Stoking campfire...`;
-      
-      setTimeout(() => {
-        // Success State transitions
-        submitForm.classList.add('hidden');
-        modalSuccess.classList.remove('hidden');
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-      }, 1500);
-    });
-
-    // --- 4. Mobile Menu Navigation controls ---
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('hidden');
-    });
-
-    // Close drawer when link clicked
-    mobileDrawer.querySelectorAll('a').forEach(link => {
+    // Close menu when links are clicked
+    navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        mobileDrawer.classList.add('hidden');
+        navLinks.classList.remove('show');
       });
+    });
+
+    // --- Dot Navigation Smooth Scroll & Keyboard Focus ---
+    const dotBtns = document.querySelectorAll('.dot-btn');
+    const sections = document.querySelectorAll('.story-section');
+
+    function scrollToSection(targetId) {
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    dotBtns.forEach(btn => {
+      // Click event
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        scrollToSection(targetId);
+      });
+
+      // Keyboard accessible (Enter / Space bar)
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const targetId = btn.getAttribute('data-target');
+          scrollToSection(targetId);
+        }
+      });
+    });
+
+    // --- IntersectionObserver for Dot Tracking ---
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5 // trigger when at least 50% in view
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          
+          dotBtns.forEach(btn => {
+            if (btn.getAttribute('data-target') === sectionId) {
+              btn.classList.add('active');
+              btn.setAttribute('aria-current', 'true');
+            } else {
+              btn.classList.remove('active');
+              btn.removeAttribute('aria-current');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
     });
   </script>
 </body>
+
 </html>

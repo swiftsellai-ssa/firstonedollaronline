@@ -1,6 +1,6 @@
 import os
 
-pages = ['index.html', '1-idea.html', '1-idea-unlocked.html', 'the-dollar-game.html', 'secret-box.html']
+pages = ['index.html', '1-idea.html', '1-idea-unlocked.html', 'the-dollar-game.html', 'secret-box.html', 'storyteller.html']
 
 speculation_script = '''
   <script type="speculationrules">

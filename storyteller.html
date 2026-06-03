@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The First Dollar Chronicles | Storyteller</title>
+  <meta name="description" content="Every Empire Starts With One Dollar. Explore the origin stories of creators, makers, and indie builders.">
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'Segoe UI', 'system-ui', 'sans-serif'],
+            mono: ['Space Grotesk', 'Courier New', 'monospace'],
+          },
+          colors: {
+            bgSpace: '#030712',      // Cosmic dark background
+            neonGreen: '#00ffaa',    // Glowing green
+            neonOrange: '#ff7700',   // Embers orange
+            neonPurple: '#d946ef',   // Dream purple
+            whiteDark: '#111827',    // Navbar solid dark
+            textLight: '#9ca3af',
+          },
+          boxShadow: {
+            'neon-green': '0 0 20px rgba(0, 255, 170, 0.4), 0 0 40px rgba(0, 255, 170, 0.15)',
+            'neon-orange': '0 0 20px rgba(255, 119, 0, 0.4), 0 0 40px rgba(255, 119, 0, 0.15)',
+            'neon-purple': '0 0 20px rgba(217, 70, 239, 0.4), 0 0 40px rgba(217, 70, 239, 0.15)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/css">
+    /* Custom animations and styling properties */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .transform-style-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+    }
+
+    /* Cinematic Text Entrance */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+    .animate-fade-in-up {
+      animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    
+    .animation-delay-200 {
+      animation-delay: 200ms;
+    }
+    .animation-delay-400 {
+      animation-delay: 400ms;
+    }
+
+    /* Glow overlays */
+    .glow-ball {
+      filter: blur(130px);
+      mix-blend-mode: plus-lighter;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030712;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f2937;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #374151;
+    }
+  </style>
+
+  <script type="speculationrules">
+  {
+    "prerender": [{
+      "where": {
+        "href_matches": "/*"
+      },
+      "eagerness": "moderate"
+    }]
+  }
+  </script>
+</head>
+
+<body class="bg-bgSpace text-slate-100 font-sans min-h-screen overflow-x-hidden selection:bg-neonPurple selection:text-black">
+
+  <!-- Interactive Background Canvas -->
+  <canvas id="starsCanvas" class="fixed inset-0 w-full h-full -z-20 pointer-events-none"></canvas>
+
+  <!-- Glowing Background Orbs -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-neonPurple/10 glow-ball -z-10 pointer-events-none"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-neonOrange/10 glow-ball -z-10 pointer-events-none"></div>
+
+  <!-- STICKY NAVIGATION -->
+  <header class="sticky top-0 z-50 w-full bg-whiteDark/80 border-b border-white/5 backdrop-blur-md transition-all duration-300">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-black tracking-tight text-white flex items-center gap-2 group">
+        <span class="text-neonOrange group-hover:rotate-12 transition-transform duration-300">$</span>
+        First<span class="text-neonGreen">1</span>online
+      </a>
+      
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 font-mono text-sm font-semibold">
+        <a href="index.html" class="text-slate-300 hover:text-neonGreen transition-colors py-2">Home</a>
+        <a href="1-idea.html" class="text-slate-300 hover:text-neonGreen transition-colors py-2 flex items-center gap-1">
+          <i class="fas fa-lightbulb text-neonOrange text-xs"></i> Blueprint
+        </a>
+        <a href="storyteller.html" class="text-white border-b-2 border-neonPurple px-1 py-2">Storyteller</a>
+        
+        <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" class="px-5 py-2.5 bg-black hover:bg-black/80 text-white font-mono text-xs font-semibold rounded-full border border-white/10 hover:border-neonGreen/40 transition-all duration-300 shadow-sm">
+          Unlock Vault <i class="fas fa-arrow-right ml-1 text-[10px] text-neonGreen"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button id="mobileMenuBtn" class="md:hidden text-slate-300 hover:text-white p-2 focus:outline-none" aria-label="Toggle Menu">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileDrawer" class="hidden md:hidden absolute top-full left-0 w-full bg-whiteDark border-b border-white/10 p-6 flex flex-col gap-4 font-mono text-sm shadow-xl">
+      <a href="index.html" class="text-slate-300 hover:text-neonGreen transition-colors py-2 border-b border-white/5">Home</a>
+      <a href="1-idea.html" class="text-slate-300 hover:text-neonGreen transition-colors py-2 border-b border-white/5 flex items-center gap-2">
+        <i class="fas fa-lightbulb text-neonOrange text-xs"></i> Blueprint
+      </a>
+      <a href="storyteller.html" class="text-neonPurple font-semibold py-2 border-b border-white/5">Storyteller</a>
+      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" class="w-full text-center py-3 bg-black hover:bg-black/80 text-white font-semibold rounded-xl border border-white/10 transition-colors">
+        Unlock Vault <i class="fas fa-arrow-right ml-1 text-neonGreen"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[calc(100vh-73px)] flex flex-col justify-between items-center text-center px-6 py-12 md:py-20 overflow-hidden">
+      <!-- Starry Space Background Effect inside Hero -->
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent to-bgSpace -z-10"></div>
+      
+      <!-- Empty spacer to push content center -->
+      <div class="h-2"></div>
+
+      <!-- Hero Typography & CTAs -->
+      <div class="max-w-4xl z-10 space-y-8 my-auto">
+        <span class="opacity-0 translate-y-4 animate-fade-in-up inline-block px-4 py-1.5 rounded-full text-xs font-mono tracking-widest text-neonGreen border border-neonGreen/30 bg-neonGreen/5 uppercase">
+          ✦ The Dollar Chronicles ✦
+        </span>
+
+        <div class="space-y-4">
+          <h1 class="opacity-0 translate-y-4 animate-fade-in-up animation-delay-200 text-4xl sm:text-6xl md:text-8xl font-black tracking-tight leading-none text-white font-sans">
+            Every Empire Starts<br class="hidden sm:inline"> With <span class="bg-clip-text text-transparent bg-gradient-to-r from-neonOrange via-amber-400 to-neonGreen">One Dollar</span>
+          </h1>
+          <h2 class="opacity-0 translate-y-4 animate-fade-in-up animation-delay-200 text-2xl sm:text-3xl md:text-4xl font-semibold tracking-wide font-mono text-neonPurple/90">
+            What's Your Origin Story?
+          </h2>
+        </div>
+
+        <p class="opacity-0 translate-y-4 animate-fade-in-up animation-delay-400 text-base sm:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed">
+          Real builders. Honest failures. The wild, chaotic, or dead-simple ways internet makers cleared the scariest hurdle: making their literal first $1 online.
+        </p>
+
+        <div class="opacity-0 translate-y-4 animate-fade-in-up animation-delay-400 flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+          <a href="#chronicles" class="w-full sm:w-auto px-8 py-4 bg-neonPurple text-black font-extrabold text-sm uppercase tracking-wider rounded-xl shadow-neon-purple hover:scale-105 active:scale-95 transition-all duration-300 ease-out">
+            Explore Stories <i class="fas fa-chevron-down ml-2 animate-bounce"></i>
+          </a>
+          <button id="openFormBtn" class="w-full sm:w-auto px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white font-extrabold text-sm uppercase tracking-wider rounded-xl backdrop-blur-md hover:scale-105 active:scale-95 transition-all duration-300">
+            Tell Your Tale <i class="fas fa-fire ml-2 text-neonOrange"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Animated Rotating Glowing 3D Coin -->
+      <div class="perspective-1000 w-32 h-32 sm:w-40 sm:h-40 z-20 my-8">
+        <div id="coin" class="w-full h-full rounded-full transform-style-3d shadow-[0_0_50px_rgba(255,119,0,0.4)] border-4 border-yellow-200 bg-gradient-to-tr from-amber-500 via-yellow-400 to-neonOrange flex items-center justify-center cursor-pointer select-none active:scale-95 transition-all duration-300">
+          <span class="text-6xl sm:text-7xl font-black text-black drop-shadow-md transform-style-3d select-none" style="transform: translateZ(10px);">$</span>
+        </div>
+      </div>
+
+      <!-- Scroll Prompt -->
+      <div class="z-10 flex flex-col items-center gap-2 cursor-pointer opacity-40 hover:opacity-100 transition-opacity duration-300" onclick="document.getElementById('chronicles').scrollIntoView({ behavior: 'smooth' })">
+        <span class="text-[10px] font-mono tracking-widest text-slate-500 uppercase">Scroll to descend</span>
+        <svg class="w-5 h-5 text-neonGreen animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- STORY CHRONICLES SECTION (Smooth Scroll Target) -->
+    <section id="chronicles" class="max-w-7xl mx-auto px-6 py-24 space-y-12 scroll-mt-20">
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <h2 class="text-3xl md:text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-neonGreen to-emerald-400">
+          The Hall of First Dollars
+        </h2>
+        <p class="text-slate-400 font-light">
+          Pull up a chair. Below are the chronicles of builders who broke their zero barrier. Origin stories are loaded from the campfire circle.
+        </p>
+      </div>
+
+      <!-- Placeholder grid for future integration -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
+        <!-- Card 1 -->
+        <div class="bg-white/[0.02] border border-white/5 p-6 rounded-xl space-y-4 hover:border-neonGreen/30 transition-all duration-300">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-neonPurple/20 flex items-center justify-center font-bold text-neonPurple">ER</div>
+            <div>
+              <h4 class="font-bold text-white">Elena Ross</h4>
+              <span class="text-xs text-slate-500">🇨🇦 Canada • Info Product</span>
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-slate-200">"Selling PDF outlines at 3:00 AM"</h3>
+          <p class="text-slate-400 text-sm font-light">I wrote a study guide on a whim, tweeted it once, and woke up to a notification that someone paid me $1.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white/[0.02] border border-white/5 p-6 rounded-xl space-y-4 hover:border-neonOrange/30 transition-all duration-300">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-neonOrange/20 flex items-center justify-center font-bold text-neonOrange">MV</div>
+            <div>
+              <h4 class="font-bold text-white">Marcus Vance</h4>
+              <span class="text-xs text-slate-500">🇩🇪 Germany • SaaS</span>
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-slate-200">"The ghost button pivot"</h3>
+          <p class="text-slate-400 text-sm font-light">I launched a product with only a checkout button and no backend. Someone bought it, forcing me to build it in 48h.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="bg-white/[0.02] border border-white/5 p-6 rounded-xl space-y-4 hover:border-neonPurple/30 transition-all duration-300">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-neonPurple/20 flex items-center justify-center font-bold text-neonPurple">SK</div>
+            <div>
+              <h4 class="font-bold text-white">Sora Kim</h4>
+              <span class="text-xs text-slate-500">🇯🇵 Japan • Physical Art</span>
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-slate-200">"Hand-drawn profile memes"</h3>
+          <p class="text-slate-400 text-sm font-light">I offered to sketch custom profile memes on paper and scan them for Discord users for exactly $1 each.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- STORY SUBMISSION MODAL OVERLAY -->
+  <div id="formModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 transition-all duration-300">
+    <div class="bg-zinc-950 border border-white/10 p-6 md:p-8 rounded-2xl max-w-xl w-full shadow-2xl relative overflow-hidden my-auto max-h-[90vh] overflow-y-auto">
+      <div class="absolute -top-12 -right-12 w-32 h-32 bg-neonPurple/10 rounded-full blur-[50px] pointer-events-none"></div>
+      
+      <!-- Close Button -->
+      <button id="closeFormBtn" class="absolute top-4 right-4 text-slate-500 hover:text-white transition-colors p-2 text-lg">
+        ✕
+      </button>
+
+      <div class="space-y-4 mb-6">
+        <h3 class="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-neonGreen to-neonPurple">
+          Submit Your Story
+        </h3>
+        <p class="text-xs text-slate-400">
+          Tell us about the panic, the validation, and how you broke the zero barrier.
+        </p>
+      </div>
+
+      <form id="submitStoryForm" class="space-y-4">
+        <div>
+          <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">Your Name / Handle</label>
+          <input type="text" required placeholder="e.g. Gabe" class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen transition-all">
+        </div>
+        
+        <div>
+          <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">Twitter/X Link (Optional)</label>
+          <input type="url" placeholder="e.g. https://x.com/gabriel_raiseos" class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen transition-all">
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">Category</label>
+            <select class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen transition-all">
+              <option>SaaS Product</option>
+              <option>Info Product</option>
+              <option>Newsletter</option>
+              <option>Art / Physical</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">Insanity Level</label>
+            <select class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen transition-all">
+              <option>Grounded</option>
+              <option>Chaotic</option>
+              <option>Absolute Wizardry</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">One-Line Hook</label>
+          <input type="text" required placeholder="e.g. I coded a scraper with zero database and got paid $1." class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen transition-all">
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5">The Full Tale</label>
+          <textarea required rows="4" placeholder="How did you build it? Who bought it? How did it feel?" class="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-neonGreen focus:ring-1 focus:ring-neonGreen transition-all resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-neonGreen hover:bg-emerald-400 text-black font-extrabold text-xs uppercase tracking-wider rounded-xl transition-all duration-300 shadow-neon-green">
+          Cast Story into the Fire 🔥
+        </button>
+      </form>
+
+      <!-- Success State -->
+      <div id="modalSuccess" class="hidden text-center py-10 space-y-4">
+        <span class="text-4xl">✨</span>
+        <h4 class="text-xl font-bold text-neonGreen">Story Stoked!</h4>
+        <p class="text-sm text-slate-400">Our curators are reading it by the campfire circle. You will see it live shortly.</p>
+        <button id="successCloseBtn" class="mt-4 px-6 py-2 bg-white/5 border border-white/10 rounded-lg text-xs font-mono hover:bg-white/10 text-white transition-colors">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-whiteDark border-t border-white/5 py-12 px-6 text-center text-sm text-slate-500">
+    <div class="max-w-7xl mx-auto space-y-4">
+      <p>© 2026 First$1online – A #buildinpublic experiment by <a href="https://x.com/gabriel_raiseos" class="hover:text-neonGreen transition-colors">@gabriel_raiseos</a></p>
+      <div class="flex justify-center items-center gap-4 text-xs">
+        <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+        <span>•</span>
+        <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+        <span class="opacity-10">|</span>
+        <a href="secret-box.html" title="The Signal" class="font-mono opacity-20 hover:opacity-100 text-white transition-opacity">π</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODERN JS SCRIPTS FOR ANIMATIONS & INTERACTIONS -->
+  <script type="text/javascript">
+    // --- 1. Dynamic Particle Starfield Background ---
+    const canvas = document.getElementById('starsCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    const particleCount = 45;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class StarParticle {
+      constructor() {
+        this.reset();
+        this.y = Math.random() * canvas.height; // Distribute initially across screen
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + 10;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.speed = Math.random() * 0.4 + 0.1;
+        this.alpha = Math.random() * 0.5 + 0.2;
+        this.fadeDirection = Math.random() > 0.5 ? 0.005 : -0.005;
+      }
+
+      update() {
+        this.y -= this.speed;
+        
+        // Twinkling effect
+        this.alpha += this.fadeDirection;
+        if (this.alpha >= 0.8 || this.alpha <= 0.1) {
+          this.fadeDirection = -this.fadeDirection;
+        }
+
+        // If off screen, reset
+        if (this.y < -10) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowBlur = this.size * 3;
+        ctx.shadowColor = '#00ffaa';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    // Initialize particles
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new StarParticle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // --- 2. 3D Rotating Coin Load/Scroll Trigger ---
+    const coin = document.getElementById('coin');
+
+    // Entrance Load Animation
+    window.addEventListener('DOMContentLoaded', () => {
+      coin.style.transform = 'rotateY(0deg) rotateX(0deg) scale(0)';
+      coin.style.opacity = '0';
+      
+      setTimeout(() => {
+        coin.style.transition = 'transform 1.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.8s ease-out';
+        coin.style.opacity = '1';
+        coin.style.transform = 'rotateY(720deg) rotateX(360deg) scale(1)';
+        
+        // Remove transitions after entry so user scroll rotates are instant & smooth
+        setTimeout(() => {
+          coin.style.transition = 'transform 0.15s ease-out, scale 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
+        }, 1800);
+      }, 100);
+    });
+
+    // Scroll Spin Trigger
+    window.addEventListener('scroll', () => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScroll <= 0) return;
+      
+      const scrollPercent = window.scrollY / maxScroll;
+      // 4 complete spins on Y, 1 complete spin on X
+      const rotationY = 720 + (scrollPercent * 1440);
+      const rotationX = 360 + (scrollPercent * 360);
+      coin.style.transform = `rotateY(${rotationY}deg) rotateX(${rotationX}deg) scale(1)`;
+    });
+
+    // Hover tilt effect
+    coin.addEventListener('mousemove', (e) => {
+      const rect = coin.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width/2;
+      const y = e.clientY - rect.top - rect.height/2;
+      
+      // Tilt max 20deg based on pointer position relative to center
+      const tiltX = (y / (rect.height/2)) * -20;
+      const tiltY = (x / (rect.width/2)) * 20;
+      
+      // We overlay the scroll rotation with manual tilt values
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
+      const baseRotationY = 720 + (scrollPercent * 1440);
+      const baseRotationX = 360 + (scrollPercent * 360);
+      
+      coin.style.transform = `rotateY(${baseRotationY + tiltY}deg) rotateX(${baseRotationX + tiltX}deg) scale(1.05)`;
+    });
+
+    coin.addEventListener('mouseleave', () => {
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1);
+      const baseRotationY = 720 + (scrollPercent * 1440);
+      const baseRotationX = 360 + (scrollPercent * 360);
+      
+      coin.style.transform = `rotateY(${baseRotationY}deg) rotateX(${baseRotationX}deg) scale(1)`;
+    });
+
+
+    // --- 3. Form Modal Display Controls ---
+    const formModal = document.getElementById('formModal');
+    const openFormBtn = document.getElementById('openFormBtn');
+    const closeFormBtn = document.getElementById('closeFormBtn');
+    const submitForm = document.getElementById('submitStoryForm');
+    const modalSuccess = document.getElementById('modalSuccess');
+    const successCloseBtn = document.getElementById('successCloseBtn');
+
+    function toggleModal(open = true) {
+      if (open) {
+        formModal.classList.remove('hidden');
+        formModal.classList.add('flex');
+        document.body.classList.add('overflow-hidden'); // Lock background scroll
+      } else {
+        formModal.classList.add('hidden');
+        formModal.classList.remove('flex');
+        document.body.classList.remove('overflow-hidden'); // Re-enable scroll
+        
+        // Reset form state after close animation completes
+        setTimeout(() => {
+          submitForm.classList.remove('hidden');
+          modalSuccess.classList.add('hidden');
+          submitForm.reset();
+        }, 300);
+      }
+    }
+
+    openFormBtn.addEventListener('click', () => toggleModal(true));
+    closeFormBtn.addEventListener('click', () => toggleModal(false));
+    successCloseBtn.addEventListener('click', () => toggleModal(false));
+
+    // Handle escape key to close modal
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !formModal.classList.contains('hidden')) {
+        toggleModal(false);
+      }
+    });
+
+    // Close modal if clicked outside card
+    formModal.addEventListener('click', (e) => {
+      if (e.target === formModal) {
+        toggleModal(false);
+      }
+    });
+
+    // Form submission simulation
+    submitForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const submitBtn = submitForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      
+      // Loading State
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fas fa-spinner animate-spin mr-2"></i> Stoking campfire...`;
+      
+      setTimeout(() => {
+        // Success State transitions
+        submitForm.classList.add('hidden');
+        modalSuccess.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }, 1500);
+    });
+
+    // --- 4. Mobile Menu Navigation controls ---
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileDrawer.classList.toggle('hidden');
+    });
+
+    // Close drawer when link clicked
+    mobileDrawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

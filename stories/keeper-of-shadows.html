@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Keeper of Shadows — Stories</title>
+  <meta name="description" content="A blacksmith dwells alone in a valley where fire is forbidden — until desire becomes stronger than fear.">
+
+  <!-- Google Fonts: Cinzel + Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Site favicon -->
+  <link rel="icon" href="../favicon.ico">
+
+  <style>
+    /* ─── CSS Variables ────────────────────────────────────── */
+    :root {
+      --font-display: 'Cinzel', Georgia, serif;
+      --font-body: 'Cormorant Garamond', Georgia, serif;
+      --color-bg: #0a0906;
+      --color-text: rgba(235, 225, 205, 0.92);
+      --color-text-muted: rgba(235, 225, 205, 0.38);
+      --color-amber: rgba(200, 160, 80, 0.7);
+      --color-amber-dim: rgba(200, 160, 80, 0.3);
+      --color-amber-bright: rgba(200, 160, 80, 0.95);
+      --color-overlay: rgba(10, 9, 6, 0.5);
+    }
+
+    /* ─── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── Progress Bar (fixed top) ─────────────────────────── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--color-amber-bright);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      /* width is driven by JS, no CSS transition needed on width */
+    }
+
+    #progress-bar.visible {
+      opacity: 1;
+    }
+
+    /* ─── Back Nav (fixed top-left) ────────────────────────── */
+    .back-nav {
+      position: fixed;
+      top: 1.5rem;
+      left: 2rem;
+      z-index: 999;
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      opacity: 0;
+      transition: opacity 0.6s ease, color 0.3s;
+    }
+
+    .back-nav.visible {
+      opacity: 1;
+    }
+
+    .back-nav:hover {
+      color: var(--color-amber);
+    }
+
+    /* ─── Hero / Title Section ─────────────────────────────── */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      background-color: var(--color-bg);
+      background-image: radial-gradient(ellipse at 50% 45%, rgba(200, 130, 40, 0.07) 0%, transparent 65%);
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      line-height: 1.15;
+      color: var(--color-text);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      color: var(--color-text-muted);
+      max-width: 480px;
+    }
+
+    /* Scroll cue — thin pulsing vertical line */
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .scroll-cue-label {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .scroll-cue-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--color-amber-dim), transparent);
+      animation: pulse-line 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-line {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1.1); }
+    }
+
+    /* ─── Story Sections (paragraph beats) ─────────────────── */
+    .story-section {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Video background layer */
+    .video-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      display: block;
+    }
+
+    .video-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: -1; /* behind the video element */
+    }
+
+    /* Gradient overlay — vignettes top+bottom */
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 9, 6, 0.55) 0%,
+        rgba(10, 9, 6, 0.15) 50%,
+        rgba(10, 9, 6, 0.55) 100%
+      );
+      pointer-events: none;
+    }
+
+    /* Story text content — sits above everything */
+    .story-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    /* Section numeral marker */
+    .section-marker {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-amber-dim);
+      margin-bottom: 2rem;
+    }
+
+    /* Story text — italic, literary */
+    .story-text {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(235, 225, 205, 0.88);
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    /* Entrance animation trigger — added by IntersectionObserver */
+    .story-section.visible .story-text {
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* ─── Fallback gradients per section ───────────────────── */
+    .fb-ks-01 { background: radial-gradient(ellipse at 30% 70%, #141008 0%, #070504 100%); }
+    .fb-ks-02 { background: radial-gradient(ellipse at 70% 30%, #12100a 0%, #060504 100%); }
+    .fb-ks-03 { background: radial-gradient(ellipse at 20% 60%, #111009 0%, #070504 100%); }
+    .fb-ks-04 { background: radial-gradient(ellipse at 60% 80%, #131109 0%, #070504 100%); }
+    .fb-ks-05 { background: radial-gradient(ellipse at 50% 50%, #221508 0%, #080603 100%); }
+    .fb-ks-06 { background: radial-gradient(ellipse at 45% 55%, #1e1408 0%, #080603 100%); }
+    .fb-ks-07 { background: radial-gradient(ellipse at 50% 40%, #2e1a06 0%, #0b0603 100%); }
+    .fb-ks-08 { background: radial-gradient(ellipse at 60% 50%, #301e08 0%, #0c0703 100%); }
+    .fb-ks-09 { background: radial-gradient(ellipse at 55% 45%, #32200a 0%, #0c0703 100%); }
+    .fb-ks-10 { background: radial-gradient(ellipse at 50% 50%, #35220b 0%, #0d0804 100%); }
+
+    /* ─── Chapter Sections ─────────────────────────────────── */
+    .chapter-section {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .chapter-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+
+    /* Decorated chapter heading — thin lines left + right */
+    .chapter-heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .chapter-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--color-amber-dim);
+      max-width: 80px;
+    }
+
+    .chapter-name {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      white-space: nowrap;
+    }
+
+    /* Chapter inscription / quote */
+    .chapter-inscription {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(235, 225, 205, 0.75);
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .chapter-section.visible .chapter-inscription {
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    /* ─── Epilogue Section ─────────────────────────────────── */
+    .epilogue-section {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem;
+      background-color: var(--color-bg);
+      position: relative;
+    }
+
+    .epilogue-content {
+      max-width: 560px;
+      text-align: center;
+    }
+
+    .epilogue-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--color-amber-dim);
+      margin: 2.5rem auto;
+    }
+
+    .epilogue-text {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(235, 225, 205, 0.72);
+    }
+
+    .epilogue-marker {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    /* ─── End Navigation ───────────────────────────────────── */
+    .end-nav {
+      padding: 3rem 2rem 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(235, 225, 205, 0.06);
+    }
+
+    .end-nav-link {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      transition: color 0.3s;
+    }
+
+    .end-nav-link:hover {
+      color: var(--color-amber);
+    }
+
+    .end-nav-link.disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* ─── Responsive ───────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .back-nav {
+        left: 1.25rem;
+        top: 1.25rem;
+      }
+
+      .story-content,
+      .chapter-content {
+        padding: 4rem 1.5rem;
+      }
+
+      .chapter-rule {
+        max-width: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── PROGRESS BAR ──────────────────────────────────────── -->
+  <div id="progress-bar"></div>
+
+  <!-- ─── BACK NAV ──────────────────────────────────────────── -->
+  <a href="../storyteller.html" class="back-nav" id="back-nav">← All Stories</a>
+
+  <!-- ─── HERO / TITLE ──────────────────────────────────────── -->
+  <section class="hero-section">
+    <p class="hero-eyebrow">Story 001</p>
+    <h1 class="hero-title">The Keeper<br>of Shadows</h1>
+    <p class="hero-subtitle">A tale of fire, shadow, and becoming</p>
+    <div class="scroll-cue" aria-hidden="true">
+      <span class="scroll-cue-label">Begin</span>
+      <div class="scroll-cue-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── SECTION I ─────────────────────────────────────────── -->
+  <section class="story-section" id="s-01">
+    <div class="video-bg">
+      <video src="../videos/ks-01.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ks-01"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">I</span>
+      <p class="story-text">In a deep valley surrounded by mountains, where the sun set early and rose late, the shadows ruled. They crept along stone walls before the light could warm them, pooled in the hollows of the earth, and stretched long fingers into every corner by midday. The people of the valley had learned to live within them — had, over generations, made peace with the dark.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION II ────────────────────────────────────────── -->
+  <section class="story-section" id="s-02">
+    <div class="video-bg">
+      <video src="../videos/ks-02.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ks-02"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">II</span>
+      <p class="story-text">The blacksmith was a lonely man. He lived at the edge of the valley, where the shadows fell deepest and the cold stayed longest. He had learned his craft from his father, and his father from his, and none of them had ever questioned why they worked only in cold metal, shaping it with effort and brute force rather than heat. They had tools, and tools were enough. No one would understand him anyway.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION III ───────────────────────────────────────── -->
+  <section class="story-section" id="s-03">
+    <div class="video-bg">
+      <video src="../videos/ks-03.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ks-03"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">III</span>
+      <p class="story-text">He wanted to forge something great. Not just useful — beautiful. He could see it clearly when he closed his eyes at night: a blade that held light, a gate whose hinges moved like water, a bell whose voice would carry to the far mountain and return changed. But when he opened his eyes, the cavern was always the same — cold, still, and hidden in the semi-darkness.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION IV ────────────────────────────────────────── -->
+  <section class="story-section" id="s-04">
+    <div class="video-bg">
+      <video src="../videos/ks-04.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ks-04"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">IV</span>
+      <p class="story-text">Frustration strangled him. Without heat, the metal resisted everything. It would not flow, would not yield, would not sing. He hammered until his arms gave out, bent and twisted and forced — and still could not complete any of his works. The pieces he made were correct but lifeless, the way a sentence can be grammatically right and emotionally empty. He was beginning to think the vision itself was wrong.</p>
+    </div>
+  </section>
+
+  <!-- ─── CHAPTER: THE LAW OF FIRE ──────────────────────────── -->
+  <section class="chapter-section fb-ks-05" id="ch-fire">
+    <div class="video-overlay" style="background: linear-gradient(to bottom, rgba(10,9,6,0.7), rgba(10,9,6,0.3), rgba(10,9,6,0.7));"></div>
+    <div class="chapter-content">
+      <div class="chapter-heading">
+        <div class="chapter-rule"></div>
+        <span class="chapter-name">The Law of Fire</span>
+        <div class="chapter-rule"></div>
+      </div>
+      <p class="chapter-inscription">Some truths can only be learned<br>in the presence of flame.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION V ─────────────────────────────────────────── -->
+  <section class="story-section" id="s-05">
+    <div class="video-bg">
+      <video src="../videos/ks-05.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ks-05"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">V</span>
+      <p class="story-text">The blacksmith understood at once. Metal in the cold was memory without possibility — it held the shape of what it had been and refused the shape of what it could become. Heat was not destruction. Heat was permission. It was the one thing that told iron: you are not finished yet. You may still move. You may still take another form. Heat did not erase the metal's nature — it freed it from its rigid form.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION VI ────────────────────────────────────────── -->
+  <section class="story-section" id="s-06">
+    <div class="video-bg">
+      <video src="../videos/ks-06.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ks-06"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">VI</span>
+      <p class="story-text">But the desire to become was greater than his fear. He had spent a lifetime shaping things that were merely functional — things that survived but never soared. And somewhere inside the dull ache of that incompleteness, a fire of a different kind had been burning all along: the fire of wanting to make something true. That fire, he realized, had never gone out. It had only been waiting for him to stop pretending he didn't feel it.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION VII ───────────────────────────────────────── -->
+  <section class="story-section" id="s-07">
+    <div class="video-bg">
+      <video src="../videos/ks-07.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ks-07"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">VII</span>
+      <p class="story-text">He gathered dry wood from the forest floor — birch and pine, light and resinous — and built the first fire the cavern had ever held. The flame took slowly, catching at the edges of the kindling before climbing. Then the orange light spread across the stone walls and the blacksmith saw something he had never seen in all his years in that place: the cavern was full of faces. Ancient markings, carved by hands long gone, illuminating the walls.</p>
+    </div>
+  </section>
+
+  <!-- ─── CHAPTER: TRANSMUTATION ────────────────────────────── -->
+  <section class="chapter-section fb-ks-08" id="ch-transmutation">
+    <div class="video-overlay" style="background: linear-gradient(to bottom, rgba(10,9,6,0.65), rgba(10,9,6,0.25), rgba(10,9,6,0.65));"></div>
+    <div class="chapter-content">
+      <div class="chapter-heading">
+        <div class="chapter-rule"></div>
+        <span class="chapter-name">Transmutation</span>
+        <div class="chapter-rule"></div>
+      </div>
+      <p class="chapter-inscription">What the fire touches<br>it does not destroy.<br>It reveals.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION VIII ──────────────────────────────────────── -->
+  <section class="story-section" id="s-08">
+    <div class="video-bg">
+      <video src="../videos/ks-08.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ks-08"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">VIII</span>
+      <p class="story-text">As the fire lit the cavern and the old markings emerged from the dark, the blacksmith felt something shift inside him. The marks were not warnings. They were instructions — the recorded knowledge of every smith who had worked in this valley before him, every person who had wrestled with cold metal and lost, and come back, and learned. They were his inheritance. They were his foundation.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION IX ────────────────────────────────────────── -->
+  <section class="story-section" id="s-09">
+    <div class="video-bg">
+      <video src="../videos/ks-09.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ks-09"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">IX</span>
+      <p class="story-text">He took the largest piece of iron he owned and placed it in the fire. He watched as it changed — first dark, then red, then the deep orange of a setting sun, then a yellow so bright it hurt to look at directly. He drew it out and struck it once, and the metal moved. It yielded. The sound it made was not the dull thud of resistance he had grown used to — it rang, clear and resonant, like a song.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION X ─────────────────────────────────────────── -->
+  <section class="story-section" id="s-10">
+    <div class="video-bg">
+      <video src="../videos/ks-10.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ks-10"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">X</span>
+      <p class="story-text">The blacksmith was never the same again. Not because fire had given him power, but because it had given him language. He could finally say in metal what he had only felt before. The shadows of the valley did not disappear — they were still there, long and cold, falling across his doorway each morning. But now when he looked at them, he saw contrast, not prison. He saw the necessary dark that made the light legible, and he was grateful for the beauty of what lay before him.</p>
+    </div>
+  </section>
+
+  <!-- ─── EPILOGUE ──────────────────────────────────────────── -->
+  <section class="epilogue-section" id="epilogue">
+    <div class="epilogue-content">
+      <span class="epilogue-marker">Epilogue</span>
+      <div class="epilogue-rule"></div>
+      <p class="epilogue-text">Every period spent in the shadow is preparation. The cold forges patience; the dark trains the eye to find light. What looks like stagnation from the outside is often the long, invisible work of becoming ready — ready to receive the fire when it finally comes, and to know what to do with it. The shadow is not the enemy of the flame. The shadow is where the flame is born.</p>
+      <div class="epilogue-rule"></div>
+    </div>
+  </section>
+
+  <!-- ─── END NAVIGATION ────────────────────────────────────── -->
+  <nav class="end-nav">
+    <a href="../storyteller.html" class="end-nav-link">← Back to all stories</a>
+    <a href="#" class="end-nav-link disabled" aria-disabled="true">Next story →</a>
+  </nav>
+
+  <!-- ─── VANILLA JS ────────────────────────────────────────── -->
+  <script>
+    // ── 1. Fade in fixed UI after 1 second ──────────────────
+    setTimeout(() => {
+      document.getElementById('progress-bar').classList.add('visible');
+      document.getElementById('back-nav').classList.add('visible');
+    }, 1000);
+
+    // ── 2. Scroll-driven progress bar ───────────────────────
+    const progressBar = document.getElementById('progress-bar');
+
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    // ── 3. IntersectionObserver — section entrance animation ─
+    const storyObserverOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.35
+    };
+
+    const storyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Stop observing once visible — animation only plays once
+          storyObserver.unobserve(entry.target);
+        }
+      });
+    }, storyObserverOptions);
+
+    // Observe all story sections and chapter sections
+    document.querySelectorAll('.story-section, .chapter-section').forEach(section => {
+      storyObserver.observe(section);
+    });
+
+    // ── 4. Video error handling — hide broken video elements ─
+    document.querySelectorAll('.video-bg video').forEach(video => {
+      video.addEventListener('error', () => {
+        video.style.display = 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>

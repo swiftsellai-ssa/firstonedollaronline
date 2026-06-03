@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stories — firstonedollaronline.com</title>
+  <meta name="description" content="Short stories about shadow, fire, and becoming. A literary collection by firstonedollaronline.com.">
+
+  <!-- Google Fonts: Cinzel + Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Site favicon -->
+  <link rel="icon" href="/favicon.ico">
+
+  <style>
+    /* ─── CSS Variables ────────────────────────────────────── */
+    :root {
+      --font-display: 'Cinzel', Georgia, serif;
+      --font-body: 'Cormorant Garamond', Georgia, serif;
+      --color-bg: #0a0906;
+      --color-text: rgba(235, 225, 205, 0.92);
+      --color-text-muted: rgba(235, 225, 205, 0.38);
+      --color-amber: rgba(200, 160, 80, 0.7);
+      --color-amber-dim: rgba(200, 160, 80, 0.3);
+      --color-amber-bright: rgba(200, 160, 80, 0.95);
+    }
+
+    /* ─── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── Header ───────────────────────────────────────────── */
+    .site-header {
+      padding: 2.25rem 3rem 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .site-name {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      transition: color 0.3s;
+    }
+
+    .site-name:hover {
+      color: var(--color-amber);
+    }
+
+    /* ─── Page Title Block ─────────────────────────────────── */
+    .page-title-block {
+      text-align: center;
+      padding: 6rem 2rem 5rem;
+    }
+
+    .page-title-block h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text);
+      margin-bottom: 1.5rem;
+    }
+
+    .page-title-block .tagline {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── Amber Divider ────────────────────────────────────── */
+    .amber-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--color-amber-dim);
+      margin: 2rem auto;
+    }
+
+    /* ─── Story Grid ───────────────────────────────────────── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 3rem 6rem;
+    }
+
+    /* ─── Story Card ───────────────────────────────────────── */
+    .story-card {
+      display: block;
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(235, 225, 205, 0.05);
+      border-bottom: 1px solid var(--color-amber-dim);
+      background: rgba(235, 225, 205, 0.015);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.35s ease,
+                  background 0.35s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .story-card::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--color-amber-bright);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-4px);
+      background: rgba(235, 225, 205, 0.03);
+      border-color: rgba(235, 225, 205, 0.08);
+    }
+
+    .story-card:hover::after {
+      opacity: 1;
+    }
+
+    .card-number {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--color-text);
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .card-teaser {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--color-text-muted);
+      line-height: 1.65;
+    }
+
+    /* ─── Coming Soon Card ─────────────────────────────────── */
+    .story-card.coming-soon {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .coming-soon-label {
+      display: inline-block;
+      margin-top: 1.25rem;
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-amber);
+      border: 1px solid var(--color-amber-dim);
+      padding: 0.3em 0.8em;
+    }
+
+    /* ─── Footer ───────────────────────────────────────────── */
+    .site-footer {
+      border-top: 1px solid rgba(235, 225, 205, 0.07);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .site-footer p {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .footer-home {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      transition: color 0.3s;
+    }
+
+    .footer-home:hover {
+      color: var(--color-amber);
+    }
+
+    /* ─── Responsive ───────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .site-header {
+        padding: 1.5rem 1.5rem 0;
+      }
+
+      .page-title-block {
+        padding: 4rem 1.5rem 3.5rem;
+      }
+
+      .story-grid {
+        padding: 0 1.5rem 4rem;
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer {
+        padding: 2rem 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── HEADER ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <a href="index.html" class="site-name">firstonedollaronline.com</a>
+  </header>
+
+  <!-- ─── PAGE TITLE ─────────────────────────────────────── -->
+  <section class="page-title-block">
+    <h1>Stories</h1>
+    <div class="amber-rule"></div>
+    <p class="tagline">Short stories about shadow, fire, and becoming.</p>
+  </section>
+
+  <!-- ─── STORY GRID ─────────────────────────────────────── -->
+  <main>
+    <div class="story-grid">
+
+      <!-- Card 001: The Keeper of Shadows -->
+      <a href="stories/keeper-of-shadows.html" class="story-card">
+        <span class="card-number">001</span>
+        <h2 class="card-title">The Keeper of Shadows</h2>
+        <p class="card-teaser">A blacksmith dwells alone in a valley where fire is forbidden — until desire becomes stronger than fear.</p>
+      </a>
+
+      <!-- Card 002: Placeholder -->
+      <div class="story-card coming-soon">
+        <span class="card-number">002</span>
+        <h2 class="card-title">The Second Fire</h2>
+        <p class="card-teaser">The chronicle that follows the first ember into the open world.</p>
+        <span class="coming-soon-label">Coming soon</span>
+      </div>
+
+      <!-- Card 003: Placeholder -->
+      <div class="story-card coming-soon">
+        <span class="card-number">003</span>
+        <h2 class="card-title">The Weight of Salt</h2>
+        <p class="card-teaser">What the sea holds and what it gives back when you're ready to receive it.</p>
+        <span class="coming-soon-label">Coming soon</span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <p>© firstonedollaronline.com</p>
+    <a href="index.html" class="footer-home">← Back to home</a>
+  </footer>
+
+</body>
+</html>

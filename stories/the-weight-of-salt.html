@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Weight of Salt — Stories</title>
+  <meta name="description" content="A craftsman drowning in his own unfinished genius walks to the sea — and finds the one thing no workshop could teach him.">
+
+  <!-- Google Fonts: Cinzel + Cormorant Garamond -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Site favicon -->
+  <link rel="icon" href="../favicon.ico">
+
+  <style>
+    /* ─── CSS Variables ────────────────────────────────────── */
+    :root {
+      --font-display: 'Cinzel', Georgia, serif;
+      --font-body: 'Cormorant Garamond', Georgia, serif;
+      --color-bg: #050810;
+      --color-text: rgba(220, 230, 240, 0.90);
+      --color-text-muted: rgba(200, 215, 230, 0.38);
+      --color-accent: rgba(100, 160, 210, 0.65);
+      --color-accent-dim: rgba(100, 160, 210, 0.25);
+      --color-accent-bright: rgba(130, 185, 230, 0.90);
+      --color-overlay: rgba(5, 8, 16, 0.55);
+    }
+
+    /* ─── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ─── Progress Bar (fixed top) ─────────────────────────── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--color-accent-bright);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    #progress-bar.visible {
+      opacity: 1;
+    }
+
+    /* ─── Back Nav (fixed top-left) ────────────────────────── */
+    .back-nav {
+      position: fixed;
+      top: 1.5rem;
+      left: 2rem;
+      z-index: 999;
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      opacity: 0;
+      transition: opacity 0.6s ease, color 0.3s;
+    }
+
+    .back-nav.visible {
+      opacity: 1;
+    }
+
+    .back-nav:hover {
+      color: var(--color-accent-bright);
+    }
+
+    /* ─── Hero / Title Section ─────────────────────────────── */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      background-color: var(--color-bg);
+      /* Ocean-depth radial glow — cold blue at center */
+      background-image: radial-gradient(ellipse at 50% 45%, rgba(60, 110, 180, 0.09) 0%, transparent 65%);
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      line-height: 1.15;
+      color: var(--color-text);
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      color: var(--color-text-muted);
+      max-width: 480px;
+    }
+
+    /* Scroll cue — pulsing vertical line */
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .scroll-cue-label {
+      font-family: var(--font-display);
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    .scroll-cue-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--color-accent-dim), transparent);
+      animation: pulse-line 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-line {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1.1); }
+    }
+
+    /* ─── Story Sections ────────────────────────────────────── */
+    .story-section {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .video-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      display: block;
+    }
+
+    .video-fallback {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 8, 16, 0.60) 0%,
+        rgba(5, 8, 16, 0.18) 50%,
+        rgba(5, 8, 16, 0.60) 100%
+      );
+      pointer-events: none;
+    }
+
+    .story-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .section-marker {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent-dim);
+      margin-bottom: 2rem;
+    }
+
+    .story-text {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(215, 228, 242, 0.88);
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    /* Dialogue styling — slightly differentiated */
+    .story-text .dialogue {
+      font-style: normal;
+      color: rgba(215, 228, 242, 0.72);
+      display: block;
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--color-accent-dim);
+      text-align: left;
+    }
+
+    /* Entrance animation — triggered by IntersectionObserver */
+    .story-section.visible .story-text {
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* ─── Fallback gradients — ocean tones ─────────────────── */
+    /* Cold, deep — early sections before the pier */
+    .fb-ws-01 { background: radial-gradient(ellipse at 40% 60%, #060c18 0%, #03060b 100%); }
+    .fb-ws-02 { background: radial-gradient(ellipse at 65% 35%, #07101e 0%, #030608 100%); }
+    .fb-ws-03 { background: radial-gradient(ellipse at 25% 70%, #060b17 0%, #030609 100%); }
+    /* Walking to the pier — moonlit path */
+    .fb-ws-04 { background: radial-gradient(ellipse at 50% 25%, #08111e 0%, #030608 100%); }
+    /* Sitting on the pier — open ocean at night */
+    .fb-ws-05 { background: radial-gradient(ellipse at 30% 55%, #071018 0%, #040709 100%); }
+    /* Old fisherman speaks — slightly warmer, lantern glow */
+    .fb-ws-06 { background: radial-gradient(ellipse at 55% 60%, #0c1826 0%, #05080f 100%); }
+    .fb-ws-07 { background: radial-gradient(ellipse at 48% 52%, #0e1c2e 0%, #060912 100%); }
+    /* "As above, so below" — deep wisdom, stars reflected in water */
+    .fb-ws-08 { background: radial-gradient(ellipse at 50% 42%, #101e30 0%, #060912 100%); }
+    /* Understanding — warmer, the tide turning */
+    .fb-ws-09 { background: radial-gradient(ellipse at 58% 48%, #0f1c2a 0%, #06090f 100%); }
+    /* The decision — calm, returned to self */
+    .fb-ws-10 { background: radial-gradient(ellipse at 50% 50%, #101e28 0%, #06090e 100%); }
+
+    /* ─── Chapter Sections ─────────────────────────────────── */
+    .chapter-section {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .chapter-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+
+    .chapter-heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .chapter-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--color-accent-dim);
+      max-width: 80px;
+    }
+
+    .chapter-name {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 3vw, 1.35rem);
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      white-space: nowrap;
+    }
+
+    .chapter-inscription {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: clamp(1.3rem, 3vw, 1.75rem);
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(210, 225, 240, 0.75);
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .chapter-section.visible .chapter-inscription {
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    /* ─── Epilogue Section ─────────────────────────────────── */
+    .epilogue-section {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem;
+      background-color: var(--color-bg);
+      background-image: radial-gradient(ellipse at 50% 60%, rgba(60, 110, 180, 0.05) 0%, transparent 70%);
+      position: relative;
+    }
+
+    .epilogue-content {
+      max-width: 560px;
+      text-align: center;
+    }
+
+    .epilogue-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--color-accent-dim);
+      margin: 2.5rem auto;
+    }
+
+    .epilogue-text {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-weight: 300;
+      line-height: 1.9;
+      color: rgba(210, 225, 240, 0.70);
+    }
+
+    .epilogue-marker {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+
+    /* ─── End Navigation ────────────────────────────────────── */
+    .end-nav {
+      padding: 3rem 2rem 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(200, 215, 230, 0.06);
+    }
+
+    .end-nav-link {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      transition: color 0.3s;
+    }
+
+    .end-nav-link:hover {
+      color: var(--color-accent-bright);
+    }
+
+    .end-nav-link.disabled {
+      opacity: 0.22;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* ─── Responsive ────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .back-nav {
+        left: 1.25rem;
+        top: 1.25rem;
+      }
+
+      .story-content,
+      .chapter-content {
+        padding: 4rem 1.5rem;
+      }
+
+      .chapter-rule {
+        max-width: 40px;
+      }
+
+      .story-text .dialogue {
+        padding-left: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ─── PROGRESS BAR ──────────────────────────────────────── -->
+  <div id="progress-bar"></div>
+
+  <!-- ─── BACK NAV ──────────────────────────────────────────── -->
+  <a href="../storyteller.html" class="back-nav" id="back-nav">← All Stories</a>
+
+  <!-- ─── HERO / TITLE ──────────────────────────────────────── -->
+  <section class="hero-section">
+    <p class="hero-eyebrow">Story 002</p>
+    <h1 class="hero-title">The Weight<br>of Salt</h1>
+    <p class="hero-subtitle">A craftsman, a pier, and the wisdom the ocean keeps</p>
+    <div class="scroll-cue" aria-hidden="true">
+      <span class="scroll-cue-label">Begin</span>
+      <div class="scroll-cue-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── SECTION I — The craftsman and his workshop ──────────── -->
+  <section class="story-section" id="s-01">
+    <div class="video-bg">
+      <video src="../videos/ws-01.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ws-01"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">I</span>
+      <p class="story-text">There was once a craftsman who lived on the edge of a western ocean, somewhere in the southern hemisphere, where the wind always brought the smell of salt and the promise of unexplored lands. He was no ordinary carpenter or blacksmith. He was a systems architect. His workshop was a sanctuary of glass and wood, filled with sketches, prototypes begun and abandoned, intricate mechanisms, and tools he had invented himself to bring a little order to the world.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION II — The perfect machine ────────────────────── -->
+  <section class="story-section" id="s-02">
+    <div class="video-bg">
+      <video src="../videos/ws-02.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ws-02"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">II</span>
+      <p class="story-text">He wanted to build a perfect machine — something that would take all the weight and chaos of everyday life and transform it into absolute simplicity. But his mind was like a motor running at full speed, never stopping. He would start a gear, realize it wasn't made of the right material, set it aside, and start a pendulum. He moved from one idea to another, from one state to another. His workshop had become a labyrinth of his own ambitions.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION III — Suffocating in unfinished genius ─────── -->
+  <section class="story-section" id="s-03">
+    <div class="video-bg">
+      <video src="../videos/ws-03.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ws-03"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">III</span>
+      <p class="story-text">Sometimes he looked around at the dozens of projects he had started and felt like he was suffocating in his own unfinished genius. He felt trapped in a controlled chaos of his own making. One late fall evening, after a day of pushing himself to the point of exhaustion, he put down his tools. His hands were shaking with fatigue and his mind was a thick fog. He couldn't add a single screw.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION IV — Walking to the pier ────────────────────── -->
+  <section class="story-section" id="s-04">
+    <div class="video-bg">
+      <video src="../videos/ws-04.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ws-04"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">IV</span>
+      <p class="story-text">He left the workshop and walked down to the beach, heading for the old wooden pier that jutted out into the sea. He took only an old fishing rod with him. He didn't necessarily want to catch anything. He just wanted an excuse to sit still. He sat on the edge of the pier, cast his line into the dark water, and listened.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION V — The ocean's rhythm ──────────────────────── -->
+  <section class="story-section" id="s-05">
+    <div class="video-bg">
+      <video src="../videos/ws-05.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ws-05"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">V</span>
+      <p class="story-text">At first, his mind was still screaming: you wasted your time today, you didn't finish the project, you changed direction again, you're behind. But the ocean was in no hurry. The waves were crashing against the piers in an age-old rhythm. Ebb. Flow. A huge, slow, unstoppable breath. An old fisherman, gathering his nets a few yards away, stopped, took out a pipe, and looked at him.</p>
+    </div>
+  </section>
+
+  <!-- ─── CHAPTER: THE OLD FISHERMAN ──────────────────────────── -->
+  <section class="chapter-section fb-ws-06" id="ch-fisherman">
+    <div class="video-overlay" style="background: linear-gradient(to bottom, rgba(5,8,16,0.75), rgba(5,8,16,0.35), rgba(5,8,16,0.75));"></div>
+    <div class="chapter-content">
+      <div class="chapter-heading">
+        <div class="chapter-rule"></div>
+        <span class="chapter-name">The Old Fisherman</span>
+        <div class="chapter-rule"></div>
+      </div>
+      <p class="chapter-inscription">Some lessons only come<br>from those who have watched the sea<br>longer than they have spoken of it.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION VI — You pull too hard ──────────────────────── -->
+  <section class="story-section" id="s-06">
+    <div class="video-bg">
+      <video src="../videos/ws-06.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ws-06"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">VI</span>
+      <p class="story-text">
+        <span class="dialogue">— "You pull too hard on the sails when the wind isn't blowing, boy," the old man said in a rough but warm voice.</span>
+        The craftsman sighed, dropping his head in his hands.
+        <span class="dialogue">— "I feel like I'm starting a thousand roads and getting nowhere. I want to create something good, something that matters, but I get lost in my own changes of direction."</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION VII — Do you see this sea? ──────────────────── -->
+  <section class="story-section" id="s-07">
+    <div class="video-bg">
+      <video src="../videos/ws-07.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ws-07"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">VII</span>
+      <p class="story-text">The old man smiled and pointed to the black, calm water of the bay.
+        <span class="dialogue">— "Do you see this sea? Do you think it always flows in a straight line? It evaporates, becomes a cloud, falls as rain on a mountain, crashes against rocks like a wild river, disappears underground, stagnates in lakes, and finally finds its way back to the ocean. When a river hits a rock and changes its course, it doesn't mean it has abandoned its path. It means it has found another way to the sea."</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION VIII — As above, so below ───────────────────── -->
+  <section class="story-section" id="s-08">
+    <div class="video-bg">
+      <video src="../videos/ws-08.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ws-08"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">VIII</span>
+      <p class="story-text">The old man approached and placed a heavy hand on his shoulder.
+        <span class="dialogue">— "The laws of the world are the same everywhere. As above, so below. As in the ocean, so in your mind. What you call chaos and abandonment is just the way the water in you seeks the best form to pour itself out. You are not inferior, you are not an impostor. You are just in the period of flowing among the rocks. And that requires a huge expenditure of energy."</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── CHAPTER: THE RETURN ──────────────────────────────────── -->
+  <section class="chapter-section fb-ws-09" id="ch-return">
+    <div class="video-overlay" style="background: linear-gradient(to bottom, rgba(5,8,16,0.70), rgba(5,8,16,0.28), rgba(5,8,16,0.70));"></div>
+    <div class="chapter-content">
+      <div class="chapter-heading">
+        <div class="chapter-rule"></div>
+        <span class="chapter-name">The Return</span>
+        <div class="chapter-rule"></div>
+      </div>
+      <p class="chapter-inscription">The tide does not apologize<br>when it withdraws from the shore.<br>It knows what it is gathering strength for.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION IX — The fishing line ───────────────────────── -->
+  <section class="story-section" id="s-09">
+    <div class="video-bg">
+      <video src="../videos/ws-09.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ws-09"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">IX</span>
+      <p class="story-text">The craftsman looked at the line of the fishing rod disappearing into the water. He suddenly understood something fundamental. To build the simplicity he was looking for in the world, he had to accept that the previous process was noisy, tiring, and full of changes of direction. No alchemist turned lead into gold on the first try; he boiled, destroyed, cooled, and started over.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION X — The simple decision ────────────────────── -->
+  <section class="story-section" id="s-10">
+    <div class="video-bg">
+      <video src="../videos/ws-10.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-ws-10"></div>
+    </div>
+    <div class="video-overlay"></div>
+    <div class="story-content">
+      <span class="section-marker">X</span>
+      <p class="story-text">That evening on the pontoon, listening to the waves, the craftsman made a simple decision. He did not try to fix anything anymore. He accepted the fatigue. He accepted the glass maze. He understood that stopping work is not a capitulation, but a necessary reset. The ocean does not apologize when the tide comes in and withdraws its waters from the shore; it knows that only in this way can it gather strength to return to the flow.</p>
+    </div>
+  </section>
+
+  <!-- ─── EPILOGUE ──────────────────────────────────────────────── -->
+  <section class="epilogue-section" id="epilogue">
+    <div class="epilogue-content">
+      <span class="epilogue-marker">Epilogue</span>
+      <div class="epilogue-rule"></div>
+      <p class="epilogue-text">Every period spent in the in-between — the unfinished, the restarted, the abandoned-and-returned-to — is the water finding its level. The mind does not fail when it changes course. It fails only when it mistakes the detour for the destination, or the rest for the retreat. To know when to put down the tools and walk to the sea is itself a form of mastery. The craftsman who can sit with the unfinished without panic is already building the most important thing: the patience to see it through.</p>
+      <div class="epilogue-rule"></div>
+    </div>
+  </section>
+
+  <!-- ─── END NAVIGATION ───────────────────────────────────────── -->
+  <nav class="end-nav">
+    <a href="../storyteller.html" class="end-nav-link">← Back to all stories</a>
+    <a href="#" class="end-nav-link disabled" aria-disabled="true">Next story →</a>
+  </nav>
+
+  <!-- ─── VANILLA JS ───────────────────────────────────────────── -->
+  <script>
+    // ── 1. Fade in fixed UI after 1 second ──────────────────
+    setTimeout(() => {
+      document.getElementById('progress-bar').classList.add('visible');
+      document.getElementById('back-nav').classList.add('visible');
+    }, 1000);
+
+    // ── 2. Scroll-driven progress bar ───────────────────────
+    const progressBar = document.getElementById('progress-bar');
+
+    function updateProgress() {
+      const scrollTop  = window.scrollY;
+      const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+      const pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+
+    // ── 3. IntersectionObserver — entrance animations ────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { root: null, rootMargin: '0px', threshold: 0.35 });
+
+    document.querySelectorAll('.story-section, .chapter-section').forEach(s => observer.observe(s));
+
+    // ── 4. Video error handling — hide broken elements ───────
+    document.querySelectorAll('.video-bg video').forEach(video => {
+      video.addEventListener('error', () => {
+        video.style.display = 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>

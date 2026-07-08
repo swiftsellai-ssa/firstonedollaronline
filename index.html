@@ -9,6 +9,9 @@
     content="One practical Notion guide + builder community to help you earn your first real dollar online. No hype. Just steps.">
   <meta name="keywords" content="first dollar online, make money online beginner, indie builder, side hustle">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
@@ -27,7 +30,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
     }
 
     body {
@@ -160,11 +163,13 @@
       background: transparent;
       color: var(--primary);
       border: 2px solid var(--primary);
+      transition: background 0.2s, color 0.2s, transform 0.2s;
     }
 
     .secondary-cta:hover {
       background: var(--primary);
       color: white;
+      transform: translateY(-2px);
     }
 
     .section {
@@ -260,12 +265,18 @@
 
     .newsletter button {
       padding: 0.9rem 1.8rem;
-      background: #000;
+      background: var(--primary);
       color: white;
       border: none;
       border-radius: 8px;
       font-weight: 700;
       cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .newsletter button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
     }
 
     footer {
@@ -273,7 +284,7 @@
       padding: 2.5rem;
       text-align: center;
       color: var(--text-light);
-      border-top: 1px solid #e2e8f0;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
 
     footer a {
@@ -580,6 +591,13 @@
       color: var(--text);
     }
   
+    /* Idea Generator – mobile responsive */
+    @media (max-width: 600px) {
+      .mobile-break { display: block !important; }
+      .generator-form label { margin: 0.5rem 0 !important; display: block; }
+      .generator-form select { max-width: 100%; }
+    }
+
     /* Tap Target Enhancements */
     a.logo { min-height: 48px; display: inline-flex; align-items: center; }
     .cta-button, button, .newsletter button { min-height: 48px; }
@@ -610,6 +628,7 @@
   <meta name="twitter:title" content="First$1online | Make Your First $1 Online">
   <meta name="twitter:description" content="A dead-simple $1 Notion kit designed to help complete beginners cross the scariest threshold: making your literal first $1 online.">
   <meta name="twitter:image" content="https://firstonedollaronline.com/og-image.jpg">
+  <meta name="twitter:creator" content="@gabriel_raiseos">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -637,7 +656,7 @@
       <a href="index.html#preview">Preview</a>
       <a href="1-idea.html" style="color: var(--accent);"><i class="fas fa-lightbulb"></i> $1 Ideas</a>
       <a href="storyteller.html"><i class="fas fa-book-open"></i> Storyteller</a>
-      <a href="https://x.com/hashtag/FirstOneDollarOnline" target="_blank" class="cta-button-nav">
+      <a href="https://x.com/hashtag/FirstOneDollarOnline" target="_blank" rel="noopener noreferrer" class="cta-button-nav">
         <i class="fab fa-x-twitter"></i> #FirstOneDollarOnline
       </a>
     </div>
@@ -654,7 +673,7 @@
     <div class="cta-group">
       <a href="#preview" class="secondary-cta">See Preview First</a>
       <a href="the-dollar-game.html" class="secondary-cta">Find Your First Dollar Path</a>
-      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" class="main-cta">Pay $1 & Unlock Now</a>
+      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" rel="noopener noreferrer" class="main-cta">Pay $1 & Unlock Now</a>
     </div>
 
     <div style="margin-top:2rem; font-size:0.95rem; color:var(--text-light);">
@@ -705,53 +724,29 @@
       </div>
     </div>
 
-    <style>
-      @media (max-width: 600px) {
-        .mobile-break {
-          display: block !important;
-        }
 
-        .generator-form label {
-          margin: 0.5rem 0 !important;
-          display: block;
-        }
-
-        .generator-form select {
-          max-width: 100%;
-        }
-      }
-    
-    /* Tap Target Enhancements */
-    a.logo { min-height: 48px; display: inline-flex; align-items: center; }
-    .cta-button, button, .newsletter button { min-height: 48px; }
-
-</style>
   </section>
 
   <section class="stats-bar">
     <div class="stats-grid">
-      <!-- Item 1 -->
       <div class="stat-item">
-        <div class="stat-value" style="color: var(--primary);">2</div>
-        <div class="stat-label">Builders Active</div>
+        <div class="stat-value" style="color: var(--primary);">$1</div>
+        <div class="stat-label">One-Time Price — No Subscription</div>
       </div>
 
-      <!-- Item 2 -->
       <div class="stat-item">
-        <div class="stat-value" style="color: #10b981;">$2</div>
-        <div class="stat-label">Community Earnings</div>
+        <div class="stat-value" style="color: #10b981;">20+</div>
+        <div class="stat-label">First-Dollar Methods Inside</div>
       </div>
 
-      <!-- Item 3 -->
       <div class="stat-item">
-        <div class="stat-value" style="color: var(--text);">12 Days</div>
-        <div class="stat-label">Avg. Time to $1</div>
+        <div class="stat-value" style="color: var(--text);">&lt;15 min</div>
+        <div class="stat-label">To Your First Practical Idea</div>
       </div>
 
-      <!-- Item 4 -->
       <div class="stat-item">
-        <div class="stat-value" style="color: #f59e0b;">Freelance</div>
-        <div class="stat-label">Top Strategy (42%)</div>
+        <div class="stat-value" style="color: #f59e0b;">0</div>
+        <div class="stat-label">Upsells, Hidden Fees, or BS</div>
       </div>
     </div>
   </section>
@@ -799,14 +794,12 @@
       <p>These are actual screenshots — sensitive parts blurred. Full readable version unlocks after $1.</p>
     </div>
     <div class="preview-gallery">
-      <!-- REPLACE THESE WITH YOUR REAL SCREENSHOTS -->
       <img src="./images/img1.png" alt="First One Dollar Blueprint">
       <img src="./images/img2.png" alt="Funnel-To-Flywheel">
       <img src="./images/img3.png" alt="Flywheel">
     </div>
     <div style="text-align:center; margin-top:2.5rem;">
-      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" class="main-cta">Unlock Full Version for
-        $1</a>
+      <a href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" rel="noopener noreferrer" class="main-cta">Unlock Full Version for $1</a>
     </div>
   </section>
 
@@ -887,8 +880,8 @@
     <p>Real conversations. Real first wins. No gatekeeping.</p>
     <div style="margin-top:1.5rem;">
       <div style="margin-top:1.5rem;">
-        <a href="https://x.com/hashtag/FirstOneDollarOnline" target="_blank">#FirstOneDollarOnline</a>
-        <a href="https://discord.gg/9YREqmph" target="_blank">Discord Server</a>
+        <a href="https://x.com/hashtag/FirstOneDollarOnline" target="_blank" rel="noopener noreferrer">#FirstOneDollarOnline</a>
+        <a href="https://discord.gg/9YREqmph" target="_blank" rel="noopener noreferrer">Discord Server</a>
       </div>
     </div>
   </section>
@@ -898,68 +891,48 @@
       <h2>About Me</h2>
     </div>
     <div style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text);">
-      <p style="margin-bottom: 1.5rem;">Hi, I'm <strong>Gabriel</strong> 👋<br>
-        Solo founder currently building in public right here from Australia.</p>
-
-      <p style="margin-bottom: 1.5rem;">I'm working on two main things:</p>
+      <p style="margin-bottom: 1.5rem;">Hi, I'm <strong>Gabriel</strong> 👋 — a solo founder and builder from Australia, obsessed with turning messy, technical problems into things that just work.<br><br>
+        I'm still working a full-time job while building in public. No co-founder, no VC backing — just consistent execution and a bias toward shipping.</p>
 
       <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
         <li
           style="margin-bottom: 1.5rem; background: var(--white); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
-          <strong style="color: var(--primary); font-size: 1.2rem;">SwiftSettle Adelaide</strong> — a streamlined
-          service to help you navigate property settlements in South Australia without the stress (visit → <a
-            href="https://swiftsettleadelaide.com"
-            style="color: var(--primary); text-decoration: underline;">swiftsettleadelaide.com</a>).
-          <p style="margin-top: 0.5rem; font-size: 1rem; color: var(--text-light);">Property settlement should be
-            simple. I'm building this to bring clarity, speed, and peace of mind to the process.</p>
+          <strong style="color: var(--primary); font-size: 1.2rem;">SwiftSettle Adelaide</strong> — Streamlined property settlement services for South Australian families and buyers. I handle the paperwork chaos so clients get clarity, speed, and fewer headaches.
+          <p style="margin-top: 0.5rem; font-size: 1rem; color: var(--text-light);">→ <a href="https://swiftsettleadelaide.com" style="color: var(--primary); text-decoration: underline;">swiftsettleadelaide.com</a></p>
         </li>
         <li
           style="margin-bottom: 1.5rem; background: var(--white); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
-          <strong style="color: var(--primary); font-size: 1.2rem;">FirstOneDollarOnline</strong> — a dead-simple $1
-          Notion kit designed to help complete beginners cross the scariest threshold: making your literal <strong>first
-            $1 online</strong>.
-          <p style="margin-top: 0.5rem; font-size: 1rem; color: var(--text-light);">No guru hype, no $997 courses — just
-            practical places to post, copy-paste scripts, clear steps, and the psychology of going from $0 → $1.<br>
-            Grab it here if you're ready: <a href="https://firstonedollaronline.com"
-              style="color: var(--primary); text-decoration: underline;">firstonedollaronline.com</a></p>
+          <strong style="color: var(--primary); font-size: 1.2rem;">RaiseOS</strong> — Tools and support for solo founders raising capital without a co-founder. AI pitch audits, investor matching, credibility builders, and real accountability. Currently in discovery — talking to founders before writing a single line of code.
+        </li>
+        <li
+          style="margin-bottom: 1.5rem; background: var(--white); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
+          <strong style="color: var(--primary); font-size: 1.2rem;">FirstOneDollarOnline</strong> — A dead-simple $1 Notion blueprint + small community to help beginners earn their first dollar online. No hype, no expensive courses — just practical steps, copy-paste ideas, and the psychology of going from $0 → $1.
+          <p style="margin-top: 0.5rem; font-size: 1rem; color: var(--text-light);">→ <a href="https://firstonedollaronline.com" style="color: var(--primary); text-decoration: underline;">firstonedollaronline.com</a></p>
+        </li>
+        <li
+          style="margin-bottom: 1.5rem; background: var(--white); padding: 1.5rem; border-radius: 12px; box-shadow: var(--shadow);">
+          <strong style="color: var(--primary); font-size: 1.2rem;">StrictAgent</strong> — A lightweight verification layer for AI coding agents. Forces them to prove their work with screenshots, live checks, and terminal output before claiming "done." Built it because I got tired of the Verification Tax.
+          <p style="margin-top: 0.5rem; font-size: 1rem; color: var(--text-light);">Waitlist just launched.</p>
         </li>
       </ul>
 
-      <p style="margin-bottom: 1.5rem;">A bit more about where I'm at right now:<br>
-        I'm still juggling a full-time job + a part-time gig + founder mode + cooking when I can + prepping for a
-        relocation. Some days I'm exhausted, some days I'm buzzing — but I genuinely enjoy almost every piece of it.</p>
-
       <div
         style="background: rgba(16, 185, 129, 0.1); border-left: 4px solid #10b981; padding: 1.5rem; margin-bottom: 2rem; border-radius: 0 12px 12px 0;">
-        <p style="font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">My recent personal rule (and it's
-          working):
-        </p>
-        <p style="color: var(--text); margin-bottom: 0.5rem;">Every week I force myself to ship <strong>at least one
-            tiny
-            thing</strong> (a post, template, message, mini-service…) that has a realistic shot at making
-          <strong>exactly $1</strong>.
-        </p>
-        <p style="color: var(--text);">Lowering the bar to $1 massively increases execution speed and kills
-          perfectionism.
-          Try it — it changes everything.</p>
+        <p style="font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">My weekly rule — and it's working:</p>
+        <p style="color: var(--text); margin-bottom: 0;">Ship at least one small thing (a page, a template, a post, a mini-tool) that has a real shot at making <strong>exactly $1</strong>. The low bar kills perfectionism. It compounds faster than you'd expect.</p>
       </div>
 
-      <p style="margin-bottom: 1.5rem; font-style: italic; text-align: center; font-size: 1.25rem;">
-        Philosophy in one line:<br>
-        <strong>Complexity in Simplicity</strong> — I absorb all the technical mess so you get something intuitive and
-        actually useful.
+      <p style="margin-bottom: 1.5rem; text-align: center; font-style: italic; font-size: 1.1rem;">
+        <strong>Complexity in Simplicity</strong> — I absorb the technical mess so you get something intuitive and actually useful.
       </p>
 
       <p style="margin-bottom: 1.5rem; text-align: center;">
-        If you're stuck at $0, love relatable indie journeys, or just want to say hi → drop a comment/DM or follow along
-        <a href="https://x.com/gabriel_raiseos" target="_blank"
-          style="color: var(--primary); font-weight: 700;">@gabriel_raiseos</a>.
+        Building in public from zero. Solo, grinding, shipping. Say hi on X →
+        <a href="https://x.com/gabriel_raiseos" target="_blank" rel="noopener noreferrer"
+          style="color: var(--primary); font-weight: 700;">@gabriel_raiseos</a>
       </p>
 
-      <p style="text-align: center; font-weight: 700; color: var(--primary);">Let's make that first (or next) dollar
-        feel easy. 🚀<br>
-        <span style="font-weight: 400; color: var(--text);">Be happy 😄</span>
-      </p>
+      <p style="text-align: center; font-weight: 700; color: var(--primary);">Let's make that first dollar feel easy. 🚀</p>
     </div>
   </section>
 
@@ -1159,10 +1132,6 @@
       color: white;
     }
   
-    /* Tap Target Enhancements */
-    a.logo { min-height: 48px; display: inline-flex; align-items: center; }
-    .cta-button, button, .newsletter button { min-height: 48px; }
-
 </style>
   <!-- Scroll-triggered flying dollar -->
   <div id="big-dollar"

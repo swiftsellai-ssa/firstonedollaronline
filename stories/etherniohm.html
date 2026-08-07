@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Weight of Salt — Stories</title>
-  <meta name="description" content="A craftsman drowning in his own unfinished genius walks to the sea — and finds the one thing no workshop could teach him.">
+  <title>ETHERNIOHM — Stories</title>
+  <meta name="description" content="It exists only in the intervals between quantum states — a breath of reality that collapses when looked at too directly.">
 
   <!-- Google Fonts: Cinzel + Cormorant Garamond -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,13 +20,13 @@
     :root {
       --font-display: 'Cinzel', Georgia, serif;
       --font-body: 'Cormorant Garamond', Georgia, serif;
-      --color-bg: #050810;
-      --color-text: rgba(220, 230, 240, 0.90);
-      --color-text-muted: rgba(200, 215, 230, 0.38);
-      --color-accent: rgba(100, 160, 210, 0.65);
-      --color-accent-dim: rgba(100, 160, 210, 0.25);
-      --color-accent-bright: rgba(130, 185, 230, 0.90);
-      --color-overlay: rgba(5, 8, 16, 0.55);
+      --color-bg: #05070c;
+      --color-text: rgba(225, 235, 240, 0.90);
+      --color-text-muted: rgba(180, 205, 215, 0.38);
+      --color-accent: rgba(110, 185, 200, 0.65);
+      --color-accent-dim: rgba(110, 185, 200, 0.25);
+      --color-accent-bright: rgba(150, 220, 230, 0.90);
+      --color-overlay: rgba(5, 7, 12, 0.55);
     }
 
     /* ─── Reset & Base ─────────────────────────────────────── */
@@ -106,8 +106,7 @@
       padding: 6rem 2rem 4rem;
       position: relative;
       background-color: var(--color-bg);
-      /* Ocean-depth radial glow — cold blue at center */
-      background-image: radial-gradient(ellipse at 50% 45%, rgba(60, 110, 180, 0.09) 0%, transparent 65%);
+      background-image: radial-gradient(ellipse at 50% 45%, rgba(80, 140, 160, 0.08) 0%, transparent 65%);
       overflow: hidden;
     }
 
@@ -123,9 +122,9 @@
 
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
       font-weight: 400;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.22em;
       line-height: 1.15;
       color: var(--color-text);
       margin-bottom: 1.75rem;
@@ -137,7 +136,7 @@
       font-size: clamp(1.1rem, 2.5vw, 1.4rem);
       font-weight: 300;
       color: var(--color-text-muted);
-      max-width: 480px;
+      max-width: 520px;
     }
 
     /* Scroll cue — pulsing vertical line */
@@ -208,9 +207,9 @@
       z-index: 1;
       background: linear-gradient(
         to bottom,
-        rgba(5, 8, 16, 0.60) 0%,
-        rgba(5, 8, 16, 0.18) 50%,
-        rgba(5, 8, 16, 0.60) 100%
+        rgba(5, 7, 12, 0.60) 0%,
+        rgba(5, 7, 12, 0.18) 50%,
+        rgba(5, 7, 12, 0.60) 100%
       );
       pointer-events: none;
     }
@@ -240,23 +239,11 @@
       font-size: clamp(1.15rem, 2.5vw, 1.35rem);
       font-weight: 300;
       line-height: 1.9;
-      color: rgba(215, 228, 242, 0.88);
+      color: rgba(215, 230, 238, 0.88);
       opacity: 0;
       transform: translateY(24px);
     }
 
-    /* Dialogue styling — slightly differentiated */
-    .story-text .dialogue {
-      font-style: normal;
-      color: rgba(215, 228, 242, 0.72);
-      display: block;
-      margin: 1.5rem 0;
-      padding-left: 1.5rem;
-      border-left: 1px solid var(--color-accent-dim);
-      text-align: left;
-    }
-
-    /* Entrance animation — triggered by IntersectionObserver */
     .story-section.visible .story-text {
       animation: fadeUp 1.2s ease forwards;
     }
@@ -266,24 +253,17 @@
       to   { opacity: 1; transform: translateY(0);    }
     }
 
-    /* ─── Fallback gradients — ocean tones ─────────────────── */
-    /* Cold, deep — early sections before the pier */
-    .fb-ws-01 { background: radial-gradient(ellipse at 40% 60%, #060c18 0%, #03060b 100%); }
-    .fb-ws-02 { background: radial-gradient(ellipse at 65% 35%, #07101e 0%, #030608 100%); }
-    .fb-ws-03 { background: radial-gradient(ellipse at 25% 70%, #060b17 0%, #030609 100%); }
-    /* Walking to the pier — moonlit path */
-    .fb-ws-04 { background: radial-gradient(ellipse at 50% 25%, #08111e 0%, #030608 100%); }
-    /* Sitting on the pier — open ocean at night */
-    .fb-ws-05 { background: radial-gradient(ellipse at 30% 55%, #071018 0%, #040709 100%); }
-    /* Old fisherman speaks — slightly warmer, lantern glow */
-    .fb-ws-06 { background: radial-gradient(ellipse at 55% 60%, #0c1826 0%, #05080f 100%); }
-    .fb-ws-07 { background: radial-gradient(ellipse at 48% 52%, #0e1c2e 0%, #060912 100%); }
-    /* "As above, so below" — deep wisdom, stars reflected in water */
-    .fb-ws-08 { background: radial-gradient(ellipse at 50% 42%, #101e30 0%, #060912 100%); }
-    /* Understanding — warmer, the tide turning */
-    .fb-ws-09 { background: radial-gradient(ellipse at 58% 48%, #0f1c2a 0%, #06090f 100%); }
-    /* The decision — calm, returned to self */
-    .fb-ws-10 { background: radial-gradient(ellipse at 50% 50%, #101e28 0%, #06090e 100%); }
+    /* ─── Fallback gradients — ether / void tones ──────────── */
+    .fb-en-01 { background: radial-gradient(ellipse at 40% 55%, #071018 0%, #030508 100%); }
+    .fb-en-02 { background: radial-gradient(ellipse at 60% 40%, #08141c 0%, #04070a 100%); }
+    .fb-en-03 { background: radial-gradient(ellipse at 30% 65%, #060f16 0%, #030609 100%); }
+    .fb-en-04 { background: radial-gradient(ellipse at 50% 30%, #091520 0%, #04080c 100%); }
+    .fb-en-05 { background: radial-gradient(ellipse at 35% 50%, #0a1620 0%, #05090e 100%); }
+    .fb-en-06 { background: radial-gradient(ellipse at 55% 58%, #0c1a24 0%, #060b10 100%); }
+    .fb-en-07 { background: radial-gradient(ellipse at 48% 45%, #0e1e28 0%, #070d12 100%); }
+    .fb-en-08 { background: radial-gradient(ellipse at 42% 52%, #101f2a 0%, #080e14 100%); }
+    .fb-en-09 { background: radial-gradient(ellipse at 58% 40%, #12222c 0%, #090f15 100%); }
+    .fb-en-10 { background: radial-gradient(ellipse at 50% 50%, #14242e 0%, #0a1016 100%); }
 
     /* ─── Chapter Sections ─────────────────────────────────── */
     .chapter-section {
@@ -334,7 +314,7 @@
       font-size: clamp(1.3rem, 3vw, 1.75rem);
       font-weight: 300;
       line-height: 1.75;
-      color: rgba(210, 225, 240, 0.75);
+      color: rgba(200, 220, 230, 0.75);
       opacity: 0;
       transform: translateY(24px);
     }
@@ -351,7 +331,7 @@
       justify-content: center;
       padding: 6rem 2rem;
       background-color: var(--color-bg);
-      background-image: radial-gradient(ellipse at 50% 60%, rgba(60, 110, 180, 0.05) 0%, transparent 70%);
+      background-image: radial-gradient(ellipse at 50% 60%, rgba(80, 140, 160, 0.05) 0%, transparent 70%);
       position: relative;
     }
 
@@ -373,7 +353,7 @@
       font-size: clamp(1.1rem, 2.5vw, 1.35rem);
       font-weight: 300;
       line-height: 1.9;
-      color: rgba(210, 225, 240, 0.70);
+      color: rgba(200, 220, 230, 0.70);
     }
 
     .epilogue-marker {
@@ -392,7 +372,7 @@
       justify-content: center;
       gap: 4rem;
       flex-wrap: wrap;
-      border-top: 1px solid rgba(200, 215, 230, 0.06);
+      border-top: 1px solid rgba(180, 205, 215, 0.06);
     }
 
     .end-nav-link {
@@ -430,8 +410,8 @@
         max-width: 40px;
       }
 
-      .story-text .dialogue {
-        padding-left: 1rem;
+      .hero-title {
+        letter-spacing: 0.14em;
       }
     }
   </style>
@@ -447,176 +427,181 @@
 
   <!-- ─── HERO / TITLE ──────────────────────────────────────── -->
   <section class="hero-section">
-    <p class="hero-eyebrow">Story 002</p>
-    <h1 class="hero-title">The Weight<br>of Salt</h1>
-    <p class="hero-subtitle">A craftsman, a pier, and the wisdom the ocean keeps</p>
+    <p class="hero-eyebrow">Story 003</p>
+    <h1 class="hero-title">ETHERNIOHM</h1>
+    <p class="hero-subtitle">A living filter of space-time — and the door that no longer closes</p>
     <div class="scroll-cue" aria-hidden="true">
       <span class="scroll-cue-label">Begin</span>
       <div class="scroll-cue-line"></div>
     </div>
   </section>
 
-  <!-- ─── SECTION I — The craftsman and his workshop ──────────── -->
+  <!-- ─── SECTION I — Not life as we know it ─────────────────── -->
   <section class="story-section" id="s-01">
     <div class="video-bg">
-      <video src="../videos/ws-01.mp4" autoplay muted loop playsinline></video>
-      <div class="video-fallback fb-ws-01"></div>
+      <video src="../videos/en-01.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-en-01"></div>
     </div>
     <div class="video-overlay"></div>
     <div class="story-content">
       <span class="section-marker">I</span>
-      <p class="story-text">There was once a craftsman who lived on the edge of a western ocean, somewhere in the southern hemisphere, where the wind always brought the smell of salt and the promise of unexplored lands. He was no ordinary carpenter or blacksmith. He was a systems architect. His workshop was a sanctuary of glass and wood, filled with sketches, prototypes begun and abandoned, intricate mechanisms, and tools he had invented himself to bring a little order to the world.</p>
+      <p class="story-text">ETHERNIOHM is not a form of life in the classical sense. It has no DNA, does not metabolize ordinary matter, and does not occupy a fixed place in space. It exists only in the extremely short intervals between two quantum states — those infinitesimal moments in which a particle decides whether to collapse into one state or another.</p>
     </div>
   </section>
 
-  <!-- ─── SECTION II — The perfect machine ────────────────────── -->
+  <!-- ─── SECTION II — Unresolved probabilities ──────────────── -->
   <section class="story-section" id="s-02">
     <div class="video-bg">
-      <video src="../videos/ws-02.mp4" autoplay muted loop playsinline></video>
-      <div class="video-fallback fb-ws-02"></div>
+      <video src="../videos/en-02.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-en-02"></div>
     </div>
     <div class="video-overlay"></div>
     <div class="story-content">
       <span class="section-marker">II</span>
-      <p class="story-text">He wanted to build a perfect machine — something that would take all the weight and chaos of everyday life and transform it into absolute simplicity. But his mind was like a motor running at full speed, never stopping. He would start a gear, realize it wasn't made of the right material, set it aside, and start a pendulum. He moved from one idea to another, from one state to another. His workshop had become a labyrinth of his own ambitions.</p>
+      <p class="story-text">Its body is a network of unresolved probabilities. When a virtual photon passes through it, ETHERNIOHM does not absorb it and does not reflect it. It delays it. It holds the particle in superposition a little longer than the laws we know would allow — and in those prolonged fractions of time, probabilities meet that should never have met.</p>
     </div>
   </section>
 
-  <!-- ─── SECTION III — Suffocating in unfinished genius ─────── -->
+  <!-- ─── SECTION III — The breath of reality ─────────────────── -->
   <section class="story-section" id="s-03">
     <div class="video-bg">
-      <video src="../videos/ws-03.mp4" autoplay muted loop playsinline></video>
-      <div class="video-fallback fb-ws-03"></div>
+      <video src="../videos/en-03.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-en-03"></div>
     </div>
     <div class="video-overlay"></div>
     <div class="story-content">
       <span class="section-marker">III</span>
-      <p class="story-text">Sometimes he looked around at the dozens of projects he had started and felt like he was suffocating in his own unfinished genius. He felt trapped in a controlled chaos of his own making. One late fall evening, after a day of pushing himself to the point of exhaustion, he put down his tools. His hands were shaking with fatigue and his mind was a thick fog. He couldn't add a single screw.</p>
+      <p class="story-text">In the zones where ETHERNIOHM has breathed, the laws of energy conservation sometimes appear to be violated for a moment. A particle that should have disintegrated remains stable. A photon arrives with a wavelength slightly altered. It is not magic. It is only a local and temporary rewriting of the rules of the game.</p>
     </div>
   </section>
 
-  <!-- ─── SECTION IV — Walking to the pier ────────────────────── -->
+  <!-- ─── SECTION IV — No measurable trace ───────────────────── -->
   <section class="story-section" id="s-04">
     <div class="video-bg">
-      <video src="../videos/ws-04.mp4" autoplay muted loop playsinline></video>
-      <div class="video-fallback fb-ws-04"></div>
+      <video src="../videos/en-04.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-en-04"></div>
     </div>
     <div class="video-overlay"></div>
     <div class="story-content">
       <span class="section-marker">IV</span>
-      <p class="story-text">He left the workshop and walked down to the beach, heading for the old wooden pier that jutted out into the sea. He took only an old fishing rod with him. He didn't necessarily want to catch anything. He just wanted an excuse to sit still. He sat on the edge of the pier, cast his line into the dark water, and listened.</p>
+      <p class="story-text">The strangest thing about it is that it leaves no measurable trace after it disappears. Any instrument that tries to detect it forces it to collapse into the state of nonexistence. There are no photographs, no signals, no confirmed anomalies. The only proof of its existence is the fact that we imagined it.</p>
     </div>
   </section>
 
-  <!-- ─── SECTION V — The ocean's rhythm ──────────────────────── -->
+  <!-- ─── SECTION V — Being touched ──────────────────────────── -->
   <section class="story-section" id="s-05">
     <div class="video-bg">
-      <video src="../videos/ws-05.mp4" autoplay muted loop playsinline></video>
-      <div class="video-fallback fb-ws-05"></div>
+      <video src="../videos/en-05.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-en-05"></div>
     </div>
     <div class="video-overlay"></div>
     <div class="story-content">
       <span class="section-marker">V</span>
-      <p class="story-text">At first, his mind was still screaming: you wasted your time today, you didn't finish the project, you changed direction again, you're behind. But the ocean was in no hurry. The waves were crashing against the piers in an age-old rhythm. Ebb. Flow. A huge, slow, unstoppable breath. An old fisherman, gathering his nets a few yards away, stopped, took out a pipe, and looked at him.</p>
+      <p class="story-text">An interaction with ETHERNIOHM is not like touching something, and not like seeing something. It is closer to being touched by a probability that should not have found you. You do not feel a force. You do not see light. You only feel that a decision the universe should have made… has been delayed.</p>
     </div>
   </section>
 
-  <!-- ─── CHAPTER: THE OLD FISHERMAN ──────────────────────────── -->
-  <section class="chapter-section fb-ws-06" id="ch-fisherman">
-    <div class="video-overlay" style="background: linear-gradient(to bottom, rgba(5,8,16,0.75), rgba(5,8,16,0.35), rgba(5,8,16,0.75));"></div>
+  <!-- ─── CHAPTER: THE CATCHING ──────────────────────────────── -->
+  <section class="chapter-section fb-en-06" id="ch-catching">
+    <div class="video-overlay" style="background: linear-gradient(to bottom, rgba(5,7,12,0.75), rgba(5,7,12,0.35), rgba(5,7,12,0.75));"></div>
     <div class="chapter-content">
       <div class="chapter-heading">
         <div class="chapter-rule"></div>
-        <span class="chapter-name">The Old Fisherman</span>
+        <span class="chapter-name">The Catching</span>
         <div class="chapter-rule"></div>
       </div>
-      <p class="chapter-inscription">Some lessons only come<br>from those who have watched the sea<br>longer than they have spoken of it.</p>
+      <p class="chapter-inscription">Any direct measurement destroys it.<br>So the approach must be the inverse:<br>create the conditions in which it is not forced to leave.</p>
     </div>
   </section>
 
-  <!-- ─── SECTION VI — You pull too hard ──────────────────────── -->
+  <!-- ─── SECTION VI — Diluted attention ─────────────────────── -->
   <section class="story-section" id="s-06">
     <div class="video-bg">
-      <video src="../videos/ws-06.mp4" autoplay muted loop playsinline></video>
-      <div class="video-fallback fb-ws-06"></div>
+      <video src="../videos/en-06.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-en-06"></div>
     </div>
     <div class="video-overlay"></div>
     <div class="story-content">
       <span class="section-marker">VI</span>
-      <p class="story-text">
-        <span class="dialogue">— "You pull too hard on the sails when the wind isn't blowing, boy," the old man said in a rough but warm voice.</span>
-        The craftsman sighed, dropping his head in his hands.
-        <span class="dialogue">— "I feel like I'm starting a thousand roads and getting nowhere. I want to create something good, something that matters, but I get lost in my own changes of direction."</span>
-      </p>
+      <p class="story-text">Researchers would build an extremely gentle space — near absolute zero, protected from radiation and from any human observer. Passive detectors only. Then something subtler still: a state of diluted attention. Not concentration. Not clear intention. Diffuse presence — a mind that waits without waiting. Under those conditions, ETHERNIOHM could remain a few microseconds longer. Then, perhaps, milliseconds.</p>
     </div>
   </section>
 
-  <!-- ─── SECTION VII — Do you see this sea? ──────────────────── -->
+  <!-- ─── SECTION VII — The scar ─────────────────────────────── -->
   <section class="story-section" id="s-07">
     <div class="video-bg">
-      <video src="../videos/ws-07.mp4" autoplay muted loop playsinline></video>
-      <div class="video-fallback fb-ws-07"></div>
+      <video src="../videos/en-07.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-en-07"></div>
     </div>
     <div class="video-overlay"></div>
     <div class="story-content">
       <span class="section-marker">VII</span>
-      <p class="story-text">The old man smiled and pointed to the black, calm water of the bay.
-        <span class="dialogue">— "Do you see this sea? Do you think it always flows in a straight line? It evaporates, becomes a cloud, falls as rain on a mountain, crashes against rocks like a wild river, disappears underground, stagnates in lakes, and finally finds its way back to the ocean. When a river hits a rock and changes its course, it doesn't mean it has abandoned its path. It means it has found another way to the sea."</span>
-      </p>
+      <p class="story-text">With every extra moment it spends present, the local rewriting deepens. Reality around the chamber begins to behave like a membrane under too much tension. And if someone measures actively at that moment, ETHERNIOHM collapses — but not as before. This time the collapse leaves a scar: a small zone of space where the laws remain, for days or weeks, slightly wrong.</p>
     </div>
   </section>
 
-  <!-- ─── SECTION VIII — As above, so below ───────────────────── -->
+  <!-- ─── CHAPTER: THE TRACE ─────────────────────────────────── -->
+  <section class="chapter-section fb-en-08" id="ch-trace">
+    <div class="video-overlay" style="background: linear-gradient(to bottom, rgba(5,7,12,0.70), rgba(5,7,12,0.28), rgba(5,7,12,0.70));"></div>
+    <div class="chapter-content">
+      <div class="chapter-heading">
+        <div class="chapter-rule"></div>
+        <span class="chapter-name">The Trace</span>
+        <div class="chapter-rule"></div>
+      </div>
+      <p class="chapter-inscription">It is not possession.<br>It is not contamination.<br>It is a resonance — a memory that reality can be more malleable than it should be.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION VIII — Bearers of permeability ─────────────── -->
   <section class="story-section" id="s-08">
     <div class="video-bg">
-      <video src="../videos/ws-08.mp4" autoplay muted loop playsinline></video>
-      <div class="video-fallback fb-ws-08"></div>
+      <video src="../videos/en-08.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-en-08"></div>
     </div>
     <div class="video-overlay"></div>
     <div class="story-content">
       <span class="section-marker">VIII</span>
-      <p class="story-text">The old man approached and placed a heavy hand on his shoulder.
-        <span class="dialogue">— "The laws of the world are the same everywhere. As above, so below. As in the ocean, so in your mind. What you call chaos and abandonment is just the way the water in you seeks the best form to pour itself out. You are not inferior, you are not an impostor. You are just in the period of flowing among the rocks. And that requires a huge expenditure of energy."</span>
-      </p>
+      <p class="story-text">Those who carry the trace do not wake with powers. The change is slower. Reality feels a little more elastic. Then the episodes appear — only when attention is diluted. A falling object stops for a fraction of a second. A phrase is heard twice. A recent memory becomes momentarily unclear, as if it could be rewritten. It is not power. It is a permeability.</p>
     </div>
   </section>
 
-  <!-- ─── CHAPTER: THE RETURN ──────────────────────────────────── -->
-  <section class="chapter-section fb-ws-09" id="ch-return">
-    <div class="video-overlay" style="background: linear-gradient(to bottom, rgba(5,8,16,0.70), rgba(5,8,16,0.28), rgba(5,8,16,0.70));"></div>
-    <div class="chapter-content">
-      <div class="chapter-heading">
-        <div class="chapter-rule"></div>
-        <span class="chapter-name">The Return</span>
-        <div class="chapter-rule"></div>
-      </div>
-      <p class="chapter-inscription">The tide does not apologize<br>when it withdraws from the shore.<br>It knows what it is gathering strength for.</p>
-    </div>
-  </section>
-
-  <!-- ─── SECTION IX — The fishing line ───────────────────────── -->
+  <!-- ─── SECTION IX — Obsession and the choice ──────────────── -->
   <section class="story-section" id="s-09">
     <div class="video-bg">
-      <video src="../videos/ws-09.mp4" autoplay muted loop playsinline></video>
-      <div class="video-fallback fb-ws-09"></div>
+      <video src="../videos/en-09.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-en-09"></div>
     </div>
     <div class="video-overlay"></div>
     <div class="story-content">
       <span class="section-marker">IX</span>
-      <p class="story-text">The craftsman looked at the line of the fishing rod disappearing into the water. He suddenly understood something fundamental. To build the simplicity he was looking for in the world, he had to accept that the previous process was noisy, tiring, and full of changes of direction. No alchemist turned lead into gold on the first try; he boiled, destroyed, cooled, and started over.</p>
+      <p class="story-text">Some learn gentle acceptance — living with the knowledge that the laws are, sometimes, only local conventions. Others choose obsession: they force the door wider, build empty rooms, avoid every precise measure. The more they force, the more unstable the world around them becomes. And ETHERNIOHM does not leave traces at random. It feels the states of diluted attention that are authentic, not forced — and those it chooses become bearers of permeability.</p>
     </div>
   </section>
 
-  <!-- ─── SECTION X — The simple decision ────────────────────── -->
+  <!-- ─── CHAPTER: THE OPEN DOOR ─────────────────────────────── -->
+  <section class="chapter-section fb-en-10" id="ch-door">
+    <div class="video-overlay" style="background: linear-gradient(to bottom, rgba(5,7,12,0.70), rgba(5,7,12,0.28), rgba(5,7,12,0.70));"></div>
+    <div class="chapter-content">
+      <div class="chapter-heading">
+        <div class="chapter-rule"></div>
+        <span class="chapter-name">The Open Door</span>
+        <div class="chapter-rule"></div>
+      </div>
+      <p class="chapter-inscription">Not the bearer decides.<br>Not ETHERNIOHM decides.<br>The door itself becomes the principle.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION X — The door that holds him ────────────────── -->
   <section class="story-section" id="s-10">
     <div class="video-bg">
-      <video src="../videos/ws-10.mp4" autoplay muted loop playsinline></video>
-      <div class="video-fallback fb-ws-10"></div>
+      <video src="../videos/en-10.mp4" autoplay muted loop playsinline></video>
+      <div class="video-fallback fb-en-10"></div>
     </div>
     <div class="video-overlay"></div>
     <div class="story-content">
       <span class="section-marker">X</span>
-      <p class="story-text">That evening on the pontoon, listening to the waves, the craftsman made a simple decision. He did not try to fix anything anymore. He accepted the fatigue. He accepted the glass maze. He understood that stopping work is not a capitulation, but a necessary reset. The ocean does not apologize when the tide comes in and withdraws its waters from the shore; it knows that only in this way can it gather strength to return to the flow.</p>
+      <p class="story-text">Imagine a bearer who holds the presence long enough — not through force, but through acceptance so complete that ETHERNIOHM no longer has a reason to collapse. The episodes last hours. His shadow delays. Local time dilates and contracts, as if it had breathed. And gradually he realizes something disturbing and strangely calming: he no longer holds the door open. The door holds him. He is no longer a person who carries a presence. He is a place where the presence has stabilized.</p>
     </div>
   </section>
 
@@ -625,7 +610,7 @@
     <div class="epilogue-content">
       <span class="epilogue-marker">Epilogue</span>
       <div class="epilogue-rule"></div>
-      <p class="epilogue-text">Every period spent in the in-between — the unfinished, the restarted, the abandoned-and-returned-to — is the water finding its level. The mind does not fail when it changes course. It fails only when it mistakes the detour for the destination, or the rest for the retreat. To know when to put down the tools and walk to the sea is itself a form of mastery. The craftsman who can sit with the unfinished without panic is already building the most important thing: the patience to see it through.</p>
+      <p class="epilogue-text">When doors multiply, the laws do not disappear — they lose their absolute character. Reality begins to respond not to wishes, but to the quality of collective attention. Some become bearers. Some stand at the edge as servants, tending the space around the doors. Others remain in lucid fear — close enough to see, far enough not to be taken. Both can coexist in the same person: the one who brings food to the threshold, and the one who, in the evening, measures with the heart how far they still are from crossing it. If reality itself has learned to remain open… what does impossible still mean?</p>
       <div class="epilogue-rule"></div>
     </div>
   </section>
@@ -633,7 +618,7 @@
   <!-- ─── END NAVIGATION ───────────────────────────────────────── -->
   <nav class="end-nav">
     <a href="../storyteller.html" class="end-nav-link">← Back to all stories</a>
-    <a href="etherniohm.html" class="end-nav-link">Next story →</a>
+    <a href="#" class="end-nav-link disabled" aria-disabled="true">Next story →</a>
   </nav>
 
   <!-- ─── VANILLA JS ───────────────────────────────────────────── -->

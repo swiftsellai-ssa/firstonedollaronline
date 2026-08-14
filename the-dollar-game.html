@@ -2,1053 +2,1434 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Journey - First$1online</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dollar Game – 7 steps from $0 to your first $1</title>
+  <meta name="description"
+    content="A private 7-step tracker from $0 to your first real dollar online. Pick a path, ship the next ugly step, and keep going. Progress stays on your device.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://firstonedollaronline.com/the-dollar-game.html">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600;800&display=swap');
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-        }
-
-        .font-mono {
-            font-family: 'Space Mono', monospace;
-        }
-
-        .sketchy-box {
-            border: 3px solid #1e293b;
-            border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px;
-            box-shadow: 4px 4px 0px 0px #1e293b;
-            transition: all 0.2s ease;
-        }
-
-        .sketchy-box:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px 0px #1e293b;
-        }
-
-        .sketchy-box.locked {
-            border-color: #cbd5e1;
-            color: #94a3b8;
-            box-shadow: none;
-            pointer-events: none;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .animate-fadeIn {
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .animate-slideUp {
-            animation: slideUp 0.4s ease-out;
-        }
-
-        .badge-mini {
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
-    
-    /* Tap Target Enhancements */
-    a.logo { min-height: 48px; display: inline-flex; align-items: center; }
-    .cta-button, button, .newsletter button { min-height: 48px; }
-
-</style>
-
-  <script type="speculationrules">
-  {
-    "prerender": [{
-      "where": {
-        "href_matches": "/*"
-      },
-      "eagerness": "moderate"
-    }]
-  }
-  </script>
-
-  <!-- SEO & Social Meta Tags -->
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="robots" content="index,follow">
-  <meta property="og:title" content="First$1online | Make Your First $1 Online">
-  <meta property="og:description" content="A dead-simple $1 Notion kit designed to help complete beginners cross the scariest threshold: making your literal first $1 online.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Dollar Game – $0 to your first $1">
+  <meta property="og:description" content="Seven honest steps. Your private tracker. No fake leaderboard.">
   <meta property="og:image" content="https://firstonedollaronline.com/og-image.jpg">
-  <meta property="og:url" content="https://firstonedollaronline.com/">
+  <meta property="og:url" content="https://firstonedollaronline.com/the-dollar-game.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="First$1online | Make Your First $1 Online">
-  <meta name="twitter:description" content="A dead-simple $1 Notion kit designed to help complete beginners cross the scariest threshold: making your literal first $1 online.">
+  <meta name="twitter:title" content="The Dollar Game – $0 to your first $1">
+  <meta name="twitter:description" content="Seven honest steps. Your private tracker. No fake leaderboard.">
   <meta name="twitter:image" content="https://firstonedollaronline.com/og-image.jpg">
+  <meta name="twitter:creator" content="@gabriel_sstech">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "First$1online",
-    "url": "https://firstonedollaronline.com/",
-    "description": "Make your first $1 online with proven micro-ideas."
+    "@type": "HowTo",
+    "name": "The Dollar Game: earn your first $1 online",
+    "description": "A 7-step roadmap from deciding a path to receiving your first real dollar online.",
+    "totalTime": "P21D",
+    "estimatedCost": { "@type": "MonetaryAmount", "currency": "USD", "value": "0" },
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "The Decision", "text": "Pick one path: sell a skill, publish content, or ship a $1 product. Stop researching." },
+      { "@type": "HowToStep", "position": 2, "name": "The Setup", "text": "Create the profile or listing. It needs to exist, not be perfect." },
+      { "@type": "HowToStep", "position": 3, "name": "First Move", "text": "Send the first proposal, publish the first post, or list the first product." },
+      { "@type": "HowToStep", "position": 4, "name": "The Grind", "text": "Do the work 10 times. Volume is the only honest hack." },
+      { "@type": "HowToStep", "position": 5, "name": "First Contact", "text": "Get a reply, a question, or an inquiry. Proof someone is listening." },
+      { "@type": "HowToStep", "position": 6, "name": "Almost There", "text": "Agree the deal or send the payment link. Do not stall at the finish." },
+      { "@type": "HowToStep", "position": 7, "name": "The First Dollar", "text": "Receive money in your account. Even $1 counts." }
+    ]
   }
   </script>
+  <style>
+    :root {
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --bg: #06110c;
+      --bg-raised: #0c1c14;
+      --ink: #e8f2ea;
+      --muted: rgba(232, 242, 234, 0.58);
+      --signal: #2ee59d;
+      --signal-dim: rgba(46, 229, 157, 0.18);
+      --signal-deep: #18b87a;
+      --line: rgba(232, 242, 234, 0.1);
+      --warn: #f0c14b;
+    }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font-family: inherit; }
+
+    .atmosphere {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 55% at 70% 10%, rgba(46, 229, 157, 0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 10% 80%, rgba(24, 90, 60, 0.35) 0%, transparent 50%),
+        linear-gradient(165deg, #04140e 0%, #06110c 45%, #0a1812 100%);
+    }
+
+    .atmosphere::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 5%;
+      backdrop-filter: blur(14px);
+      background: rgba(6, 17, 12, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-brand span { color: var(--signal); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.35rem;
+    }
+
+    .nav-links a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] { color: var(--ink); }
+
+    .nav-cta {
+      font-weight: 700 !important;
+      color: var(--bg) !important;
+      background: var(--signal);
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+    }
+
+    .nav-cta:hover { background: #5ff0b5 !important; color: var(--bg) !important; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .wrap {
+      width: min(760px, calc(100% - 10%));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 3.4rem 0 2.2rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 0.85rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 7vw, 3.8rem);
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--signal);
+    }
+
+    .hero-lead {
+      color: var(--muted);
+      font-size: 1.12rem;
+      font-weight: 300;
+      max-width: 42ch;
+      margin-bottom: 1.4rem;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(12, 28, 20, 0.65);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .chip.hot {
+      border-color: rgba(46, 229, 157, 0.4);
+      color: var(--signal);
+      background: var(--signal-dim);
+    }
+
+    .honesty {
+      font-size: 0.88rem;
+      color: var(--muted);
+      border-left: 3px solid var(--signal);
+      padding: 0.65rem 0.9rem;
+      background: rgba(46, 229, 157, 0.06);
+      border-radius: 0 12px 12px 0;
+      max-width: 54ch;
+    }
+
+    .stats {
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.7rem;
+      margin: 1.6rem 0 0.4rem;
+    }
+
+    .stats.is-on { display: grid; }
+
+    .stat {
+      padding: 0.9rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(12, 28, 20, 0.6);
+      text-align: center;
+    }
+
+    .stat b {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .stat span {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .badges {
+      display: none;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 1rem;
+    }
+
+    .badges.is-on { display: flex; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      min-height: 34px;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 193, 75, 0.35);
+      background: rgba(240, 193, 75, 0.08);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .paths {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 1.6rem 0 0.4rem;
+    }
+
+    .path-card {
+      text-align: left;
+      cursor: pointer;
+      padding: 1.1rem 1rem;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(12, 28, 20, 0.65);
+      color: var(--ink);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .path-card:hover,
+    .path-card.is-on {
+      border-color: rgba(46, 229, 157, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .path-card.is-on { background: rgba(46, 229, 157, 0.08); }
+
+    .path-card strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.02rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .path-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .trail-wrap { position: relative; padding: 1.5rem 0 3rem; }
+
+    .trail {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .trail::before {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 18px;
+      bottom: 18px;
+      width: 2px;
+      background: var(--line);
+    }
+
+    .trail::after {
+      content: '';
+      position: absolute;
+      left: 27px;
+      top: 18px;
+      width: 2px;
+      height: var(--fill, 0%);
+      background: var(--signal);
+      transition: height 0.5s ease;
+    }
+
+    .step {
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-btn {
+      width: 100%;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      text-align: left;
+      cursor: pointer;
+      padding: 1.15rem 1.15rem 1.15rem 0.9rem;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(12, 28, 20, 0.72);
+      color: var(--ink);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .step-btn:hover { border-color: rgba(46, 229, 157, 0.35); transform: translateY(-2px); }
+
+    .step.is-current .step-btn {
+      border-color: rgba(46, 229, 157, 0.55);
+      box-shadow: 0 0 0 4px rgba(46, 229, 157, 0.08);
+    }
+
+    .step.is-done .step-btn {
+      background: rgba(46, 229, 157, 0.07);
+    }
+
+    .step.is-locked .step-btn { opacity: 0.72; }
+
+    .num {
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      background: var(--bg);
+    }
+
+    .step.is-done .num {
+      background: var(--signal);
+      color: #04140e;
+      border-color: var(--signal);
+    }
+
+    .step.is-current .num {
+      border-color: var(--signal);
+      color: var(--signal);
+    }
+
+    .step-copy h2 {
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .step-copy p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+
+    .pill {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: var(--signal);
+      color: #04140e;
+      font-weight: 700;
+    }
+
+    .pill.ghost {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .when {
+      margin: 0.35rem 0 0 54px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .finish {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.6rem 1.35rem;
+      border-radius: 20px;
+      border: 1px solid rgba(46, 229, 157, 0.35);
+      background:
+        radial-gradient(ellipse at 90% 10%, rgba(46, 229, 157, 0.12), transparent 50%),
+        rgba(12, 28, 20, 0.8);
+    }
+
+    .finish.is-on { display: block; }
+
+    .finish h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .finish p { color: var(--muted); margin-bottom: 1rem; }
+
+    .finish-stats {
+      display: grid;
+      gap: 0.4rem;
+      margin: 1rem 0 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .finish-stats div {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .kit {
+      margin: 0.5rem 0 2.5rem;
+      padding: 1.35rem 1.3rem;
+      border-radius: 18px;
+      border: 1px solid rgba(46, 229, 157, 0.25);
+      background: rgba(12, 28, 20, 0.7);
+    }
+
+    .kit h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .kit p { color: var(--muted); margin-bottom: 1rem; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+
+    .btn-primary,
+    .btn-ghost,
+    .btn-danger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.75rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s, border-color 0.2s;
+    }
+
+    .btn-primary { background: var(--signal); color: #04140e; }
+    .btn-primary:hover { background: #5ff0b5; transform: translateY(-1px); }
+    .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+    .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+    .btn-ghost:hover { border-color: rgba(46, 229, 157, 0.45); }
+    .btn-danger { background: transparent; color: var(--muted); border: 0; text-decoration: underline; min-height: auto; padding: 0.4rem 0; font-weight: 500; }
+    .btn-danger:hover { color: #f5a3a3; }
+
+    .faq { max-width: 720px; display: flex; flex-direction: column; gap: 0.65rem; margin: 0 0 3rem; }
+    .faq-item { border: 1px solid var(--line); border-radius: 14px; background: rgba(12, 28, 20, 0.45); padding: 0.15rem 1.1rem; }
+    .faq-item summary { cursor: pointer; list-style: none; font-weight: 600; padding: 1rem 0; font-family: var(--font-display); }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item p { color: var(--muted); padding-bottom: 1rem; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2.25rem 5%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer a { color: var(--ink); margin-left: 0.75rem; }
+    footer a:hover { color: var(--signal); }
+
+    dialog {
+      width: min(640px, calc(100% - 1.5rem));
+      max-height: min(90vh, 860px);
+      margin: auto;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #0a1812;
+      color: var(--ink);
+      padding: 0;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+    }
+
+    dialog::backdrop { background: rgba(2, 8, 6, 0.72); backdrop-filter: blur(6px); }
+
+    .dlg {
+      padding: 1.5rem 1.4rem 1.4rem;
+      overflow: auto;
+      max-height: min(90vh, 860px);
+    }
+
+    .dlg-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .dlg h2 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+    }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .quote {
+      border-left: 3px solid var(--signal);
+      padding: 0.7rem 0.9rem;
+      background: rgba(46, 229, 157, 0.06);
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 1rem;
+    }
+
+    .quote span {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--signal);
+      margin-bottom: 0.25rem;
+    }
+
+    .block { margin-bottom: 1rem; }
+    .block h3 { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.35rem; }
+    .compass { display: grid; gap: 0.7rem; padding: 0.95rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(6, 17, 12, 0.55); margin-bottom: 1rem; }
+    .compass strong { display: block; font-size: 0.86rem; margin-bottom: 0.15rem; }
+    .compass p { color: var(--muted); font-size: 0.95rem; }
+
+    label.field {
+      display: block;
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--ink);
+      padding: 0.75rem 0.9rem;
+      font-size: 1rem;
+      margin-bottom: 0.85rem;
+    }
+
+    textarea { min-height: 88px; resize: vertical; }
+
+    .times { display: flex; gap: 0.45rem; margin-bottom: 1rem; }
+    .times button {
+      flex: 1;
+      min-height: 42px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .times button.is-on { background: var(--signal); color: #04140e; border-color: var(--signal); }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 1.25rem;
+      transform: translateX(-50%) translateY(12px);
+      opacity: 0;
+      pointer-events: none;
+      background: var(--signal);
+      color: #04140e;
+      font-weight: 700;
+      padding: 0.7rem 1.1rem;
+      border-radius: 999px;
+      z-index: 80;
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .toast.is-on { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (max-width: 720px) {
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        right: 5%;
+        left: 5%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.35rem;
+        padding: 0.85rem;
+        background: rgba(8, 22, 16, 0.96);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 0.7rem 0.85rem; border-radius: 10px; }
+      .nav-cta { text-align: center; }
+      .paths, .stats { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      .paths { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div id="root"></div>
+  <div class="atmosphere" aria-hidden="true"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" class="nav-brand">First<span>$1</span>online</a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" id="menu-toggle">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a href="index.html#notion">Notion</a>
+      <a href="the-dollar-game.html" aria-current="page">Dollar Game</a>
+      <a href="1-idea.html">Ideas</a>
+      <a class="nav-cta" href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" rel="noopener noreferrer">Unlock $1</a>
+    </div>
+  </nav>
 
-        // --- HONEST STATS ---
-        // Instead of fake thousands, we show the real "Founding Phase" numbers.
-        const FOUNDING_STATS = {
-            verifiedEarners: 2,       // Honest: The 2 people who have actually made it (you + test/early user)
-            foundingBuilders: 15,     // Honest: A reasonable estimate of "Active" users based on your engagement
-            phase: "Early Access"
+  <main>
+    <header class="hero wrap">
+      <span class="eyebrow">Private tracker · not a leaderboard</span>
+      <h1>The Dollar <em>Game</em></h1>
+      <p class="hero-lead">Seven steps from $0 to a real dollar in your account. This is a roadmap you mark yourself — not a contest, and not fake live counts.</p>
+      <div class="meta-row" id="meta-row">
+        <span class="chip hot" id="level-chip">Step 1 / 7</span>
+      </div>
+      <p class="honesty">Progress is saved in this browser only. Nobody else can see your checkmarks. Clearing site data starts you over.</p>
+
+      <div class="stats" id="stats" aria-live="polite"></div>
+      <div class="badges" id="badges" aria-label="Badges you earned"></div>
+
+      <div id="path-box">
+        <p class="eyebrow" style="margin-top:1.6rem;">Choose a path</p>
+        <div class="paths" role="group" aria-label="Choose how you will try to earn $1">
+          <button type="button" class="path-card" data-path="freelance">
+            <strong>Sell a skill</strong>
+            <span>Freelance, audits, small gigs. You get paid for doing a thing for someone.</span>
+          </button>
+          <button type="button" class="path-card" data-path="content">
+            <strong>Publish</strong>
+            <span>Posts, threads, videos. You show up in public until someone wants to pay.</span>
+          </button>
+          <button type="button" class="path-card" data-path="product">
+            <strong>Ship a $1 thing</strong>
+            <span>A tiny digital product. List it, share it, collect the first sale.</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="wrap trail-wrap" aria-labelledby="map-title">
+      <h2 id="map-title" class="eyebrow">The seven steps</h2>
+      <ol class="trail" id="trail">
+        <li class="step" data-id="1">
+          <button type="button" class="step-btn" data-open="1">
+            <span class="num">1</span>
+            <span class="step-copy">
+              <h2>The Decision <span class="pill" hidden>Now</span></h2>
+              <p>Pick one path. Indecision is the whole trap.</p>
+            </span>
+          </button>
+          <p class="when" hidden></p>
+        </li>
+        <li class="step" data-id="2">
+          <button type="button" class="step-btn" data-open="2">
+            <span class="num">2</span>
+            <span class="step-copy">
+              <h2>The Setup <span class="pill ghost" hidden>Locked</span></h2>
+              <p>Get a place to be found. You need an offer, not a logo.</p>
+            </span>
+          </button>
+          <p class="when" hidden></p>
+        </li>
+        <li class="step" data-id="3">
+          <button type="button" class="step-btn" data-open="3">
+            <span class="num">3</span>
+            <span class="step-copy">
+              <h2>First Move <span class="pill ghost" hidden>Locked</span></h2>
+              <p>Dreamers plan. Doers ship the first ugly version.</p>
+            </span>
+          </button>
+          <p class="when" hidden></p>
+        </li>
+        <li class="step" data-id="4">
+          <button type="button" class="step-btn" data-open="4">
+            <span class="num">4</span>
+            <span class="step-copy">
+              <h2>The Grind <span class="pill ghost" hidden>Locked</span></h2>
+              <p>Do the work ten times. Stopping at three is how people stay at $0.</p>
+            </span>
+          </button>
+          <p class="when" hidden></p>
+        </li>
+        <li class="step" data-id="5">
+          <button type="button" class="step-btn" data-open="5">
+            <span class="num">5</span>
+            <span class="step-copy">
+              <h2>First Contact <span class="pill ghost" hidden>Locked</span></h2>
+              <p>A reply, a question, a like from a stranger. Proof you exist.</p>
+            </span>
+          </button>
+          <p class="when" hidden></p>
+        </li>
+        <li class="step" data-id="6">
+          <button type="button" class="step-btn" data-open="6">
+            <span class="num">6</span>
+            <span class="step-copy">
+              <h2>Almost There <span class="pill ghost" hidden>Locked</span></h2>
+              <p>Name the price. Send the link. Do not stall at the finish.</p>
+            </span>
+          </button>
+          <p class="when" hidden></p>
+        </li>
+        <li class="step" data-id="7">
+          <button type="button" class="step-btn" data-open="7">
+            <span class="num">7</span>
+            <span class="step-copy">
+              <h2>The First Dollar <span class="pill ghost" hidden>Locked</span></h2>
+              <p>Money in the account. Even $1. That is the whole point.</p>
+            </span>
+          </button>
+          <p class="when" hidden></p>
+        </li>
+      </ol>
+
+      <section class="finish" id="finish" aria-labelledby="finish-title">
+        <h2 id="finish-title">You crossed $0</h2>
+        <p>You earned money on the internet. That is a floor, not a ceiling. The next dollar is the same motion with less fear.</p>
+        <div class="finish-stats" id="finish-stats"></div>
+        <div class="actions">
+          <button type="button" class="btn-primary" id="share-win">Share the win on X</button>
+          <a class="btn-ghost" href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" rel="noopener noreferrer">Get the Notion kit · $1</a>
+        </div>
+      </section>
+    </section>
+
+    <aside class="wrap kit">
+      <h2>Need the playbook?</h2>
+      <p>This page tracks the climb. The $1 Notion kit is the actual methods, plus the builder circle on X and Discord. One payment. No upsell.</p>
+      <div class="actions">
+        <a class="btn-primary" href="https://buy.stripe.com/cNi00jcgkcLx4A092k8N201" target="_blank" rel="noopener noreferrer">Unlock the kit</a>
+        <a class="btn-ghost" href="index.html#notion">See what’s inside</a>
+      </div>
+    </aside>
+
+    <section class="wrap" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="eyebrow">Straight answers</h2>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Is this actually a game?</summary>
+          <p>No points, no prizes, no public scoreboard. It is a checklist with a spine so you stop inventing a new plan every night.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I have to buy the kit?</summary>
+          <p>No. You can run these seven steps with a free profile and stubbornness. The kit is there if you want the methods written down and people to talk to.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Who verifies that I made $1?</summary>
+          <p>You do. This is an honesty tool, not a contest. If you want to tell people, share it yourself. We do not collect screenshots.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What if I stall?</summary>
+          <p>Open the current step, read the trap, do the smallest version of the mission today. Volume beats a prettier plan.</p>
+        </details>
+      </div>
+      <p style="margin-bottom:2.5rem;">
+        <button type="button" class="btn-danger" id="reset-btn">Start this climb over</button>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 First$1online — a #buildinpublic experiment by <a href="https://x.com/gabriel_sstech" target="_blank" rel="noopener noreferrer">@gabriel_sstech</a></p>
+    <div>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="index.html">Home</a>
+    </div>
+  </footer>
+
+  <dialog id="step-dialog" aria-labelledby="dlg-title">
+    <div class="dlg">
+      <div class="dlg-top">
+        <div>
+          <p class="eyebrow" id="dlg-kicker">Step</p>
+          <h2 id="dlg-title">Step</h2>
+        </div>
+        <button type="button" class="icon-btn" id="dlg-close" aria-label="Close">✕</button>
+      </div>
+      <div class="quote">
+        <span>Reality check</span>
+        <p id="dlg-quote"></p>
+      </div>
+      <div class="block">
+        <h3>Your mission</h3>
+        <p id="dlg-task"></p>
+      </div>
+      <p class="chip" id="dlg-time" style="margin-bottom:1rem;"></p>
+      <div class="compass">
+        <div>
+          <strong>What usually goes wrong</strong>
+          <p id="dlg-wrong"></p>
+        </div>
+        <div>
+          <strong>The uncomfortable part</strong>
+          <p id="dlg-truth"></p>
+        </div>
+        <div>
+          <strong>How to push through</strong>
+          <p id="dlg-push"></p>
+        </div>
+      </div>
+      <label class="field" for="dlg-note">Private note (stays on this device)</label>
+      <textarea id="dlg-note" maxlength="400" placeholder="What did you actually do? A link, a name, a sentence."></textarea>
+      <label class="field" id="time-label">Rough time you spent</label>
+      <div class="times" id="dlg-times">
+        <button type="button" data-hours="0.5">0.5h</button>
+        <button type="button" data-hours="1" class="is-on">1h</button>
+        <button type="button" data-hours="2">2h</button>
+        <button type="button" data-hours="4">4h</button>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn-primary" id="dlg-complete">Mark this done</button>
+        <button type="button" class="btn-ghost" id="dlg-save-note">Save note only</button>
+      </div>
+      <p id="dlg-done-on" class="when" style="margin:0.8rem 0 0;"></p>
+    </div>
+  </dialog>
+
+  <dialog id="letter-dialog" aria-labelledby="letter-title">
+    <div class="dlg">
+      <p class="eyebrow">A note for this step</p>
+      <h2 id="letter-title" style="margin-bottom:0.8rem;"></h2>
+      <p id="letter-body" style="white-space:pre-wrap; margin-bottom:1.2rem;"></p>
+      <button type="button" class="btn-primary" id="letter-close">Keep going</button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const STORE = 'dollarGame.v2';
+    const LEGACY = 'firstDollarJourney';
+    const SHARE_URL = 'https://firstonedollaronline.com/the-dollar-game.html';
+    const PATH_LABEL = { freelance: 'Sell a skill', content: 'Publish', product: 'Ship a $1 thing' };
+
+    const LETTERS = {
+      3: {
+        title: 'You shipped',
+        body: 'Most people never get here. The first application can be ignored. The first post can get three views. That is normal.\n\nThe only difference that matters now is that you keep going.\n\nSee you at step 4.'
+      },
+      5: {
+        title: 'Someone answered',
+        body: 'A reply is proof. Not of riches — of contact. People can see you.\n\nA lot of climbers quit in the quiet before this. You did not.\n\nDo not treat this as the finish. Treat it as the first real data.'
+      },
+      7: {
+        title: 'You made it',
+        body: 'You earned money on the internet. Plenty of people will talk about this for years and never do it.\n\nThis is not your ceiling. If you can make $1, the motion for $10 and $100 is the same motion with less mythology.\n\nWelcome across the line.'
+      }
+    };
+
+    const BADGE_META = {
+      night_owl: { icon: '🦉', name: 'Night owl', desc: 'Finished a step after 11pm' },
+      early_bird: { icon: '🌅', name: 'Early bird', desc: 'Finished a step before 7am' },
+      speed_demon: { icon: '⚡', name: 'Two in a day', desc: 'Finished two steps on the same day' },
+      comeback_kid: { icon: '💪', name: 'Came back', desc: 'Returned after a week away' },
+      persistent: { icon: '🔥', name: 'Three-day streak', desc: 'Showed up three days in a row' },
+      note_taker: { icon: '✏️', name: 'Note taker', desc: 'Wrote notes on three steps' },
+      first_dollar: { icon: '💵', name: 'First dollar', desc: 'Marked the money step' }
+    };
+
+    const STEPS = {
+      1: {
+        title: 'The Decision',
+        quote: 'Every expert was a beginner who picked something and refused to restart every Monday.',
+        typical: 'Usually one sitting. People lose weeks here by researching.',
+        wrong: 'Comparing ten platforms until you feel “ready.”',
+        truth: 'The first path can be wrong. You can pivot after you have data.',
+        push: 'Set a 20-minute timer. When it ends, you have a path.',
+        action: 'I picked my path',
+        task: {
+          freelance: 'Choose one service you can do this week. One. Write it in the note.',
+          content: 'Choose one niche and one place you will publish. Write both in the note.',
+          product: 'Name a $1 digital thing you can ship in a weekend. Write the name in the note.',
+          any: 'Pick sell a skill, publish, or ship a $1 product. Stop shopping for a fourth option.'
+        }
+      },
+      2: {
+        title: 'The Setup',
+        quote: 'You do not need a brand. You need a place a stranger can say yes.',
+        typical: 'An evening. Perfectionists spend four days on the photo.',
+        wrong: 'Designing a logo, a color system, and a perfect bio.',
+        truth: 'Your first profile will be bad. That is the job of a first profile.',
+        push: 'Write it in 20 minutes. Publish. Do not edit for 24 hours.',
+        action: 'The profile is live',
+        task: {
+          freelance: 'Create the Fiverr, Upwork, or simple offer page. One sentence: who you help + what you do.',
+          content: 'Set the bio. Say what you help with, not your life story.',
+          product: 'Open Gumroad, Lemon, or Stripe Payment Link. Empty listing is fine. The store must exist.',
+          any: 'Create the profile or storefront. It needs to exist, not impress you.'
+        }
+      },
+      3: {
+        title: 'First Move',
+        quote: 'Your first attempt will not be perfect. Ship it scared.',
+        typical: 'Same day as setup if you do not negotiate with fear.',
+        wrong: 'Waiting until the draft feels safe.',
+        truth: 'The first ten attempts teach. The first one only has to leave the building.',
+        push: 'Click send. Then stand up and walk away.',
+        action: 'I shipped it',
+        task: {
+          freelance: 'Send the first proposal or publish the first gig.',
+          content: 'Publish the first post, thread, or video.',
+          product: 'Publish the listing. A stranger could buy it today.',
+          any: 'Send the first proposal, publish the first post, or list the first item.'
+        }
+      },
+      4: {
+        title: 'The Grind',
+        quote: 'Most people stop at three tries and call the internet dead.',
+        typical: 'A few days of showing up. This is the longest honest stretch.',
+        wrong: 'Stopping at 3–5 and rewriting the whole strategy.',
+        truth: 'This is a numbers game until it is not. More attempts raise the odds.',
+        push: 'Track each attempt in the note. Treat #10 like the actual mission.',
+        action: 'I did the ten reps',
+        task: {
+          freelance: 'Send 10 proposals or outreach notes. Count them in the note.',
+          content: 'Publish 10 times. Same place. Same promise.',
+          product: 'Share the listing with 10 real people or 10 public posts.',
+          any: 'Do the work 10 times. Applications, posts, or shares.'
+        }
+      },
+      5: {
+        title: 'First Contact',
+        quote: 'Someone is listening. That is more than a like from your cousin.',
+        typical: 'Often after the grind. Sometimes on attempt two. Do not predict it.',
+        wrong: 'Quitting the week before anyone talks back.',
+        truth: 'The first response often arrives when you are bored, not inspired.',
+        push: 'If 10 was silence, do 10 more. Do not invent a new identity.',
+        action: 'I got a response',
+        task: {
+          freelance: 'Get a reply, a question, or an interview request.',
+          content: 'Get a reply, a save, or a DM from someone who is not a friend.',
+          product: 'Get a click-through question, a comment, or an abandoned checkout. A human touched it.',
+          any: 'Get a reply, a comment, or an inquiry.'
+        }
+      },
+      6: {
+        title: 'Almost There',
+        quote: 'The last mile is where people get polite and disappear.',
+        typical: 'A conversation or two. Hours, not weeks, if you name the price.',
+        wrong: 'Going quiet when money enters the chat.',
+        truth: 'Self-sabotage looks like “I should add one more feature first.”',
+        push: 'Write the price. Send it. Sit with the discomfort.',
+        action: 'I sent the ask',
+        task: {
+          freelance: 'Agree the scope and the number. Send the invoice or booking link.',
+          content: 'Offer the paid thing — a tip, a call, a file — and send the link.',
+          product: 'Fix the listing if needed and put the pay link in front of a real person.',
+          any: 'Name the price and send the payment link.'
+        }
+      },
+      7: {
+        title: 'The First Dollar',
+        quote: 'This is the beginning, not a personality.',
+        typical: 'Whenever the money actually lands. Do not mark this early.',
+        wrong: 'Calling a “maybe” a win, or treating $1 as the end of the story.',
+        truth: '$1 proves the motion. $10 and $100 are more of the same motion.',
+        push: 'Write what you sold in the note. Then tell one person who is still at $0.',
+        action: 'The $1 is in the account',
+        task: {
+          freelance: 'Get paid. Any amount. Write who paid you and for what.',
+          content: 'Get paid. Any amount. Write what they paid for.',
+          product: 'Get the first sale. Write the product name. Optional: a public receipt link.',
+          any: 'Receive money. Even $1. Write what it was for.'
+        }
+      }
+    };
+
+    const defaultState = () => ({
+      version: 2,
+      path: null,
+      level: 1,
+      history: {},
+      notes: {},
+      timeTracking: {},
+      badges: [],
+      startDate: null,
+      lastActive: null
+    });
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORE);
+        if (raw) return { ...defaultState(), ...JSON.parse(raw) };
+        const legacy = localStorage.getItem(LEGACY);
+        if (!legacy) return defaultState();
+        const old = JSON.parse(legacy);
+        return {
+          ...defaultState(),
+          level: old.level || 1,
+          history: old.history || {},
+          timeTracking: old.timeTracking || {},
+          badges: (old.badges || []).filter((id) => BADGE_META[id]),
+          startDate: old.startDate || null,
+          lastActive: Object.values(old.history || {}).sort().at(-1) || null
         };
-
-        // CountAPI Key (Namespace: first1dollar_journey, Key: visits)
-        // This will automatically create the key if it doesn't exist and increment.
-        const COUNT_API_URL = "https://api.countapi.xyz/hit/first1dollar_journey_v1/visits";
-
-        const STRUGGLE_LOGS = {
-            1: [
-                "Spent 2 days just deciding between Fiverr and Upwork",
-                "Analysis paralysis is real. Had to force myself to just pick one.",
-                "Watched 15 YouTube videos before choosing. Overthinking king 👑"
-            ],
-            2: [
-                "Rewrote my profile 6 times before posting it",
-                "Took me 3 days just to upload a profile picture. Perfectionism is a disease.",
-                "My first bio was cringe. Changed it 8 times. Still not perfect but it's LIVE."
-            ],
-            3: [
-                "Took me 3 days to just press 'publish'. Fear is real.",
-                "Almost gave up. Hand was shaking clicking submit on my first proposal.",
-                "First gig was terrible. Posted it anyway. No regrets."
-            ],
-            4: [
-                "Got rejected 8 times before anyone replied. Keep going.",
-                "First 12 applications ignored. #13 responded. Numbers game.",
-                "Sent 20 proposals. 18 ghosted. 2 replied. Math works if you work."
-            ],
-            5: [
-                "First response was someone asking for free work. Still counts as contact!",
-                "Got my first like after posting for 2 weeks straight. Kept posting.",
-                "Woke up to a notification. Almost cried. Someone cared about my work."
-            ],
-            6: [
-                "Negotiated my rate down from $50 to $15. Still doing it. Need the win.",
-                "They wanted revisions. I said yes. Close to the money.",
-                "Last-minute requests. Almost walked away. Glad I didn't."
-            ],
-            7: [
-                "Saw $1.47 in my account. Cried. Then screenshotted everything.",
-                "Took 23 days. Worth every second of doubt.",
-                "My first $5. Felt like $5000. This is just the beginning."
-            ]
-        };
-
-        const CHECKPOINT_LETTERS = {
-            3: {
-                title: "You Just Shipped",
-                message: `You just shipped something. Most people never get here.
-
-Your first application might get ignored. Your first post might get 3 views. Who cares? You DID it.
-
-The difference between you and someone who never makes $1? You keep going.
-
-See you at checkpoint 4.
-- Someone who's been where you are`
-            },
-            5: {
-                title: "Someone's Listening",
-                message: `You got a response. That's proof.
-
-Proof that people see you. Proof that you have something worth paying for. Proof that this works.
-
-73% of people quit before they get this far. You're in the top 27%.
-
-Don't stop now. The summit is close.
-- A Fellow Climber`
-            },
-            7: {
-                title: "You Made It",
-                message: `You earned money on the internet.
-
-Most people will spend their whole lives talking about doing this. You actually did it.
-
-This isn't your ceiling. It's your floor. If you can make $1, you can make $1,000.
-
-Welcome to the club.
-- The Internet Money Gang`
-            }
-        };
-
-        const MINI_BADGES = [
-            { id: 'night_owl', icon: '🦉', name: 'Night Owl', desc: 'Worked past 11pm', condition: (time) => new Date(time).getHours() >= 23 },
-            { id: 'early_bird', icon: '🌅', name: 'Early Bird', desc: 'Completed before 7am', condition: (time) => new Date(time).getHours() < 7 },
-            { id: 'speed_demon', icon: '⚡', name: 'Speed Demon', desc: 'Completed 2 checkpoints in 1 day' },
-            { id: 'comeback_kid', icon: '💪', name: 'Comeback Kid', desc: 'Returned after 7+ days' },
-            { id: 'persistent', icon: '🔥', name: 'Persistent', desc: 'Came back 3 days in a row' },
-            { id: 'proof_machine', icon: '📸', name: 'Proof Machine', desc: 'Uploaded proof screenshot' }
-        ];
-
-        const CHECKPOINTS = [
-            {
-                id: 1,
-                title: "The Decision",
-                icon: "fa-map-signs",
-                desc: "You have to choose a path. Indecision is the enemy.",
-                quote: "Every expert was once a beginner who refused to give up.",
-                task: "Complete the Quiz or Pick a Strategy (Freelancing, Content, Flipping).",
-                action: "I have chosen my path",
-                wrongMoves: "Spending weeks researching instead of choosing. Pick one. Move.",
-                truth: "Your first choice doesn't have to be perfect. You can pivot later.",
-                pushThrough: "Set a timer for 30 minutes. Choose by the time it ends.",
-                avgTime: "1-3 days",
-                communityAvg: "1.8 days"
-            },
-            {
-                id: 2,
-                title: "The Setup",
-                icon: "fa-tools",
-                desc: "Get your tools ready. You don't need a logo, you need an offer.",
-                quote: "73% of people quit before they even start.",
-                task: "Create your profile (Fiverr/Upwork/X) or set up your Gumroad.",
-                action: "Profile is live",
-                wrongMoves: "Making it perfect. Your profile doesn't need to be award-winning. It needs to exist.",
-                truth: "Your first profile will be bad. That's fine. You'll improve it later.",
-                pushThrough: "Write it in 20 minutes. Post it. Don't look back for 24 hours.",
-                avgTime: "2-4 days",
-                communityAvg: "2.1 days"
-            },
-            {
-                id: 3,
-                title: "First Move",
-                icon: "fa-paper-plane",
-                desc: "Dreamers dream. Doers ship.",
-                quote: "Your first attempt won't be perfect. Ship it anyway.",
-                task: "Send your first proposal, publish your first post, or list your first item.",
-                action: "I shipped it",
-                wrongMoves: "Waiting until it's perfect. It never will be. Ship it scared.",
-                truth: "Your first 10 attempts will probably fail. That's the price of learning.",
-                pushThrough: "Close your eyes. Click submit. Deal with the consequences.",
-                avgTime: "1-3 days",
-                communityAvg: "2.4 days"
-            },
-            {
-                id: 4,
-                title: "The Grind",
-                icon: "fa-weight-hanging",
-                desc: "Welcome to the real work. Consistency is the only hack.",
-                quote: "Most people give up after 3 tries. You're different.",
-                task: "Do the work 10 times. (10 applications, 10 posts, 10 outreaches).",
-                action: "I did the reps",
-                wrongMoves: "Stopping at 3-5. Volume matters. Keep going.",
-                truth: "Success is a numbers game. More attempts = higher probability.",
-                pushThrough: "Track each attempt. Celebrate #10 like it's a championship.",
-                avgTime: "3-7 days",
-                communityAvg: "4.8 days"
-            },
-            {
-                id: 5,
-                title: "First Contact",
-                icon: "fa-comments",
-                desc: "Someone is listening. You have proof of value.",
-                quote: "You have something people want.",
-                task: "Get a reply, a like, a comment, or an inquiry.",
-                action: "I got a response",
-                wrongMoves: "Giving up before this happens. It always happens if you keep going.",
-                truth: "The first response often comes when you're about to quit. Hang on.",
-                pushThrough: "Double your volume. If 10 didn't work, do 20.",
-                avgTime: "5-10 days",
-                communityAvg: "7.2 days"
-            },
-            {
-                id: 6,
-                title: "Almost There",
-                icon: "fa-bolt",
-                desc: "You can see the summit. Don't stop now.",
-                quote: "The last mile is the hardest.",
-                task: "Negotiate the deal, send the payment link, or finalize the product.",
-                action: "I'm closing the deal",
-                wrongMoves: "Getting scared at the finish line. You've come too far to quit now.",
-                truth: "Most people fail here because they self-sabotage. Don't be most people.",
-                pushThrough: "Imagine yourself in 6 months regretting you stopped here. Then keep going.",
-                avgTime: "2-5 days",
-                communityAvg: "3.1 days"
-            },
-            {
-                id: 7,
-                title: "THE FIRST DOLLAR",
-                icon: "fa-trophy",
-                desc: "You did it. You are an internet earner.",
-                quote: "This is just the beginning.",
-                task: "Receive money in your account. Even $1.",
-                action: "I MADE $1 (PROVE IT)",
-                wrongMoves: "Thinking this is the end. This is the start of everything.",
-                truth: "$1 proves you can do it. $10, $100, $1000 is just more of the same.",
-                pushThrough: "Screenshot everything. Share it. Inspire someone else to start.",
-                avgTime: "Variable",
-                communityAvg: "18.3 days total"
-            }
-        ];
-
-        function App() {
-            const [level, setLevel] = useState(1);
-            const [showModal, setShowModal] = useState(null);
-            const [showLetter, setShowLetter] = useState(null);
-            const [history, setHistory] = useState({});
-            const [timeTracking, setTimeTracking] = useState({});
-            const [badges, setBadges] = useState([]);
-            const [startDate, setStartDate] = useState(null);
-            const [showProofUpload, setShowProofUpload] = useState(false);
-            const [proofUploaded, setProofUploaded] = useState(false);
-            const [streak, setStreak] = useState(0);
-
-            // Real-time Visitor Counter
-            const [visitorCount, setVisitorCount] = useState("...");
-
-            useEffect(() => {
-                // Initialize LocalStorage Data
-                const saved = localStorage.getItem('firstDollarJourney');
-                if (saved) {
-                    const parsed = JSON.parse(saved);
-                    setLevel(parsed.level || 1);
-                    setHistory(parsed.history || {});
-                    setTimeTracking(parsed.timeTracking || {});
-                    setBadges(parsed.badges || []);
-                    setStartDate(parsed.startDate || null);
-                    setProofUploaded(parsed.proofUploaded || false);
-                    calculateStreak(parsed.history || {});
-                }
-
-                // Fetch Real-time Count
-                fetch(COUNT_API_URL)
-                    .then(res => res.json())
-                    .then(data => {
-                        setVisitorCount(data.value);
-                    })
-                    .catch(err => {
-                        console.error("Counter API Error:", err);
-                        setVisitorCount("47+"); // Fallback to safe estimate
-                    });
-            }, []);
-
-            const calculateStreak = (hist) => {
-                const dates = Object.values(hist).map(d => new Date(d).toDateString());
-                const uniqueDates = [...new Set(dates)].sort((a, b) => new Date(b) - new Date(a));
-
-                let currentStreak = 0;
-                const today = new Date().toDateString();
-
-                if (uniqueDates[0] === today || uniqueDates[0] === new Date(Date.now() - 86400000).toDateString()) {
-                    for (let i = 0; i < uniqueDates.length; i++) {
-                        const expectedDate = new Date(Date.now() - (i * 86400000)).toDateString();
-                        if (uniqueDates[i] === expectedDate) {
-                            currentStreak++;
-                        } else {
-                            break;
-                        }
-                    }
-                }
-
-                setStreak(currentStreak);
-            };
-
-            const saveProgress = (newLevel, newHistory, newTimeTracking = timeTracking, newBadges = badges, newStartDate = startDate, newProofUploaded = proofUploaded) => {
-                const data = {
-                    level: newLevel,
-                    history: newHistory,
-                    timeTracking: newTimeTracking,
-                    badges: newBadges,
-                    startDate: newStartDate,
-                    proofUploaded: newProofUploaded
-                };
-                localStorage.setItem('firstDollarJourney', JSON.stringify(data));
-                setLevel(newLevel);
-                setHistory(newHistory);
-                setTimeTracking(newTimeTracking);
-                setBadges(newBadges);
-                setStartDate(newStartDate);
-                setProofUploaded(newProofUploaded);
-                calculateStreak(newHistory);
-            };
-
-            const handleCheckpointClick = (cp) => {
-                if (cp.id > level) return;
-                setShowModal(cp);
-            };
-
-            const awardBadge = (badgeId, newBadges) => {
-                if (!newBadges.find(b => b === badgeId)) {
-                    return [...newBadges, badgeId];
-                }
-                return newBadges;
-            };
-
-            const handleComplete = (id, timeSpent) => {
-                confetti({
-                    particleCount: 100,
-                    spread: 70,
-                    origin: { y: 0.6 }
-                });
-
-                const now = new Date();
-                const newHistory = { ...history, [id]: now.toISOString() };
-                const newTimeTracking = { ...timeTracking, [id]: timeSpent };
-                let newBadges = [...badges];
-                let newStartDate = startDate;
-
-                // Set start date on first checkpoint
-                if (id === 1 && !startDate) {
-                    newStartDate = now.toISOString();
-                }
-
-                // Award time-based badges
-                const hour = now.getHours();
-                if (hour >= 23 || hour < 6) {
-                    newBadges = awardBadge('night_owl', newBadges);
-                } else if (hour < 7) {
-                    newBadges = awardBadge('early_bird', newBadges);
-                }
-
-                // Check for speed demon (2 checkpoints same day)
-                const today = now.toDateString();
-                const completedToday = Object.values(newHistory).filter(d =>
-                    new Date(d).toDateString() === today
-                ).length;
-                if (completedToday >= 2) {
-                    newBadges = awardBadge('speed_demon', newBadges);
-                }
-
-                // Persistent badge (3 days in a row)
-                const uniqueDates = [...new Set(Object.values(newHistory).map(d => new Date(d).toDateString()))];
-                if (uniqueDates.length >= 3) {
-                    newBadges = awardBadge('persistent', newBadges);
-                }
-
-                const newLevel = id === level ? level + 1 : level;
-                saveProgress(newLevel, newHistory, newTimeTracking, newBadges, newStartDate, proofUploaded);
-                setShowModal(null);
-
-                // Show letter if exists for this checkpoint
-                if (CHECKPOINT_LETTERS[id]) {
-                    setTimeout(() => setShowLetter(CHECKPOINT_LETTERS[id]), 500);
-                }
-
-                // Show proof upload for checkpoint 7
-                if (id === 7) {
-                    setTimeout(() => setShowProofUpload(true), 1000);
-                }
-            };
-
-            const handleProofUpload = () => {
-                let newBadges = awardBadge('proof_machine', badges);
-                saveProgress(level, history, timeTracking, newBadges, startDate, true);
-                setShowProofUpload(false);
-            };
-
-            const handleReset = () => {
-                if (confirm("Start over? This will erase all progress.")) {
-                    localStorage.removeItem('firstDollarJourney');
-                    setLevel(1);
-                    setHistory({});
-                    setTimeTracking({});
-                    setBadges([]);
-                    setStartDate(null);
-                    setProofUploaded(false);
-                    setStreak(0);
-                }
-            };
-
-            const getDaysOnJourney = () => {
-                if (!startDate) return 0;
-                const start = new Date(startDate);
-                const now = new Date();
-                const diff = Math.floor((now - start) / (1000 * 60 * 60 * 24));
-                return diff;
-            };
-
-            const getTotalTimeInvested = () => {
-                return Object.values(timeTracking).reduce((sum, time) => sum + parseFloat(time), 0);
-            };
-
-            const getProgressPercent = () => {
-                return Math.round(((level - 1) / (CHECKPOINTS.length - 1)) * 100);
-            };
-
-            const shareToTwitter = () => {
-                const text = `I just completed my journey to my first $1 online! ${level > 7 ? '💰 MONEY EARNED!' : `Level ${level}/7`}\n\nJoin me: firstonedollaronline.com/journey`;
-                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
-            };
-
-            const days = getDaysOnJourney();
-            const totalTime = getTotalTimeInvested();
-            const progress = getProgressPercent();
-
-            return (
-                <div className="min-h-screen pb-20">
-                    {/* Nav */}
-                    <nav className="p-5 flex justify-between items-center bg-white border-b-2 border-slate-900 sticky top-0 z-50">
-                        <a href="index.html" className="font-bold text-xl hover:text-blue-600">
-                            <i className="fas fa-arrow-left mr-2"></i> Home
-                        </a>
-                        <div className="flex items-center gap-4 flex-wrap justify-end">
-                            <div className="font-mono font-bold">LEVEL {level > 7 ? 7 : level}/7</div>
-                            {days > 0 && (
-                                <div className="font-mono text-sm bg-blue-100 px-3 py-1 rounded-full">
-                                    DAY {days}
-                                </div>
-                            )}
-                            {streak > 0 && (
-                                <div className="font-mono text-sm bg-orange-100 px-3 py-1 rounded-full">
-                                    🔥 {streak} DAY STREAK
-                                </div>
-                            )}
-                        </div>
-                    </nav>
-
-                    {/* Header */}
-                    <header className="text-center py-12 px-4 max-w-2xl mx-auto">
-
-                        <div className="inline-block bg-yellow-100 border border-yellow-400 rounded-full px-3 py-1 text-xs font-bold text-yellow-800 mb-4 tracking-wide uppercase">
-                            ⚠️ Founding Member Phase
-                        </div>
-
-                        <h1 className="text-4xl md:text-6xl font-black mb-4 tracking-tight">Your Journey</h1>
-                        <p className="text-slate-600 text-lg mb-6">
-                            This isn't a game. It's a roadmap. <br />
-                            Climb from <span className="font-mono font-bold bg-slate-200 px-2 rounded">$0</span> to <span className="font-mono font-bold bg-green-100 text-green-700 px-2 rounded">$1</span>.
-                        </p>
-
-                        {/* Community Stats (HONEST VERSION) */}
-                        <div className="bg-white border-2 border-slate-200 rounded-lg p-4 mb-4 text-sm max-w-sm mx-auto shadow-sm">
-                            <div className="flex items-center justify-center gap-2 text-slate-800 font-bold mb-1">
-                                <i className="fas fa-eye text-blue-500"></i>
-                                {visitorCount} Explorers Live
-                            </div>
-                            <div className="text-xs text-slate-500">
-                                Join the <span className="font-bold text-slate-700">{FOUNDING_STATS.foundingBuilders} Founding Builders</span>. <br />
-                                <span className="text-green-600 font-bold">✓ {FOUNDING_STATS.verifiedEarners} Verified First Dollars</span>
-                            </div>
-                        </div>
-                    </header>
-
-                    {/* Stats Dashboard */}
-                    {days > 0 && (
-                        <div className="max-w-xl mx-auto px-4 mb-8 animate-slideUp">
-                            <div className="sketchy-box bg-gradient-to-br from-blue-50 to-indigo-50 p-6">
-                                <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                                    <i className="fas fa-chart-line"></i>
-                                    YOUR JOURNEY AT A GLANCE
-                                </h3>
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                                    <div>
-                                        <div className="text-2xl font-black text-blue-600">{progress}%</div>
-                                        <div className="text-xs text-slate-600">Progress</div>
-                                    </div>
-                                    <div>
-                                        <div className="text-2xl font-black text-green-600">{days}</div>
-                                        <div className="text-xs text-slate-600">Days Active</div>
-                                    </div>
-                                    <div>
-                                        <div className="text-2xl font-black text-purple-600">{Object.keys(history).length}</div>
-                                        <div className="text-xs text-slate-600">Completed</div>
-                                    </div>
-                                    <div>
-                                        <div className="text-2xl font-black text-orange-600">{totalTime.toFixed(1)}h</div>
-                                        <div className="text-xs text-slate-600">Time Invested</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Mini Badges */}
-                    {badges.length > 0 && (
-                        <div className="max-w-xl mx-auto px-4 mb-8 animate-slideUp">
-                            <div className="sketchy-box bg-yellow-50 p-4">
-                                <h3 className="font-bold text-sm mb-3 flex items-center gap-2">
-                                    <i className="fas fa-medal"></i>
-                                    YOUR MINI WINS
-                                </h3>
-                                <div className="flex flex-wrap gap-2">
-                                    {badges.map(badgeId => {
-                                        const badge = MINI_BADGES.find(b => b.id === badgeId);
-                                        return badge ? (
-                                            <div key={badgeId} className="badge-mini bg-white border-2 border-yellow-400 rounded-full px-3 py-1 text-sm flex items-center gap-1">
-                                                <span>{badge.icon}</span>
-                                                <span className="font-semibold">{badge.name}</span>
-                                            </div>
-                                        ) : null;
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Map Container */}
-                    <div className="max-w-xl mx-auto relative px-4 text-center">
-                        {/* The Line */}
-                        <div className="absolute top-10 bottom-10 left-1/2 transform -translate-x-1/2 w-1 bg-slate-200 z-0 rounded"></div>
-                        <div
-                            className="absolute top-10 left-1/2 transform -translate-x-1/2 w-1 bg-slate-900 z-0 transition-all duration-1000 ease-out rounded"
-                            style={{ height: `${Math.min((level - 1) * (100 / 6), 100)}%` }}
-                        ></div>
-
-                        {/* Checkpoints */}
-                        <div className="space-y-12 relative z-10">
-                            {CHECKPOINTS.map((cp) => {
-                                const isLocked = cp.id > level;
-                                const isCompleted = cp.id < level;
-                                const isCurrent = cp.id === level;
-
-                                return (
-                                    <div key={cp.id} className="flex items-center justify-center">
-                                        <div className="w-full max-w-md">
-                                            <div
-                                                onClick={() => handleCheckpointClick(cp)}
-                                                className={`
-                                                    sketchy-box w-full bg-white p-6 cursor-pointer relative
-                                                    ${isLocked ? 'locked opacity-60' : 'cursor-pointer hover:bg-slate-50'}
-                                                    ${isCurrent ? 'ring-4 ring-blue-200 border-blue-600' : ''}
-                                                    ${isCompleted ? 'bg-green-50' : ''}
-                                                `}
-                                            >
-                                                {isCurrent && (
-                                                    <div className="absolute -right-4 -top-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-bounce">
-                                                        START HERE
-                                                    </div>
-                                                )}
-
-                                                <div className="flex items-center gap-4 text-left">
-                                                    <div className={`
-                                                        w-12 h-12 rounded-full border-2 flex items-center justify-center font-bold text-xl shrink-0
-                                                        ${isCompleted ? 'bg-green-500 border-green-700 text-white' : 'bg-white border-slate-900'}
-                                                        ${isLocked ? 'bg-slate-100 text-slate-400 border-slate-300' : ''}
-                                                    `}>
-                                                        {isCompleted ? <i className="fas fa-check"></i> : cp.id}
-                                                    </div>
-
-                                                    <div className="flex-1">
-                                                        <h3 className="font-bold text-lg flex items-center gap-2 flex-wrap">
-                                                            {cp.title}
-                                                            {isCompleted && (
-                                                                <span className="text-xs bg-green-200 text-green-800 px-2 py-0.5 rounded-full font-mono">
-                                                                    DONE
-                                                                </span>
-                                                            )}
-                                                        </h3>
-                                                        <p className="text-sm text-slate-500 leading-tight mt-1">
-                                                            {isLocked ? "Complete previous step to unlock." : cp.desc}
-                                                        </p>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {/* Show completion time if completed */}
-                                            {isCompleted && history[cp.id] && (
-                                                <div className="mt-2 text-xs text-slate-400 font-mono text-center">
-                                                    ✓ Completed {new Date(history[cp.id]).toLocaleDateString()}
-                                                    {timeTracking[cp.id] && ` • ${timeTracking[cp.id]}h invested`}
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-
-                        {/* Hall of Legends */}
-                        {level > 7 && (
-                            <div className="mt-20 p-8 border-4 border-yellow-400 bg-yellow-50 rounded-xl text-center sketchy-box animate-fadeIn">
-                                <i className="fas fa-crown text-5xl text-yellow-500 mb-4"></i>
-                                <h2 className="text-3xl font-black mb-2">🏛️ HALL OF LEGENDS 🏛️</h2>
-                                <p className="text-lg mb-6">You made it. You earned your first dollar on the internet.</p>
-
-                                <div className="bg-white border-2 border-slate-900 p-6 mb-6 text-left">
-                                    <h3 className="font-bold mb-3 text-center">YOUR STATS:</h3>
-                                    <div className="space-y-2 font-mono text-sm">
-                                        <div className="flex justify-between">
-                                            <span>Started:</span>
-                                            <span className="font-bold">{startDate ? new Date(startDate).toLocaleDateString() : 'N/A'}</span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span>Completed:</span>
-                                            <span className="font-bold">{history[7] ? new Date(history[7]).toLocaleDateString() : 'Today'}</span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span>Total Days:</span>
-                                            <span className="font-bold">{days} days</span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span>Time Invested:</span>
-                                            <span className="font-bold">{totalTime.toFixed(1)} hours</span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span>Badges Earned:</span>
-                                            <span className="font-bold">{badges.length}</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {proofUploaded && (
-                                    <div className="bg-green-100 border-2 border-green-500 p-4 mb-4 rounded-lg">
-                                        <i className="fas fa-camera text-green-600 text-2xl mb-2"></i>
-                                        <p className="font-bold text-green-800">Proof Uploaded! 📸</p>
-                                        <p className="text-sm text-green-700">You're officially a legend.</p>
-                                    </div>
-                                )}
-
-                                <button
-                                    onClick={shareToTwitter}
-                                    className="w-full bg-blue-500 text-white font-bold py-4 text-lg mb-3 hover:bg-blue-600 transition-colors sketchy-box border-blue-700"
-                                >
-                                    <i className="fab fa-twitter mr-2"></i>
-                                    Share Your Win on Twitter
-                                </button>
-
-                                <div className="font-mono bg-white p-4 border-2 border-slate-900 inline-block rotate-1 mb-6">
-                                    CERTIFIED INTERNET EARNER
-                                </div>
-
-                                <p className="text-sm text-slate-600 mb-4">
-                                    This isn't your ceiling. It's your floor.<br />
-                                    If you can make $1, you can make $1,000.
-                                </p>
-
-                                <div className="mt-6">
-                                    <button onClick={handleReset} className="text-slate-400 underline text-sm hover:text-red-500">
-                                        Start New Journey
-                                    </button>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-
-                    {/* CHECKPOINT MODAL */}
-                    {showModal && (
-                        <CheckpointModal
-                            checkpoint={showModal}
-                            onComplete={handleComplete}
-                            onClose={() => setShowModal(null)}
-                            history={history}
-                        />
-                    )}
-
-                    {/* LETTER MODAL */}
-                    {showLetter && (
-                        <LetterModal
-                            letter={showLetter}
-                            onClose={() => setShowLetter(null)}
-                        />
-                    )}
-
-                    {/* PROOF UPLOAD MODAL */}
-                    {showProofUpload && (
-                        <ProofUploadModal
-                            onUpload={handleProofUpload}
-                            onSkip={() => setShowProofUpload(false)}
-                        />
-                    )}
-                </div>
-            );
+      } catch (err) {
+        return defaultState();
+      }
+    }
+
+    let state = loadState();
+    let activeStep = 1;
+    let hoursPick = '1';
+
+    const $ = (id) => document.getElementById(id);
+
+    function save() {
+      localStorage.setItem(STORE, JSON.stringify(state));
+    }
+
+    function dayKey(iso) {
+      return new Date(iso).toDateString();
+    }
+
+    function daysBetween(a, b) {
+      return Math.floor((new Date(b) - new Date(a)) / 86400000);
+    }
+
+    function uniqueSortedDays(history) {
+      return [...new Set(Object.values(history).map(dayKey))]
+        .map((d) => new Date(d))
+        .sort((a, b) => b - a);
+    }
+
+    function streakFrom(history) {
+      const days = uniqueSortedDays(history);
+      if (!days.length) return 0;
+      const today = new Date();
+      const yesterday = new Date(Date.now() - 86400000);
+      if (days[0].toDateString() !== today.toDateString() && days[0].toDateString() !== yesterday.toDateString()) {
+        return 0;
+      }
+      let n = 1;
+      for (let i = 1; i < days.length; i++) {
+        if (daysBetween(days[i], days[i - 1]) === 1) n += 1;
+        else break;
+      }
+      return n;
+    }
+
+    function award(id) {
+      if (!state.badges.includes(id)) state.badges.push(id);
+    }
+
+    function maybeBadges(nowIso) {
+      const hour = new Date(nowIso).getHours();
+      if (hour >= 23 || hour < 5) award('night_owl');
+      if (hour >= 5 && hour < 7) award('early_bird');
+
+      const today = dayKey(nowIso);
+      const completedToday = Object.values(state.history).filter((d) => dayKey(d) === today).length;
+      if (completedToday >= 2) award('speed_demon');
+
+      const prev = Object.entries(state.history)
+        .filter(([id]) => id !== String(activeStep))
+        .map(([, d]) => d)
+        .sort()
+        .at(-1);
+      if (prev && daysBetween(prev, nowIso) >= 7) award('comeback_kid');
+
+      if (streakFrom(state.history) >= 3) award('persistent');
+
+      const noteCount = Object.values(state.notes).filter((n) => n && n.trim()).length;
+      if (noteCount >= 3) award('note_taker');
+
+      if (state.history[7]) award('first_dollar');
+    }
+
+    function pathTask(id) {
+      const step = STEPS[id];
+      return step.task[state.path] || step.task.any;
+    }
+
+    function render() {
+      const displayLevel = Math.min(state.level, 7);
+      $('level-chip').textContent = state.level > 7 ? 'Done · 7 / 7' : `Step ${displayLevel} / 7`;
+
+      const meta = $('meta-row');
+      meta.querySelectorAll('[data-dyn]').forEach((n) => n.remove());
+      if (state.path) {
+        const chip = document.createElement('span');
+        chip.className = 'chip';
+        chip.dataset.dyn = '1';
+        chip.textContent = PATH_LABEL[state.path];
+        meta.appendChild(chip);
+      }
+      const streak = streakFrom(state.history);
+      if (streak > 0) {
+        const chip = document.createElement('span');
+        chip.className = 'chip';
+        chip.dataset.dyn = '1';
+        chip.textContent = `${streak}-day streak`;
+        meta.appendChild(chip);
+      }
+
+      document.querySelectorAll('.path-card').forEach((btn) => {
+        btn.classList.toggle('is-on', btn.dataset.path === state.path);
+      });
+
+      const doneCount = Object.keys(state.history).length;
+      const hours = Object.values(state.timeTracking).reduce((s, n) => s + parseFloat(n || 0), 0);
+      const started = state.startDate ? Math.max(0, daysBetween(state.startDate, new Date().toISOString())) : 0;
+      const pct = Math.round(((Math.min(state.level, 8) - 1) / 7) * 100);
+
+      const stats = $('stats');
+      if (doneCount > 0) {
+        stats.classList.add('is-on');
+        stats.innerHTML = `
+          <div class="stat"><b>${pct}%</b><span>Progress</span></div>
+          <div class="stat"><b>${started}</b><span>Days in</span></div>
+          <div class="stat"><b>${doneCount}/7</b><span>Done</span></div>
+          <div class="stat"><b>${hours.toFixed(1)}h</b><span>Logged</span></div>`;
+      } else {
+        stats.classList.remove('is-on');
+        stats.innerHTML = '';
+      }
+
+      const badges = $('badges');
+      if (state.badges.length) {
+        badges.classList.add('is-on');
+        badges.innerHTML = state.badges.map((id) => {
+          const b = BADGE_META[id];
+          return b ? `<span class="badge" title="${b.desc}">${b.icon} ${b.name}</span>` : '';
+        }).join('');
+      } else {
+        badges.classList.remove('is-on');
+        badges.innerHTML = '';
+      }
+
+      const fill = Math.min(((Math.min(state.level, 8) - 1) / 6) * 100, 100);
+      $('trail').style.setProperty('--fill', `${state.level > 1 ? fill : 0}%`);
+
+      document.querySelectorAll('.step').forEach((el) => {
+        const id = Number(el.dataset.id);
+        const done = Boolean(state.history[id]);
+        const current = id === state.level;
+        const locked = id > state.level;
+        el.classList.toggle('is-done', done);
+        el.classList.toggle('is-current', current && !done);
+        el.classList.toggle('is-locked', locked);
+        const num = el.querySelector('.num');
+        num.textContent = done ? '✓' : String(id);
+        const pill = el.querySelector('.pill');
+        if (current && !done) {
+          pill.hidden = false;
+          pill.className = 'pill';
+          pill.textContent = 'Now';
+        } else if (done) {
+          pill.hidden = false;
+          pill.className = 'pill';
+          pill.textContent = 'Done';
+        } else if (locked) {
+          pill.hidden = false;
+          pill.className = 'pill ghost';
+          pill.textContent = 'Next';
+        } else {
+          pill.hidden = true;
         }
-
-        // Checkpoint Modal Component
-        function CheckpointModal({ checkpoint, onComplete, onClose, history }) {
-            const [timeSpent, setTimeSpent] = useState('1');
-            const [showStruggles, setShowStruggles] = useState(false);
-            const struggles = STRUGGLE_LOGS[checkpoint.id] || [];
-            const randomStruggle = struggles[Math.floor(Math.random() * struggles.length)];
-
-            return (
-                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn" onClick={(e) => {
-                    if (e.target === e.currentTarget) onClose();
-                }}>
-                    <div className="bg-white max-w-2xl w-full sketchy-box p-8 relative max-h-[90vh] overflow-y-auto">
-                        <button
-                            onClick={onClose}
-                            className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 text-xl"
-                        >
-                            <i className="fas fa-times"></i>
-                        </button>
-
-                        <div className="text-center mb-6">
-                            <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 border-2 border-blue-900">
-                                <i className={`fas ${checkpoint.icon}`}></i>
-                            </div>
-                            <h2 className="text-2xl font-black uppercase tracking-wide">{checkpoint.title}</h2>
-                            <div className="w-16 h-1 bg-slate-900 mx-auto mt-2"></div>
-                        </div>
-
-                        <div className="space-y-6">
-                            {/* Reality Check Quote */}
-                            <div className="bg-slate-50 p-4 border-l-4 border-slate-900">
-                                <p className="font-mono text-sm text-slate-500 mb-1">REALITY CHECK:</p>
-                                <p className="italic font-medium text-slate-800">"{checkpoint.quote}"</p>
-                            </div>
-
-                            {/* Mission */}
-                            <div>
-                                <h3 className="font-bold text-lg mb-2">YOUR MISSION:</h3>
-                                <p className="text-slate-700 leading-relaxed text-lg">
-                                    {checkpoint.task}
-                                </p>
-                            </div>
-
-                            {/* Expected Time */}
-                            <div className="bg-blue-50 p-4 rounded-lg border-2 border-blue-200">
-                                <div className="grid grid-cols-2 gap-4 text-center">
-                                    <div>
-                                        <div className="text-xs text-blue-600 mb-1">⏰ TYPICAL TIME</div>
-                                        <div className="font-bold">{checkpoint.avgTime}</div>
-                                    </div>
-                                    <div>
-                                        <div className="text-xs text-blue-600 mb-1">📊 COMMUNITY AVG</div>
-                                        <div className="font-bold">{checkpoint.communityAvg}</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* The Reality Compass */}
-                            <div className="bg-red-50 border-2 border-red-200 p-4 rounded-lg">
-                                <h4 className="font-bold text-red-800 mb-2 flex items-center gap-2">
-                                    <i className="fas fa-compass"></i>
-                                    THE REALITY COMPASS
-                                </h4>
-                                <div className="space-y-3 text-sm">
-                                    <div>
-                                        <div className="font-bold text-red-700">⚠️ WHAT MOST PEOPLE DO WRONG:</div>
-                                        <div className="text-slate-700">{checkpoint.wrongMoves}</div>
-                                    </div>
-                                    <div>
-                                        <div className="font-bold text-red-700">💡 THE UNCOMFORTABLE TRUTH:</div>
-                                        <div className="text-slate-700">{checkpoint.truth}</div>
-                                    </div>
-                                    <div>
-                                        <div className="font-bold text-red-700">🎯 HOW TO PUSH THROUGH:</div>
-                                        <div className="text-slate-700">{checkpoint.pushThrough}</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Struggle Log */}
-                            {struggles.length > 0 && (
-                                <div>
-                                    <button
-                                        onClick={() => setShowStruggles(!showStruggles)}
-                                        className="w-full text-left bg-purple-50 border-2 border-purple-200 p-4 rounded-lg hover:bg-purple-100 transition-colors"
-                                    >
-                                        <div className="flex items-center justify-between">
-                                            <div className="flex items-center gap-2">
-                                                <i className="fas fa-comments text-purple-600"></i>
-                                                <span className="font-bold text-purple-800">REAL STRUGGLES FROM OTHERS</span>
-                                            </div>
-                                            <i className={`fas fa-chevron-${showStruggles ? 'up' : 'down'} text-purple-600`}></i>
-                                        </div>
-                                    </button>
-                                    {showStruggles && (
-                                        <div className="mt-2 space-y-2 animate-slideUp">
-                                            {struggles.map((struggle, idx) => (
-                                                <div key={idx} className="bg-white border-l-4 border-purple-400 p-3 text-sm italic text-slate-700">
-                                                    "{struggle}"
-                                                    <div className="text-xs text-slate-400 mt-1">- Anonymous builder</div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                    {!showStruggles && randomStruggle && (
-                                        <div className="mt-2 bg-white border-l-4 border-purple-400 p-3 text-sm italic text-slate-700 animate-slideUp">
-                                            "{randomStruggle}"
-                                            <div className="text-xs text-slate-400 mt-1">- Anonymous builder</div>
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-
-                            {/* Time Tracking */}
-                            <div>
-                                <label className="block font-bold text-sm mb-2">
-                                    How long did this take you?
-                                </label>
-                                <div className="flex gap-2">
-                                    {['0.5', '1', '2', '4'].map(time => (
-                                        <button
-                                            key={time}
-                                            onClick={() => setTimeSpent(time)}
-                                            className={`flex-1 py-2 rounded border-2 font-bold transition-colors ${timeSpent === time
-                                                    ? 'bg-blue-500 text-white border-blue-700'
-                                                    : 'bg-white border-slate-300 hover:border-blue-400'
-                                                }`}
-                                        >
-                                            {time}h
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Action Button */}
-                            <button
-                                onClick={() => onComplete(checkpoint.id, timeSpent)}
-                                className="w-full bg-slate-900 text-white font-bold py-4 text-lg hover:bg-blue-600 transition-colors sketchy-box border-transparent"
-                            >
-                                {history[checkpoint.id]
-                                    ? <span className="text-green-300"><i className="fas fa-check mr-2"></i> COMPLETED</span>
-                                    : <span><i className="fas fa-square mr-2"></i> {checkpoint.action}</span>
-                                }
-                            </button>
-
-                            {history[checkpoint.id] && (
-                                <p className="text-center text-xs text-slate-400 mt-2 font-mono">
-                                    Completed on {new Date(history[checkpoint.id]).toLocaleDateString()}
-                                </p>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            );
+        const when = el.querySelector('.when');
+        if (done) {
+          const spent = state.timeTracking[id] ? ` · ${state.timeTracking[id]}h logged` : '';
+          when.hidden = false;
+          when.textContent = `Marked ${new Date(state.history[id]).toLocaleDateString()}${spent}`;
+        } else {
+          when.hidden = true;
         }
+      });
 
-        // Letter Modal Component
-        function LetterModal({ letter, onClose }) {
-            return (
-                <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
-                    <div className="bg-amber-50 max-w-lg w-full border-4 border-amber-900 p-8 relative shadow-2xl" style={{
-                        transform: 'rotate(-1deg)',
-                        boxShadow: '8px 8px 0px rgba(0,0,0,0.2)'
-                    }}>
-                        <div className="text-center mb-6">
-                            <div className="text-4xl mb-3">✉️</div>
-                            <h2 className="text-2xl font-black uppercase tracking-wide">{letter.title}</h2>
-                            <div className="w-16 h-1 bg-amber-900 mx-auto mt-2"></div>
-                        </div>
+      const finish = $('finish');
+      if (state.level > 7) {
+        finish.classList.add('is-on');
+        $('finish-stats').innerHTML = `
+          <div><span>Path</span><b>${PATH_LABEL[state.path] || 'Your own'}</b></div>
+          <div><span>Started</span><b>${state.startDate ? new Date(state.startDate).toLocaleDateString() : '—'}</b></div>
+          <div><span>First dollar marked</span><b>${state.history[7] ? new Date(state.history[7]).toLocaleDateString() : '—'}</b></div>
+          <div><span>Days on the climb</span><b>${started}</b></div>
+          <div><span>Hours you logged</span><b>${hours.toFixed(1)}</b></div>
+          <div><span>Note</span><b>${(state.notes[7] || '—').slice(0, 80)}</b></div>`;
+      } else {
+        finish.classList.remove('is-on');
+      }
+    }
 
-                        <div className="bg-white p-6 border-2 border-amber-900 mb-6" style={{ transform: 'rotate(1deg)' }}>
-                            <pre className="whitespace-pre-wrap font-sans text-slate-800 leading-relaxed">
-                                {letter.message}
-                            </pre>
-                        </div>
+    function openStep(id) {
+      activeStep = id;
+      const step = STEPS[id];
+      const locked = id > state.level;
+      const done = Boolean(state.history[id]);
+      hoursPick = state.timeTracking[id] || '1';
 
-                        <button
-                            onClick={onClose}
-                            className="w-full bg-amber-900 text-white font-bold py-3 hover:bg-amber-800 transition-colors sketchy-box"
-                        >
-                            Keep Climbing
-                        </button>
-                    </div>
-                </div>
-            );
-        }
+      $('dlg-kicker').textContent = `Step ${id} of 7`;
+      $('dlg-title').textContent = step.title;
+      $('dlg-quote').textContent = step.quote;
+      $('dlg-task').textContent = pathTask(id);
+      $('dlg-time').textContent = `Typical: ${step.typical}`;
+      $('dlg-wrong').textContent = step.wrong;
+      $('dlg-truth').textContent = step.truth;
+      $('dlg-push').textContent = step.push;
+      $('dlg-note').value = state.notes[id] || '';
+      $('dlg-complete').textContent = done ? 'Already marked' : (locked ? 'Finish the previous step first' : step.action);
+      $('dlg-complete').disabled = locked || done;
+      $('dlg-done-on').textContent = done
+        ? `You marked this on ${new Date(state.history[id]).toLocaleDateString()}. You can still edit the note.`
+        : '';
+      document.querySelectorAll('#dlg-times button').forEach((b) => {
+        b.classList.toggle('is-on', b.dataset.hours === String(hoursPick));
+      });
+      $('step-dialog').showModal();
+      $('dlg-note').focus();
+    }
 
-        // Proof Upload Modal Component
-        function ProofUploadModal({ onUpload, onSkip }) {
-            const [uploading, setUploading] = useState(false);
+    function toast(msg) {
+      const el = $('toast');
+      el.textContent = msg;
+      el.classList.add('is-on');
+      setTimeout(() => el.classList.remove('is-on'), 2200);
+    }
 
-            const handleUpload = () => {
-                setUploading(true);
-                // Simulate upload
-                setTimeout(() => {
-                    onUpload();
-                    confetti({
-                        particleCount: 200,
-                        spread: 100,
-                        origin: { y: 0.6 }
-                    });
-                }, 1000);
-            };
+    function completeStep() {
+      const id = activeStep;
+      if (id > state.level || state.history[id]) return;
+      if (id === 1 && !state.path) {
+        toast('Pick a path first');
+        return;
+      }
 
-            return (
-                <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
-                    <div className="bg-white max-w-lg w-full sketchy-box p-8 relative">
-                        <div className="text-center mb-6">
-                            <div className="text-5xl mb-3">📸</div>
-                            <h2 className="text-2xl font-black mb-2">PROVE IT!</h2>
-                            <p className="text-slate-600">
-                                Upload a screenshot of your first dollar earned.<br />
-                                (Optional but legendary)
-                            </p>
-                        </div>
+      const now = new Date().toISOString();
+      state.notes[id] = $('dlg-note').value.trim();
+      state.timeTracking[id] = hoursPick;
+      state.history[id] = now;
+      if (!state.startDate) state.startDate = now;
+      state.lastActive = now;
+      if (id === state.level) state.level = id + 1;
+      maybeBadges(now);
+      save();
+      $('step-dialog').close();
+      render();
+      toast(id === 7 ? 'First dollar marked' : `Step ${id} done`);
+      if (LETTERS[id]) {
+        $('letter-title').textContent = LETTERS[id].title;
+        $('letter-body').textContent = LETTERS[id].body;
+        setTimeout(() => $('letter-dialog').showModal(), 280);
+      }
+    }
 
-                        <div className="bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-300 rounded-lg p-8 mb-6 text-center">
-                            <i className="fas fa-cloud-upload-alt text-5xl text-green-600 mb-4"></i>
-                            <p className="text-sm text-slate-600 mb-4">
-                                Drag & drop your screenshot here<br />
-                                or click to browse
-                            </p>
-                            <button
-                                onClick={handleUpload}
-                                disabled={uploading}
-                                className="bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 disabled:bg-slate-400"
-                            >
-                                {uploading ? 'Uploading...' : 'Upload Screenshot'}
-                            </button>
-                        </div>
+    function saveNoteOnly() {
+      state.notes[activeStep] = $('dlg-note').value.trim();
+      maybeBadges(new Date().toISOString());
+      save();
+      toast('Note saved on this device');
+    }
 
-                        <div className="text-xs text-slate-500 mb-4 text-center">
-                            Your proof will be added to the Hall of Legends and inspire others to start their journey.
-                        </div>
+    function shareWin() {
+      const text = state.level > 7
+        ? `I just finished The Dollar Game — $0 to my first $1 online.\n\n${SHARE_URL}`
+        : `I'm on step ${Math.min(state.level, 7)}/7 of The Dollar Game.\n\n${SHARE_URL}`;
+      const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank', 'noopener');
+    }
 
-                        <div className="flex gap-3">
-                            <button
-                                onClick={onSkip}
-                                className="flex-1 bg-slate-200 text-slate-700 py-3 rounded-lg font-bold hover:bg-slate-300"
-                            >
-                                Skip for Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
+    document.querySelectorAll('.path-card').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.path = btn.dataset.path;
+        save();
+        render();
+        toast(`Path set: ${PATH_LABEL[state.path]}`);
+      });
+    });
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+    document.querySelectorAll('[data-open]').forEach((btn) => {
+      btn.addEventListener('click', () => openStep(Number(btn.dataset.open)));
+    });
+
+    $('dlg-close').addEventListener('click', () => $('step-dialog').close());
+    $('step-dialog').addEventListener('click', (e) => {
+      if (e.target === $('step-dialog')) $('step-dialog').close();
+    });
+    $('letter-dialog').addEventListener('click', (e) => {
+      if (e.target === $('letter-dialog')) $('letter-dialog').close();
+    });
+    $('dlg-complete').addEventListener('click', completeStep);
+    $('dlg-save-note').addEventListener('click', saveNoteOnly);
+    $('letter-close').addEventListener('click', () => $('letter-dialog').close());
+    $('share-win').addEventListener('click', shareWin);
+
+    $('dlg-times').addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      hoursPick = btn.dataset.hours;
+      document.querySelectorAll('#dlg-times button').forEach((b) => b.classList.toggle('is-on', b === btn));
+    });
+
+    $('reset-btn').addEventListener('click', () => {
+      if (!confirm('Erase this climb on this browser?')) return;
+      localStorage.removeItem(STORE);
+      state = defaultState();
+      save();
+      render();
+      toast('Climb reset');
+    });
+
+    const toggle = $('menu-toggle');
+    const links = $('nav-links');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+
+    render();
+  </script>
 </body>
 
 </html>

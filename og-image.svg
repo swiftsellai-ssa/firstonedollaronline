@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="First$1online">
+  <defs>
+    <radialGradient id="g" cx="78%" cy="42%" r="55%">
+      <stop offset="0%" stop-color="#2ee59d" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#06110c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#06110c"/>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <text x="80" y="280" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="72" font-weight="800" fill="#e8f2ea">First<tspan fill="#2ee59d">$</tspan>1online</text>
+  <text x="80" y="360" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="36" font-weight="500" fill="#e8f2ea" fill-opacity="0.72">Make your first $1 online.</text>
+  <text x="80" y="560" font-family="system-ui, Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#e8f2ea" fill-opacity="0.45">$1 one-time · no upsells</text>
+  <circle cx="980" cy="315" r="150" fill="none" stroke="#2ee59d" stroke-opacity="0.55" stroke-width="4"/>
+  <text x="980" y="360" text-anchor="middle" font-family="Georgia, Times, serif" font-size="180" font-weight="700" fill="#2ee59d">$</text>
+</svg>
